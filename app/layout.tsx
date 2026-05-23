@@ -4,6 +4,7 @@ import { Inter, DM_Sans } from "next/font/google";
 import "./globals.scss";
 import { ThemeProvider } from "@/components/theme-provider";
 import LoadingScreen from "@/components/loading-screen";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,10 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LoadingScreen>
-            {children}
-          </LoadingScreen>
+          <LoadingScreen>{children}</LoadingScreen>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
