@@ -18,7 +18,17 @@ import {
   ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import dynamic from "next/dynamic";
+
+const ShaderGradientCanvas = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradientCanvas),
+  { ssr: false }
+);
+
+const ShaderGradient = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradient),
+  { ssr: false }
+);
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, X } from "lucide-react";

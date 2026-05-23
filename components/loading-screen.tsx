@@ -49,7 +49,7 @@ export default function LoadingScreen() {
                   loader.style.opacity = '0';
                   setTimeout(function() {
                     if (loader.parentNode) {
-                      loader.parentNode.removeChild(loader);
+                      loader.style.display = 'none';
                     }
                     document.documentElement.style.overflow = '';
                     document.body.style.overflow = '';

@@ -5,7 +5,17 @@ import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import dynamic from "next/dynamic";
+
+const ShaderGradientCanvas = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradientCanvas),
+  { ssr: false },
+);
+
+const ShaderGradient = dynamic(
+  () => import("@shadergradient/react").then((mod) => mod.ShaderGradient),
+  { ssr: false },
+);
 import { useInView } from "framer-motion";
 
 export function Contact() {
