@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Trackify: Inventory Management System",
+    "image": "/assets/designs/trackify.png",
+    "date": "May 2026",
+    "description": "Trackify is an all-in-one inventory tool built to handle demands for campus institutions. It has features such as real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports. It aims to make the inventory process easier for property custodians and logistical staff. This design won 2nd place out of 35 teams in the Enterprise category for the Protothon 2026, an international online UX design competition hosted by DubsTech UW and Design Buddies.",
+    "links": [
+      {
+        "text": "View Prototype",
+        "url": "https://www.figma.com/proto/hQF02ka1GxlybupM4Nlux3/Trackify-by-memoa.dev?node-id=0-1&t=j3AbChMaV5Bwysgt-1"
+      },
+      { "text": "Presentation", "url": "https://canva.link/4dufmvv0e0qtcxf" }
+    ],
+    "skills": ["UX Design", "Figma", "System Design"],
+    "award": "2nd Place (Protothon 2026)"
+  },
+  {
+    "title": "Payonnect: Smart Umbrella Sharing System",
+    "image": "/assets/designs/payonnect.png",
+    "date": "Oct. 2025",
+    "description": "Payonnect is a convenient and eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes. The system tracks transactions, manages inventory and applies fair penalties for damaged or unreturned umbrellas.",
+    "links": [
+      {
+        "text": "View Prototype",
+        "url": "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect?node-id=0-1&t=U70ofYmJ35MjFnFF-1"
+      },
+      {
+        "text": "Case Study",
+        "url": "https://www.behance.net/gallery/240213963/Payonnect-Smart-Umbrella-Sharing-System"
+      }
+    ],
+    "skills": ["Product Design", "Figma", "IoT UI"]
+  },
+  {
+    "title": "iBlotter: E-Barangay Blotter System",
+    "image": "/assets/designs/iblotter.png",
+    "date": "June 2025",
+    "description": "iBlotter is a high-fidelity web-based prototype designed to modernize and streamline incident reporting and documentation for Barangay Dila in Sta. Rosa, Laguna. Moving beyond traditional paper forms, this system introduces a secure, digital environment for local officials to manage community concerns with greater efficiency and transparency.",
+    "links": [{ "text": "View Prototype", "url": "#" }],
+    "skills": ["UX Research", "Figma", "Web Prototyping"]
+  },
+  {
+    "title": "CosMarket: Buy, Sell, and Rent Cosplays",
+    "image": "/assets/designs/cosmarket.png",
+    "date": "Mar. 2025",
+    "description": "CosMarket is a mobile e-commerce application that focuses on buying, selling, and renting cosplays. It aims to provide a user-friendly platform for cosplay enthusiasts to access affordable and high-quality cosplay products.",
+    "links": [
+      {
+        "text": "View Prototype",
+        "url": "https://www.figma.com/proto/SSEdzQioOieUqdKdcsgdTi/CosMarket?node-id=0-1&t=yofgEwZVk05q8LH7-1"
+      },
+      {
+        "text": "Case Study",
+        "url": "https://www.behance.net/gallery/240193177/CosMarket-Buy-Sell-and-Rent-Cosplays"
+      }
+    ],
+    "skills": ["Figma", "E-commerce UI", "Marketplace"]
+  },
+  {
+    "title": "HealthMate: Daily Fitness Tracker",
+    "image": "/assets/designs/hmate.png",
+    "date": "Nov 2023",
+    "description": "HealthMate is a mobile application prototype designed using Figma that helps users track their daily fitness activities and monitor their health goals. The app aims to simplify the process of managing workouts and achieving health goals.",
+    "links": [
+      {
+        "text": "View Prototype",
+        "url": "https://www.figma.com/proto/V1lKU5yXF3DLreCUuWiq41/ui?node-id=0-1&t=Vu9LkMMEU2Rn6L2I-1"
+      }
+    ],
+    "skills": ["Mobile UI", "Figma", "Health Tech"]
+  }
+]

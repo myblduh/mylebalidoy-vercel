@@ -1,7 +1,13 @@
-let userConfig = undefined
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+let userConfig = undefined;
 try {
   // try to import ESM first
-  userConfig = await import('./v0-user-next.config.mjs')
+  userConfig = await import("./v0-user-next.config.mjs");
 } catch (e) {
   try {
     // fallback to CJS import
@@ -22,30 +28,40 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  transpilePackages: ["@shadergradient/react"],
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.resolve.alias["@shadergradient/react"] = path.resolve(
+        __dirname,
+        "components/shadergradient-mock.tsx"
+      );
+    }
+    return config;
+  },
+};
 
 if (userConfig) {
   // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
+  const config = userConfig.default || userConfig;
 
   for (const key in config) {
     if (
-      typeof nextConfig[key] === 'object' &&
+      typeof nextConfig[key] === "object" &&
       !Array.isArray(nextConfig[key])
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
         ...config[key],
-      }
+      };
     } else {
-      nextConfig[key] = config[key]
+      nextConfig[key] = config[key];
     }
   }
 }
 
-export default nextConfig
+export default nextConfig;

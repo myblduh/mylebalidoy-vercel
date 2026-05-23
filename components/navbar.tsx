@@ -1,91 +1,208 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./theme-toggle";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled)
-      }
-    }
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 10);
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [scrolled])
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        setHidden(false);
+      }
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
+  const handleNavClick = () => setMobileMenuOpen(false);
+
+  const navItems = [
+    { name: "Designs", href: "#designs" },
+    { name: "Projects", href: "#projects" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Certifications", href: "#certifications" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <nav
-      className={`hidden md:flex justify-around items-center h-20 w-full z-50 transition-all duration-300 fixed top-0 ${
-        scrolled ? "bg-white shadow-md" : "bg-white/95"
-      }`}
-    >
-      <div className="logo">
-        <Image
-          src="/assets/logo.png"
-          alt="Logo"
-          width={100}
-          height={50}
-          className="transition-transform duration-300 hover:scale-110"
-        />
-      </div>
-      <div>
-        <ul className="nav-links flex gap-8 list-none text-lg">
-          <li>
-            <Link
-              href="#about"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
+    <>
+      <header
+        className={`fixed left-0 top-0 w-full z-[110] transition-transform duration-500 ease-in-out bg-background dark:bg-[#0a0a0a] ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${scrolled ? "py-4 shadow-sm" : "py-6"}`}
+      >
+        <div className="flex items-center justify-between px-6 md:px-12 w-full gap-4">
+          <div className="flex items-center flex-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Toggle Menu"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="lg:hidden text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/5 mr-4 transition-colors duration-300"
             >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#skills"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+
+            {!mobileMenuOpen && (
+              <Link aria-label="Logo" href="/">
+                <div className="relative h-12 w-12 transition-transform duration-300 hover:scale-110">
+                  {/* Light theme logo */}
+                  <Image
+                    src="/assets/dark.png"
+                    alt="Logo"
+                    fill
+                    priority
+                    className="object-contain block dark:hidden"
+                  />
+                  {/* Dark theme logo */}
+                  <Image
+                    src="/assets/light.png"
+                    alt="Logo"
+                    fill
+                    priority
+                    className="object-contain hidden dark:block"
+                  />
+                </div>
+              </Link>
+            )}
+          </div>
+
+          <div className="hidden lg:flex justify-center flex-none">
+            <nav
+              className={`header-nav ${
+                scrolled
+                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border-black/10 dark:border-white/10"
+                  : "bg-transparent border-transparent"
+              }`}
             >
-              Skills
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#certifications"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
-            >
-              Certifications
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#projects"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
-            >
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#designs"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
-            >
-              Designs
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#contact"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  )
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  aria-label={item.name}
+                  href={item.href}
+                  className="nav-link text-black/70 hover:text-brand hover:bg-black/5 dark:text-white dark:hover:text-brand dark:hover:bg-white/10"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="ml-4 pl-4 border-l border-foreground/10 flex items-center">
+                <ThemeToggle />
+              </div>
+            </nav>
+          </div>
+
+          <div className="flex justify-end flex-1 items-center gap-4">
+            <div className="lg:hidden">
+              <ThemeToggle />
+            </div>
+            <div className="relative group hidden md:block">
+              <Link href="/resume">
+                <Button className="font-bold tracking-widest uppercase text-xs rounded-full px-8 py-5 transition-all duration-300 overflow-hidden relative bg-black text-white hover:bg-black/90 shadow-xl dark:bg-brand dark:hover:bg-brand/90 dark:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                  <span className="relative z-10">Resume</span>
+                </Button>
+              </Link>
+
+              <div className="absolute top-full right-0 mt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-[280px] backdrop-blur-xl border border-foreground/10 rounded-[24px] p-6 shadow-2xl translate-y-2 group-hover:translate-y-0 overflow-hidden bg-white/95 dark:bg-background/95">
+                <div className="flex justify-center mb-6">
+                  <div className="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
+                    {[
+                      { src: "/assets/certs/1.png", alt: "Cert 1" },
+                      { src: "/assets/certs/2.png", alt: "Cert 2" },
+                      { src: "/assets/designs/trackify.png", alt: "Trackify" },
+                      { src: "/assets/mylepersona.png", alt: "Myle Persona" },
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-background bg-foreground/5 hover:z-20 hover:scale-[1.2] transition-all duration-300 shadow-[0_0_10px_rgba(139,92,246,0.2)]"
+                        style={{ zIndex: 10 - i }}
+                      >
+                        <Image
+                          src={item.src}
+                          alt={item.alt}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-center space-y-1 mb-2">
+                  <p className="text-foreground text-sm font-bold tracking-tight">
+                    My Digital Resume
+                  </p>
+                  <p className="text-foreground/50 text-[11px] leading-relaxed">
+                    View my professional journey, skills, and certifications in
+                    detail.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] md:hidden bg-white dark:bg-[#0a0a0a]">
+          <div className="flex flex-col h-full pt-28 pb-8 px-8 overflow-y-auto">
+            <ul className="flex flex-col gap-8">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    aria-label={item.name}
+                    onClick={handleNavClick}
+                    href={item.href}
+                    className="mobile-nav-link text-foreground/80 hover:text-brand dark:text-white dark:hover:text-brand"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  aria-label="Resume"
+                  onClick={handleNavClick}
+                  href="/resume"
+                  className="mobile-nav-link text-brand hover:text-brand/80"
+                >
+                  Resume
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }

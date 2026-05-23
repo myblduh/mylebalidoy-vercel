@@ -1,18 +1,28 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
-import "./globals.css"
+import { Inter, DM_Sans } from "next/font/google"
+import "./globals.scss"
 import { ThemeProvider } from "@/components/theme-provider"
+import LoadingScreen from "@/components/loading-screen"
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
+  display: "swap",
+})
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
   title: "Myle Balidoy",
-  description: "Aspiring UI/UX Developer",
+  description: "UI/UX Designer Intern & BS IT Student",
+  icons: {
+    icon: "/assets/mylepersona.png",
+  },
 }
 
 export default function RootLayout({
@@ -22,21 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-          async
-        ></script>
-      </head>
-      <body className={`${poppins.variable} font-sans`}>
+      <body className={`${dmSans.variable} ${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <LoadingScreen />
           {children}
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-import './globals.css'

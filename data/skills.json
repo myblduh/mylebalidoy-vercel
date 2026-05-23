@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Frontend & UI",
+    "icon": "Terminal",
+    "skills": [
+      "HTML",
+      "CSS",
+      "SCSS",
+      "JavaScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Material UI"
+    ]
+  },
+  {
+    "title": "Backend & Cloud",
+    "icon": "Cpu",
+    "skills": [
+      "Python",
+      "Java",
+      "PHP",
+      "Laravel",
+      "Kotlin",
+      "SQL",
+      "Apache",
+      "AWS"
+    ]
+  },
+  {
+    "title": "Design & Creative",
+    "icon": "Palette",
+    "skills": [
+      "Figma",
+      "Canva",
+      "Adobe Lightroom",
+      "Adobe Stock",
+      "Adobe Photoshop"
+    ]
+  }
+]

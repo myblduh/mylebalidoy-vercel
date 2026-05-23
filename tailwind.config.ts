@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-poppins)"],
+        sans: ["var(--font-dm)", "var(--font-inter)"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -55,6 +55,11 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        brand: {
+          DEFAULT: "var(--brand-accent)",
+          hover: "var(--brand-accent-hover)",
+          soft: "var(--brand-accent-soft)",
         },
       },
       borderRadius: {

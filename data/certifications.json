@@ -1,0 +1,136 @@
+[
+  {
+    "title": "Microsoft UX Design",
+    "image": "/assets/certs/9.png",
+    "description": "An entry-level specialization that teaches human-centered design, inclusive design principles, and accessibility compliance. Learners use industry-standard tools like Figma, Microsoft PowerPoint, and Fluent 2 to build digital portfolios through practical, hands-on projects.",
+    "issuer": "Microsoft",
+    "date": "February 2026",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.coursera.org/account/accomplishments/specialization/MBIVN1ZQ9N2A"
+      }
+    ],
+    "skills": ["UX Design", "Figma", "User Research"]
+  },
+  {
+    "title": "Microsoft IT Support Specialist",
+    "image": "/assets/certs/8.png",
+    "description": "Troubleshoots technical issues, manages user accounts, and maintains hardware and software. They specialize in configuring and securing Microsoft 365 ecosystems, Windows operating systems, and device management tools to ensure smooth daily operations for businesses and end-users.",
+    "issuer": "Microsoft",
+    "date": "January 2026",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.coursera.org/account/accomplishments/specialization/DQZZNF934M5O"
+      }
+    ],
+    "skills": ["IT Support", "Troubleshooting"]
+  },
+  {
+    "title": "Salesforce Supported Virtual Intern",
+    "image": "/assets/certs/7.jpg",
+    "description": "Completed the Salesforce Supported Virtual Internship, gaining hands-on experience with the Salesforce platform, including Trailhead modules and real-world projects.",
+    "issuer": "Salesforce",
+    "date": "December 2025",
+    "skills": ["Salesforce", "Trailhead", "CRM"]
+  },
+  {
+    "title": "Google Prompting Essentials",
+    "image": "/assets/certs/11.png",
+    "description": "Gained hands-on practice for everyday tasks, such as drafting emails, summarizing lengthy documents, generating ideas, and turning meeting notes into action items. Understood the basics of prompt engineering and using AI tools to streamline workflows and boost productivity.",
+    "issuer": "Google",
+    "date": "June 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.coursera.org/account/accomplishments/specialization/LR9R9IB0TII8"
+      }
+    ],
+    "skills": ["Prompt Engineering", "AI Tools"]
+  },
+  {
+    "title": "Google Agile Essentials",
+    "image": "/assets/certs/10.png",
+    "description": "Understood the basics of Agile and Scrum methodology, an iterative approach to project management and software development that helps teams deliver value to their customers faster and with fewer headaches. It emphasizes collaboration, flexibility, and continuous improvement.",
+    "issuer": "Google",
+    "date": "May 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.coursera.org/account/accomplishments/verify/BTXD6KR4GMCP"
+      }
+    ],
+    "skills": ["Agile Methodologies", "Project Management"]
+  },
+  {
+    "title": "Junior Cybersecurity Analyst",
+    "image": "/assets/certs/6.jpg",
+    "description": "Demonstrated an understanding of core security principles and practices, including operating system security, network and device security, and secure computing practices.",
+    "issuer": "Cisco Networking Academy",
+    "date": "May 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.credly.com/badges/67fb04d0-19a8-48a7-9463-1555f0cf70fa/linked_in_profile"
+      }
+    ],
+    "skills": ["Cyber Security", "Network Security", "Operating System"]
+  },
+  {
+    "title": "Python Basics",
+    "image": "/assets/certs/5.jpg",
+    "description": "Demonstrated an understanding of basic Python programming concepts, including variables, data types, control structures, functions, and object-oriented programming.",
+    "issuer": "HackerRank",
+    "date": "April 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.hackerrank.com/certificates/784ac6df023f"
+      }
+    ],
+    "skills": ["Python"]
+  },
+  {
+    "title": "CSS Basics",
+    "image": "/assets/certs/4.jpg",
+    "description": "Passed the certification test which includes topics on Cascading and Inheritance, styling fundamentals, use of layouts, and boxing of elements.",
+    "issuer": "HackerRank",
+    "date": "April 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.hackerrank.com/certificates/7dca93b72123"
+      }
+    ],
+    "skills": ["CSS", "HTML"]
+  },
+  {
+    "title": "IT Customer Support Basics",
+    "image": "/assets/certs/3.png",
+    "description": "Demonstrated fundamentals of IT customer support, including the importance of customer service, communication skills, and problem-solving techniques.",
+    "issuer": "Cisco Networking Academy",
+    "date": "April 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.credly.com/badges/f59861a2-85ee-460c-b868-86538868df3d/public_url"
+      }
+    ],
+    "skills": ["Customer Service", "Problem Solving"]
+  },
+  {
+    "title": "IT Specialist - Network Security",
+    "image": "/assets/certs/2.png",
+    "description": "Demonstrated foundational security knowledge and skills, including an understanding of core security principles operating system security, network and device security, and secure computing practices.",
+    "issuer": "Certiport",
+    "date": "February 2025",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.credly.com/badges/dc7617b6-0224-4801-8568-c44eefff77f3/linked_in_profile"
+      }
+    ],
+    "skills": ["Network Security", "Operating System"]
+  }
+]
