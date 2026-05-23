@@ -52,12 +52,6 @@ export default function Certifications() {
     <section id="certifications" className="py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 max-w-3xl">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand/5 dark:bg-brand/10 border border-brand/10 mb-4">
-            <Award className="w-4 h-4 md:w-5 md:h-5 text-brand" />
-            <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-brand font-bold">
-              Professional Growth
-            </span>
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
             Certifications
           </h2>
