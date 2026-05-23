@@ -137,10 +137,16 @@ export default function Navbar() {
                 <div className="flex justify-center mb-6">
                   <div className="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
                     {[
-                      { src: "/assets/certs/1.png", alt: "Cert 1" },
-                      { src: "/assets/certs/2.png", alt: "Cert 2" },
-                      { src: "/assets/designs/trackify.png", alt: "Trackify" },
                       { src: "/assets/mylepersona.png", alt: "Myle Persona" },
+                      {
+                        src: "/assets/certs/badge1.png",
+                        alt: "Google Agile Essentials",
+                      },
+                      {
+                        src: "/assets/certs/badge3.png",
+                        alt: "Microsoft UX Design",
+                      },
+                      { src: "/assets/designs/trackify.png", alt: "Trackify" },
                     ].map((item, i) => (
                       <div
                         key={i}
