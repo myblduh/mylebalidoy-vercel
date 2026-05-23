@@ -4,7 +4,6 @@
     "image": "/assets/designs/lakbay.png",
     "date": "July – Oct. 2025",
     "description": "A web platform for tourists to explore Calamba City with interactive maps and e-stamps via QR codes. Designed the UI/UX in Figma first to ensure a seamless visitor experience.",
-    "links": [{ "text": "Figma Prototype", "url": "#" }],
     "skills": ["UI/UX", "Figma", "Web Design"]
   },
   {
@@ -20,24 +19,21 @@
     "image": "/assets/projects/spendsmart.png",
     "date": "June 2024",
     "description": "A financial management web app designed for college students. Features budget creation, expense tracking, and automated reports to help users manage their money effectively. Integrated with AWS for secure cloud hosting and database management.",
-    "skills": ["PHP", "AWS", "Web Development", "MySQL"],
-    "links": [{ "text": "View Source", "url": "#" }]
+    "skills": ["PHP", "AWS", "Web Development", "MySQL"]
   },
   {
     "title": "HotelOps: Hotel Operations System",
     "image": "/assets/projects/hoteru.png",
     "date": "Feb 2024 – Mar 2024",
     "description": "Web application prototype for streamlining hotel operations. Includes user management, booking systems, event calendars, and secure payment processing. Designed to optimize front-desk efficiency and guest management workflows.",
-    "skills": ["PHP", "MySQL", "Web App", "UI Design"],
-    "links": [{ "text": "Presentation", "url": "#" }]
+    "skills": ["PHP", "MySQL", "Web App", "UI Design"]
   },
   {
     "title": "Journal Whispers: Digital Memoir",
     "image": "/assets/projects/journal.png",
     "date": "Mar 2024",
     "description": "Mobile application developed using Kotlin and SQLite to help users capture and document life moments with multimedia support and easy entry management. Focuses on privacy and seamless offline data persistence.",
-    "skills": ["Kotlin", "Android Dev", "SQLite", "Material UI"],
-    "links": [{ "text": "View Repository", "url": "#" }]
+    "skills": ["Kotlin", "Android Dev", "SQLite", "Material UI"]
   },
   {
     "title": "The Recipe Room: Repository App",
@@ -54,23 +50,20 @@
     "image": "/assets/projects/notemate.png",
     "date": "Oct 2023 – Nov 2023",
     "description": "Flexible web application allowing students and instructors to upload, study, and collaborate on shared materials to encourage teamwork. Features real-time document annotation and collaborative study groups.",
-    "skills": ["JavaScript", "HTML/CSS", "Collaboration Tools"],
-    "links": [{ "text": "View Project", "url": "#" }]
+    "skills": ["JavaScript", "HTML/CSS", "Collaboration Tools"]
   },
   {
     "title": "S&V Manager: Supply Chain System",
     "image": "/assets/projects/sv.png",
     "date": "Nov 2023",
     "description": "Supply and Vendor management system designed to optimize supply chain processes, featuring purchase orders and inventory transparency. Automates vendor communication and stock level alerts for business efficiency.",
-    "skills": ["PHP", "Inventory Systems", "Business Logic"],
-    "links": [{ "text": "Documentation", "url": "#" }]
+    "skills": ["PHP", "Inventory Systems", "Business Logic"]
   },
   {
     "title": "NU-L Building Visualization",
     "image": "/assets/projects/building.png",
     "date": "Feb 2023 – Mar 2023",
     "description": "Digital visualization of the NU-L building structure and appearance using the Python Turtle graphics library. A creative coding project demonstrating procedural geometry and color theory.",
-    "skills": ["Python", "Turtle Graphics", "Creative Coding"],
-    "links": [{ "text": "View Script", "url": "#" }]
+    "skills": ["Python", "Turtle Graphics", "Creative Coding"]
   }
 ]
