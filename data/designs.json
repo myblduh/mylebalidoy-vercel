@@ -36,7 +36,12 @@
     "image": "/assets/designs/iblotter.png",
     "date": "June 2025",
     "description": "iBlotter is a high-fidelity web-based prototype designed to modernize and streamline incident reporting and documentation for Barangay Dila in Sta. Rosa, Laguna. Moving beyond traditional paper forms, this system introduces a secure, digital environment for local officials to manage community concerns with greater efficiency and transparency.",
-    "links": [{ "text": "View Prototype", "url": "#" }],
+    "links": [
+      {
+        "text": "Case Study",
+        "url": "https://www.behance.net/gallery/242669303/iBlotter-E-Barangay-Blotter-System"
+      }
+    ],
     "skills": ["UX Research", "Figma", "Web Prototyping"]
   },
   {
@@ -59,7 +64,7 @@
   {
     "title": "HealthMate: Daily Fitness Tracker",
     "image": "/assets/designs/hmate.png",
-    "date": "Nov 2023",
+    "date": "Nov. 2023",
     "description": "HealthMate is a mobile application prototype designed using Figma that helps users track their daily fitness activities and monitor their health goals. The app aims to simplify the process of managing workouts and achieving health goals.",
     "links": [
       {
