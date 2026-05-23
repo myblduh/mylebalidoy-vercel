@@ -46,7 +46,7 @@ export default function About() {
       name: "Microsoft IT Support Specialist",
       image: "/assets/certs/badge4.png",
       positionClass:
-        "top-[36%] right-[10%] sm:top-[38%] sm:right-[12%] md:top-[44%] md:right-[12%]",
+        "top-[36%] right-[15%] sm:top-[38%] sm:right-[12%] md:top-[44%] md:right-[12%]",
       rotate: "8deg",
     },
   ];
@@ -59,8 +59,7 @@ export default function About() {
             About Me
           </h2>
           <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm leading-relaxed max-w-2xl">
-            A brief look into my background, my journey as a student, and my
-            aspirations in the tech industry.
+            A brief look into my background and my journey as a student.
           </p>
         </div>
 

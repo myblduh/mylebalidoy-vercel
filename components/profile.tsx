@@ -23,7 +23,7 @@ export default function Profile() {
         <div className="max-w-4xl relative">
           {/* Centered Persona Image for Mobile */}
           <div
-            className="md:hidden w-28 h-28 rotate-[-10deg] drop-shadow-2xl mx-auto mb-3 relative cursor-pointer select-none"
+            className="md:hidden w-28 h-28 rotate-[-10deg] drop-shadow-2xl mx-auto mb-3 relative cursor-pointer select-none transition-transform duration-500 hover:scale-110 hover:rotate-0"
             onMouseEnter={() => setIsHoveredMobile(true)}
             onMouseLeave={() => setIsHoveredMobile(false)}
             onClick={() => setIsHoveredMobile((prev) => !prev)}
@@ -33,6 +33,7 @@ export default function Profile() {
               alt="Myle Persona"
               fill
               sizes="112px"
+              priority
               className="object-contain"
             />
             <AnimatePresence>
@@ -43,7 +44,7 @@ export default function Profile() {
                   exit={{ opacity: 0, scale: 0.8, y: 10 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   style={{ rotate: 10 }}
-                  className="absolute -top-12 left-1/2 -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-xl border border-white/20 z-[100]"
+                  className="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-xl border border-white/20 z-[100]"
                 >
                   Hello, I'm Myle!
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-brand rotate-45 border-r border-b border-white/20" />
@@ -96,7 +97,7 @@ export default function Profile() {
 
             {/* Persona Image - Floating Sticker Style - Hidden on mobile, visible on desktop */}
             <div
-              className="hidden md:block absolute -bottom-12 -left-20 w-36 h-36 rotate-[-10deg] drop-shadow-2xl z-10 transition-transform hover:scale-110 duration-500 cursor-pointer select-none"
+              className="hidden md:block absolute -bottom-12 -left-20 w-36 h-36 rotate-[-10deg] drop-shadow-2xl z-10 transition-transform hover:scale-110 hover:rotate-0 duration-500 cursor-pointer select-none"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -105,6 +106,7 @@ export default function Profile() {
                 alt="Myle Persona"
                 fill
                 sizes="144px"
+                priority
                 className="object-contain"
               />
               <AnimatePresence>
@@ -115,7 +117,7 @@ export default function Profile() {
                     exit={{ opacity: 0, scale: 0.8, y: 10 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     style={{ rotate: 10 }}
-                    className="absolute -top-12 left-1/2 -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-xl border border-white/20 z-[100]"
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-xl border border-white/20 z-[100]"
                   >
                     Hello, I'm Myle!
                     <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-brand rotate-45 border-r border-b border-white/20" />
