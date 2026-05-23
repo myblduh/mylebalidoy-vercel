@@ -91,9 +91,9 @@ export function Contact() {
           </span>
           <h2 className="text-5xl md:text-6xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-white">
             TURNING <br className="hidden lg:block" />
-            <span className="text-purple-500">IDEAS INTO</span>{" "}
+            <span className="text-purple-500">IDEAS</span> INTO{" "}
             <br className="hidden lg:block" />
-            SOLUTIONS.
+            <span className="text-purple-500">SOLUTIONS.</span>
           </h2>
         </motion.div>
 
@@ -180,6 +180,7 @@ export function Contact() {
                 src="/assets/light.png"
                 alt="Myle Balidoy Logo"
                 fill
+                sizes="96px"
                 className="object-contain"
               />
             )}

@@ -135,6 +135,7 @@ export default function Certifications() {
                   src={selectedCertification.image || "/placeholder.svg"}
                   alt={selectedCertification.title}
                   fill
+                  sizes="100vw"
                   className="object-contain"
                   draggable={false}
                 />

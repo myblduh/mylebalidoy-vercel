@@ -82,14 +82,15 @@ export default function Navbar() {
                     src="/assets/dark.png"
                     alt="Logo"
                     fill
+                    sizes="48px"
                     priority
                     className="object-contain block dark:hidden"
                   />
-                  {/* Dark theme logo */}
                   <Image
                     src="/assets/light.png"
                     alt="Logo"
                     fill
+                    sizes="48px"
                     priority
                     className="object-contain hidden dark:block"
                   />
@@ -157,6 +158,7 @@ export default function Navbar() {
                           src={item.src}
                           alt={item.alt}
                           fill
+                          sizes="48px"
                           className="object-cover"
                         />
                       </div>

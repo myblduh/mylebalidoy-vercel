@@ -32,6 +32,7 @@ export default function Profile() {
               src="/assets/mylepersona.png"
               alt="Myle Persona"
               fill
+              sizes="112px"
               className="object-contain"
             />
             <AnimatePresence>
@@ -103,6 +104,7 @@ export default function Profile() {
                 src="/assets/mylepersona.png"
                 alt="Myle Persona"
                 fill
+                sizes="144px"
                 className="object-contain"
               />
               <AnimatePresence>

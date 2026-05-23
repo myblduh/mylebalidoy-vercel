@@ -40,8 +40,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LoadingScreen />
-          {children}
+          <LoadingScreen>
+            {children}
+          </LoadingScreen>
         </ThemeProvider>
       </body>
     </html>

@@ -39,7 +39,7 @@ export default function About() {
       name: "Microsoft UX Design",
       image: "/assets/certs/badge3.png",
       positionClass:
-        "top-[36%] left-[10%] sm:top-[38%] sm:left-[12%] md:top-[44%] md:left-[12%]",
+        "top-[36%] left-[10%] sm:top-[38%] sm:left-[20%] md:top-[44%] md:left-[12%]",
       rotate: "-8deg",
     },
     {
@@ -74,6 +74,7 @@ export default function About() {
                 src="/assets/images/image0.jpg"
                 alt="Myle at an aquarium"
                 fill
+                sizes="(max-width: 1024px) 100vw, 66vw"
                 className="object-cover object-center"
                 draggable={false}
               />
@@ -97,6 +98,7 @@ export default function About() {
                     src="/assets/bubble.webp"
                     alt="Bubble"
                     fill
+                    sizes="80px"
                     className="object-contain drop-shadow-md"
                     draggable={false}
                   />
@@ -107,6 +109,7 @@ export default function About() {
                       src={badge.image}
                       alt={badge.name}
                       fill
+                      sizes="40px"
                       className="object-contain"
                       draggable={false}
                     />

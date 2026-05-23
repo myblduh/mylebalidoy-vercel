@@ -97,6 +97,7 @@ export default function Designs() {
                     src={design.image || "/placeholder.svg"}
                     alt={design.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     draggable={false}
                   />
@@ -205,6 +206,7 @@ export default function Designs() {
                         src={selectedDesign.image || "/placeholder.svg"}
                         alt={selectedDesign.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         draggable={false}
                       />
