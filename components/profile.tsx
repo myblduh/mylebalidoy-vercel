@@ -59,10 +59,25 @@ export default function Profile() {
 
           <div className="relative">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter mb-6 sm:mb-8 leading-[1.1] uppercase text-center">
-              Creating intuitive designs by <br className="hidden md:block" />
+              <span className="hover:text-brand transition-colors duration-300 cursor-default">
+                Creating
+              </span>{" "}
+              <span className="hover:text-brand transition-colors duration-300 cursor-default">
+                intuitive
+              </span>{" "}
+              <span className="hover:text-brand transition-colors duration-300 cursor-default">
+                designs
+              </span>{" "}
+              <span className="hover:text-brand transition-colors duration-300 cursor-default">
+                by
+              </span>{" "}
+              <br className="hidden md:block" />
               <span className="inline-block">
-                Putting&nbsp;
-                <span className="relative inline-block px-[0.2em] py-[0.02em] bg-white dark:bg-white/10 border-[0.05em] border-brand rounded-[0.3em] text-black dark:text-white shadow-lg align-middle -translate-y-[0.05em]">
+                <span className="hover:text-brand transition-colors duration-300 cursor-default">
+                  Putting
+                </span>
+                &nbsp;
+                <span className="relative inline-block px-[0.2em] py-[0.02em] bg-white dark:bg-white/10 border-[0.05em] border-brand rounded-[0.3em] text-black dark:text-white hover:text-brand dark:hover:text-brand transition-colors duration-300 cursor-default shadow-lg align-middle -translate-y-[0.05em]">
                   Users First.
                   <motion.div
                     initial={{ opacity: 0, x: 10, y: 10 }}
@@ -107,6 +122,7 @@ export default function Profile() {
                 fill
                 sizes="144px"
                 priority
+                loading="eager"
                 className="object-contain"
               />
               <AnimatePresence>

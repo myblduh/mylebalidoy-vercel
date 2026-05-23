@@ -129,7 +129,7 @@ export default function LoadingScreen({
       {/* Actual Page Content */}
       <div
         className={
-          isLoading ? "hidden" : "block animate-in fade-in duration-1000"
+          isLoading ? "hidden" : "block"
         }
       >
         {children}
