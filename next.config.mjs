@@ -29,6 +29,7 @@ const nextConfig = {
     unoptimized: true,
   },
   transpilePackages: ["@shadergradient/react"],
+  turbopack: {},
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
@@ -38,7 +39,7 @@ const nextConfig = {
     if (isServer) {
       config.resolve.alias["@shadergradient/react"] = path.resolve(
         __dirname,
-        "components/shadergradient-mock.tsx"
+        "components/shadergradient-mock.tsx",
       );
     }
     return config;
