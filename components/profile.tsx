@@ -263,7 +263,6 @@ export default function Profile() {
               className="relative w-20 h-20 sm:w-24 sm:h-24 rotate-[-10deg] drop-shadow-2xl cursor-pointer select-none transition-transform duration-500 hover:scale-110 hover:rotate-0 z-50 pointer-events-auto"
               onMouseEnter={() => setIsHoveredMobile(true)}
               onMouseLeave={() => setIsHoveredMobile(false)}
-              onClick={() => setIsHoveredMobile((prev) => !prev)}
             >
               <Image
                 src="/assets/mylepersona.png"
