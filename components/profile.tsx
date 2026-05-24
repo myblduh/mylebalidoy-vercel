@@ -68,11 +68,12 @@ export default function Profile() {
         key={key}
         initial={{ opacity: 0, scale: 0.8, x: isAbsolute ? "-50%" : 0 }}
         animate={{ opacity: 1, scale: 1, x: isAbsolute ? "-50%" : 0 }}
-        whileHover={{ scale: 1.1, zIndex: 50, x: isAbsolute ? "-50%" : 0 }}
+        whileHover={{ scale: 1.1, x: isAbsolute ? "-50%" : 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         onMouseEnter={() => setHoveredBubble(key)}
         onMouseLeave={() => setHoveredBubble(null)}
-        className={`${isAbsolute ? "absolute" : "relative"} ${additionalClass} ${sizeClass} shrink-0 cursor-pointer flex items-center justify-center select-none z-20 pointer-events-auto`}
+        onClick={() => setHoveredBubble(hoveredBubble === key ? null : key)}
+        className={`${isAbsolute ? "absolute" : "relative"} ${additionalClass} ${sizeClass} shrink-0 cursor-pointer flex items-center justify-center select-none pointer-events-auto transition-all duration-300 ${hoveredBubble === key ? "z-50" : "z-20"}`}
       >
         <div className="relative w-full h-full z-10 transition-all duration-300 hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.7)]">
           <Image
@@ -96,12 +97,12 @@ export default function Profile() {
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                className={`relative bg-black/85 dark:bg-white/95 text-white dark:text-black font-bold px-3 py-2 md:px-4 md:py-2.5 rounded-xl whitespace-nowrap shadow-xl border border-white/10 dark:border-black/10 flex flex-col items-center`}
+                className={`relative bg-black/85 dark:bg-white/95 text-white dark:text-black font-bold p-2.5 md:p-3 rounded-xl shadow-xl border border-white/10 dark:border-black/10 flex flex-col items-center w-36 md:w-48 text-center leading-tight`}
               >
-                <span className="text-[10px] md:text-xs uppercase tracking-widest text-brand mb-0.5">
+                <span className="text-[10px] md:text-xs uppercase tracking-widest text-brand mb-1">
                   {bubble.name}
                 </span>
-                <span className="text-[10px] md:text-xs font-medium">
+                <span className="text-[9px] md:text-[11px] font-medium opacity-90">
                   {bubble.note}
                 </span>
                 <div
