@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 w-full z-[110] transition-all duration-500 ease-in-out ${
+        className={`fixed left-0 top-0 w-full z-[110] transition-all duration-500 ease-in-out pointer-events-none ${
           hidden ? "-translate-y-full" : "translate-y-0"
         } ${
           scrolled
@@ -73,13 +73,13 @@ export default function Navbar() {
               size="icon"
               aria-label="Toggle Menu"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="lg:hidden text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/5 mr-4 transition-colors duration-300"
+              className="lg:hidden text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/5 mr-4 transition-colors duration-300 pointer-events-auto"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
 
             {!mobileMenuOpen && (
-              <Link aria-label="Logo" href="/">
+              <Link aria-label="Logo" href="/" className="pointer-events-auto">
                 <div className="relative h-12 w-12 transition-transform duration-300 hover:scale-110">
                   {/* Light theme logo */}
                   <Image
@@ -105,7 +105,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex justify-center flex-none">
             <nav
-              className={`header-nav ${
+              className={`header-nav pointer-events-auto ${
                 scrolled
                   ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border-transparent dark:border dark:border-white/10"
                   : "bg-transparent border-transparent"
@@ -128,10 +128,10 @@ export default function Navbar() {
           </div>
 
           <div className="flex justify-end flex-1 items-center gap-4">
-            <div className="lg:hidden">
+            <div className="lg:hidden pointer-events-auto">
               <ThemeToggle />
             </div>
-            <div className="relative group hidden md:block">
+            <div className="relative group hidden md:block pointer-events-auto">
               <Link href="/resume">
                 <Button className="font-bold tracking-widest uppercase text-xs rounded-full px-8 py-5 transition-all duration-300 overflow-hidden relative bg-black text-white hover:bg-black/90 shadow-xl dark:bg-brand dark:hover:bg-brand/90 dark:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
                   <span className="relative z-10">Resume</span>
