@@ -162,31 +162,31 @@ export default function About() {
                 return (
                   <div
                     key={idx}
-                    className={`project-card p-6 flex flex-col items-start gap-6 ${isAward ? "cursor-pointer hover:bg-amber-500/5 transition-colors" : ""}`}
-                  onClick={
-                    isAward
-                      ? () =>
-                          setSelectedImage({
-                            src: "/assets/awards/award_00.png",
-                            alt: "1st Runner Up - Enterprise Track",
-                          })
-                      : undefined
-                  }
-                >
-                  <div className="flex-shrink-0 flex items-center justify-center pt-1">
-                    <div
-                      className={`${isAward ? "w-16 h-16" : "w-14 h-14"} relative`}
-                    >
-                      <Image
-                        src={iconSrc}
-                        alt={`${card.title} Icon`}
-                        fill
-                        className="object-contain"
-                        draggable={false}
-                      />
+                    className={`project-card p-5 sm:p-6 flex flex-row sm:flex-col items-start gap-5 sm:gap-6 ${isAward ? "cursor-pointer hover:bg-amber-500/5 transition-colors" : ""}`}
+                    onClick={
+                      isAward
+                        ? () =>
+                            setSelectedImage({
+                              src: "/assets/awards/award_00.png",
+                              alt: "1st Runner Up - Enterprise Track",
+                            })
+                        : undefined
+                    }
+                  >
+                    <div className="flex-shrink-0 w-12 sm:w-16 flex items-center justify-center pt-1">
+                      <div
+                        className={`${isAward ? "w-12 h-12 sm:w-16 sm:h-16" : "w-10 h-10 sm:w-14 sm:h-14"} relative`}
+                      >
+                        <Image
+                          src={iconSrc}
+                          alt={`${card.title} Icon`}
+                          fill
+                          className="object-contain"
+                          draggable={false}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div>
+                    <div className="flex-1">
                     <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1 tracking-tight">
                       {card.title}
                     </h3>

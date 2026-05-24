@@ -6,7 +6,7 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  Palette,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -167,31 +167,17 @@ export default function Designs() {
         open={!!selectedDesign}
         onOpenChange={(open) => !open && setSelectedDesign(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl">
-          {/* Custom Back Button (Desktop) */}
-          <div className="absolute top-6 left-6 z-50 hidden md:block">
+        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl">
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>
-              <Button className="gap-2 px-5 py-2.5 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105">
-                <ChevronDown className="w-4 h-4 rotate-90" />
-                <span className="text-xs font-bold uppercase tracking-widest hidden md:inline-block">
-                  Back
-                </span>
+              <Button className="w-10 h-10 p-0 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
+                <X className="w-4 h-4" />
+                <span className="sr-only">Close</span>
               </Button>
             </DialogClose>
           </div>
 
           <div className="flex flex-col md:grid md:grid-cols-12 h-full w-full overflow-y-auto md:overflow-hidden no-scrollbar">
-            {/* Mobile sticky back button bar */}
-            <div className="sticky top-0 left-0 right-0 z-50 flex items-center px-4 py-3 bg-white dark:bg-[#0a0a0a] md:hidden">
-              <DialogClose asChild>
-                <Button className="gap-2 px-4 py-2 focus-visible:ring-0 bg-black dark:bg-white hover:bg-black/80 dark:hover:bg-white/80 text-white dark:text-black rounded-full shadow-md transition-all duration-200">
-                  <ChevronDown className="w-4 h-4 rotate-90" />
-                  <span className="text-xs font-bold uppercase tracking-widest">
-                    Back
-                  </span>
-                </Button>
-              </DialogClose>
-            </div>
             {/* Visual (Image or Iframe) */}
             <div className="relative w-full min-h-[40vh] md:min-h-0 md:h-full md:col-span-7 lg:col-span-8 bg-foreground/5 flex flex-col">
               {(() => {
@@ -207,6 +193,8 @@ export default function Designs() {
                         alt={selectedDesign.title}
                         fill
                         sizes="100vw"
+                        quality={100}
+                        unoptimized
                         className="object-cover"
                         draggable={false}
                       />

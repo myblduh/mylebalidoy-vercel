@@ -120,7 +120,7 @@ export default function Certifications() {
         open={!!selectedCertification}
         onOpenChange={(open) => !open && setSelectedCertification(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
+        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
           {/* Custom Close Button */}
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>
@@ -133,15 +133,17 @@ export default function Certifications() {
 
           <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden no-scrollbar">
             {/* Visual Column */}
-            <div className="w-full sm:col-span-7 lg:col-span-8 bg-transparent flex flex-col pt-16 sm:pt-0 items-center justify-center p-4 sm:p-8">
+            <div className="w-full h-full sm:col-span-7 lg:col-span-8 bg-white flex flex-col items-center justify-center p-4 sm:p-8">
               {selectedCertification && (
-                <div className="w-full drop-shadow-2xl">
+                <div className="relative w-full h-full min-h-[300px] flex items-center justify-center drop-shadow-2xl">
                   <Image
                     src={selectedCertification.image || "/placeholder.svg"}
                     alt={selectedCertification.title}
                     width={1200}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    quality={100}
+                    unoptimized
+                    className="w-full h-full object-contain"
                     draggable={false}
                   />
                 </div>
