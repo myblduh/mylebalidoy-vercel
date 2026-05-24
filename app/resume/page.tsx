@@ -245,6 +245,7 @@ export default function DigitalResumePage() {
                 <img
                   src="/assets/mylepersona.png"
                   alt="Myle Balidoy"
+                  loading="eager"
                   className="w-full h-full object-cover transition-all duration-700 group-hover/header:scale-105"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
@@ -826,7 +827,7 @@ export default function DigitalResumePage() {
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent className="max-w-[95vw] w-fit p-0 bg-transparent border-none shadow-none z-[200] [&>button]:hidden flex justify-center items-center">
+        <DialogContent aria-describedby={undefined} className="max-w-[95vw] w-fit p-0 bg-transparent border-none shadow-none z-[200] [&>button]:hidden flex justify-center items-center">
           <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="relative w-fit h-fit bg-black/95 p-2 md:p-3 rounded-xl md:rounded-2xl border border-white/10 shadow-2xl flex items-center justify-center">
             <div className="absolute top-4 right-4 md:top-5 md:right-5 z-[300]">

@@ -96,7 +96,7 @@ export default function About() {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   onMouseEnter={() => setHoveredBadge(badge.name)}
                   onMouseLeave={() => setHoveredBadge(null)}
-                  className={`absolute ${badge.positionClass} w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 cursor-pointer flex items-center justify-center select-none z-20`}
+                  className={`absolute ${badge.positionClass} w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 cursor-default flex items-center justify-center select-none z-20`}
                 >
                   {/* Bubble Background */}
                   <Image
@@ -181,6 +181,7 @@ export default function About() {
                           src={iconSrc}
                           alt={`${card.title} Icon`}
                           fill
+                          sizes="(max-width: 640px) 48px, 64px"
                           className="object-contain"
                           draggable={false}
                         />
@@ -217,7 +218,7 @@ export default function About() {
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent className="max-w-[90vw] md:max-w-5xl bg-black/90 border-white/10 p-2 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl z-[200] [&>button]:hidden">
+        <DialogContent aria-describedby={undefined} className="max-w-[90vw] md:max-w-5xl bg-black/90 border-white/10 p-2 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl z-[200] [&>button]:hidden">
           <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="absolute top-4 right-4 z-50">
             <DialogClose asChild>

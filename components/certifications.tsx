@@ -120,7 +120,7 @@ export default function Certifications() {
         open={!!selectedCertification}
         onOpenChange={(open) => !open && setSelectedCertification(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
+        <DialogContent aria-describedby={undefined} className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
           {/* Custom Close Button */}
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>

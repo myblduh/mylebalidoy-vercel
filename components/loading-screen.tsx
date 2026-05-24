@@ -114,7 +114,7 @@ export default function LoadingScreen({
               <div className="relative w-24 h-24 md:w-32 md:h-32">
                 <Image
                   src="/assets/light.png"
-                  alt="Myle Balidoy Logo"
+                  alt="Ambient Light"
                   fill
                   sizes="128px"
                   priority

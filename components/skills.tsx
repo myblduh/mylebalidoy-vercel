@@ -41,6 +41,7 @@ export default function Skills() {
                     src={category.iconSrc}
                     alt={`${category.title} Icon`}
                     fill
+                    sizes="(max-width: 640px) 48px, 64px"
                     className="object-contain"
                     draggable={false}
                   />

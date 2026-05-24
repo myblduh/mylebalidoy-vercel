@@ -104,7 +104,7 @@ export default function Designs() {
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
-                  <div className="flex justify-between items-start gap-4 mb-3">
+                  <div className="flex justify-between items-start gap-4 mb-2">
                     <div className="flex-1 min-w-0">
                       <h3 className="text-lg md:text-xl lg:text-2xl font-bold group-hover:text-brand transition-colors duration-300 leading-tight tracking-tight">
                         {design.title}
@@ -167,7 +167,10 @@ export default function Designs() {
         open={!!selectedDesign}
         onOpenChange={(open) => !open && setSelectedDesign(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl">
+        <DialogContent
+          aria-describedby={undefined}
+          className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col"
+        >
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>
               <Button className="w-10 h-10 p-0 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
@@ -186,7 +189,7 @@ export default function Designs() {
                 );
 
                 const imageEl = (
-                  <div className="relative w-full h-full block">
+                  <div className="relative w-full h-full flex-1 block">
                     {selectedDesign && (
                       <Image
                         src={selectedDesign.image || "/placeholder.svg"}

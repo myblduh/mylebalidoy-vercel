@@ -68,13 +68,12 @@ export default function Profile() {
         key={key}
         initial={{ opacity: 0, scale: 0.8, x: isAbsolute ? "-50%" : 0 }}
         animate={{ opacity: 1, scale: 1, x: isAbsolute ? "-50%" : 0 }}
-        whileHover={{ scale: 1.1, x: isAbsolute ? "-50%" : 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         onMouseEnter={() => setHoveredBubble(key)}
         onMouseLeave={() => setHoveredBubble(null)}
-        className={`${isAbsolute ? "absolute" : "relative"} ${additionalClass} ${sizeClass} shrink-0 cursor-pointer flex items-center justify-center select-none pointer-events-auto transition-all duration-300 ${hoveredBubble === key ? "z-50" : "z-20"}`}
+        className={`${isAbsolute ? "absolute" : "relative"} ${additionalClass} ${sizeClass} shrink-0 cursor-default flex items-center justify-center select-none pointer-events-auto transition-all duration-300 ${hoveredBubble === key ? "z-50" : "z-20"} group`}
       >
-        <div className="relative w-full h-full z-10 transition-all duration-300 hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.7)]">
+        <div className="relative w-full h-full z-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.7)]">
           <Image
             src={bubble.image}
             alt={bubble.name}
@@ -85,7 +84,7 @@ export default function Profile() {
           />
         </div>
         <div
-          className={`absolute -top-1 -left-1 md:-top-2 md:-left-2 ${pingSize} bg-red-500 rounded-full text-white ${textClass} font-bold flex justify-center items-center shadow-lg border-2 border-background z-20`}
+          className={`absolute -top-1 -left-1 md:-top-2 md:-left-2 ${pingSize} bg-red-500 rounded-full text-white ${textClass} font-bold flex justify-center items-center shadow-lg border-2 border-background z-20 transition-transform duration-500 group-hover:scale-110`}
         >
           {bubble.id}
         </div>
@@ -197,6 +196,7 @@ export default function Profile() {
                 fill
                 sizes="144px"
                 priority
+                loading="eager"
                 className="object-contain"
               />
               <AnimatePresence>
@@ -270,6 +270,7 @@ export default function Profile() {
                 fill
                 sizes="96px"
                 priority
+                loading="eager"
                 className="object-contain"
               />
               <AnimatePresence>

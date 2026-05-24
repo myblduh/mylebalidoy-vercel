@@ -24,6 +24,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: false,
+    qualities: [25, 50, 75, 100],
   },
   transpilePackages: ["@shadergradient/react"],
   turbopack: {

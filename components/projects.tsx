@@ -95,7 +95,7 @@ export default function Projects() {
               </div>
 
               <div className="p-8 flex flex-col flex-1">
-                <div className="flex justify-between items-start gap-4 mb-3">
+                <div className="flex justify-between items-start gap-4 mb-2">
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg md:text-xl lg:text-2xl font-bold group-hover:text-brand transition-colors duration-300 leading-tight tracking-tight">
                       {project.title}
@@ -152,7 +152,10 @@ export default function Projects() {
         open={!!selectedProject}
         onOpenChange={(open) => !open && setSelectedProject(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl">
+        <DialogContent
+          aria-describedby={undefined}
+          className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col"
+        >
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>
               <Button className="w-10 h-10 p-0 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
@@ -164,8 +167,8 @@ export default function Projects() {
 
           <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden no-scrollbar">
             {/* Visual Column */}
-            <div className="relative w-full min-h-[40vh] sm:min-h-0 sm:h-full sm:col-span-7 lg:col-span-8 bg-foreground/5">
-              <div className="relative w-full h-full">
+            <div className="relative w-full min-h-[40vh] sm:min-h-0 sm:h-full sm:col-span-7 lg:col-span-8 bg-foreground/5 flex flex-col">
+              <div className="relative w-full h-full flex-1">
                 {selectedProject && (
                   <Image
                     src={selectedProject.image || "/placeholder.svg"}
