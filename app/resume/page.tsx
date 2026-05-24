@@ -4,14 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useSpring, Variants } from "framer-motion";
 import {
   Home,
-  Briefcase,
-  GraduationCap,
-  Award,
   Code2,
   Download,
-  BadgeCheck,
-  FolderKanban,
-  Wrench,
   ArrowUp,
   Linkedin,
   Github,
@@ -22,14 +16,19 @@ import dynamic from "next/dynamic";
 
 const ShaderGradientCanvas = dynamic(
   () => import("@shadergradient/react").then((mod) => mod.ShaderGradientCanvas),
-  { ssr: false }
+  { ssr: false },
 );
 
 const ShaderGradient = dynamic(
   () => import("@shadergradient/react").then((mod) => mod.ShaderGradient),
-  { ssr: false }
+  { ssr: false },
 );
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, X } from "lucide-react";
 import "./styles.css";
@@ -301,8 +300,13 @@ export default function DigitalResumePage() {
               variants={itemVariants}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="icon-circle border-brand text-brand shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                <GraduationCap className="w-5 h-5" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]">
+                <img
+                  src="/assets/icons/education_icon.png"
+                  alt="Education"
+                  className="w-full h-full object-contain"
+                  draggable={false}
+                />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                 Education
@@ -361,10 +365,15 @@ export default function DigitalResumePage() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="flex items-center gap-6 mb-8 ml-[8px]"
+                  className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
-                  <div className="icon-circle border-brand text-brand shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                    <Briefcase className="w-5 h-5" />
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]">
+                    <img
+                      src="/assets/icons/experience_icon.png"
+                      alt="Experience"
+                      className="w-full h-full object-contain"
+                      draggable={false}
+                    />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Experience
@@ -378,6 +387,22 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
+                      <div
+                        className="story-box story-box-brand cursor-pointer"
+                        onClick={() =>
+                          setSelectedImage({
+                            src: "/assets/images/image1.jpg",
+                            alt: "UI/UX Designer Intern at KMC Solutions",
+                          })
+                        }
+                      >
+                        <img
+                          src="/assets/images/image1.jpg"
+                          alt="UI/UX Designer Intern at KMC Solutions"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
                         UI/UX Designer Intern
                       </h3>
@@ -410,6 +435,22 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
+                      <div
+                        className="story-box story-box-brand cursor-pointer"
+                        onClick={() =>
+                          setSelectedImage({
+                            src: "/assets/images/image2.png",
+                            alt: "Data Entry & Design Assistant at Improbable Labs",
+                          })
+                        }
+                      >
+                        <img
+                          src="/assets/images/image2.png"
+                          alt="Data Entry & Design Assistant at Improbable Labs"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
                         Data Entry & Design Assistant
                       </h3>
@@ -445,10 +486,15 @@ export default function DigitalResumePage() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="flex items-center gap-6 mb-8 ml-[8px]"
+                  className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
-                  <div className="icon-circle border-amber-500 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)]">
-                    <Award className="w-5 h-5" />
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+                    <img
+                      src="/assets/icons/award_icon.png"
+                      alt="Awards"
+                      className="w-full h-full object-contain"
+                      draggable={false}
+                    />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Awards
@@ -462,7 +508,23 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card hover:border-amber-500/30 relative">
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
+                      <div
+                        className="story-box story-box-amber cursor-pointer"
+                        onClick={() =>
+                          setSelectedImage({
+                            src: "/assets/images/image3.png",
+                            alt: "1st Runner Up - Enterprise Track",
+                          })
+                        }
+                      >
+                        <img
+                          src="/assets/images/image3.png"
+                          alt="1st Runner Up - Enterprise Track"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">
                         1st Runner Up - Enterprise Track
                       </h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -497,10 +559,15 @@ export default function DigitalResumePage() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="flex items-center gap-6 mb-8 ml-[8px]"
+                  className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
-                  <div className="icon-circle border-blue-500 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                    <FolderKanban className="w-5 h-5" />
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                    <img
+                      src="/assets/icons/projects_icon.png"
+                      alt="Projects"
+                      className="w-full h-full object-contain"
+                      draggable={false}
+                    />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Featured Projects
@@ -517,7 +584,15 @@ export default function DigitalResumePage() {
                       <div className="timeline-dot bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                       <div className="timeline-card hover:border-blue-500/30 relative">
                         {project.image && (
-                          <div className="story-box story-box-blue">
+                          <div
+                            className="story-box story-box-blue cursor-pointer"
+                            onClick={() =>
+                              setSelectedImage({
+                                src: project.image,
+                                alt: project.title,
+                              })
+                            }
+                          >
                             <img
                               src={project.image}
                               alt={project.title}
@@ -569,10 +644,15 @@ export default function DigitalResumePage() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="flex items-center gap-6 mb-8 ml-[8px]"
+                  className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
-                  <div className="icon-circle border-emerald-500 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
-                    <BadgeCheck className="w-5 h-5" />
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                    <img
+                      src="/assets/icons/certification_icon.png"
+                      alt="Certifications"
+                      className="w-full h-full object-contain"
+                      draggable={false}
+                    />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Certifications
@@ -589,7 +669,15 @@ export default function DigitalResumePage() {
                       <div className="timeline-dot bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                       <div className="timeline-card hover:border-emerald-500/30 relative">
                         {cert.image && (
-                          <div className="story-box story-box-emerald">
+                          <div
+                            className="story-box story-box-emerald cursor-pointer"
+                            onClick={() =>
+                              setSelectedImage({
+                                src: cert.image,
+                                alt: cert.title,
+                              })
+                            }
+                          >
                             <img
                               src={cert.image}
                               alt={cert.title}
@@ -637,8 +725,13 @@ export default function DigitalResumePage() {
               variants={itemVariants}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="icon-circle border-amber-500 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)]">
-                <Wrench className="w-5 h-5" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+                <img
+                  src="/assets/icons/backend_icon.png"
+                  alt="Technical Toolbox"
+                  className="w-full h-full object-contain"
+                  draggable={false}
+                />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                 Technical Toolbox
@@ -733,24 +826,25 @@ export default function DigitalResumePage() {
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent className="max-w-[90vw] md:max-w-5xl bg-black/90 border-white/10 p-2 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl z-[200]">
-          <div className="absolute top-4 right-4 z-50">
-            <DialogClose asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all duration-300"
-              >
-                <X className="w-5 h-5" />
-              </Button>
-            </DialogClose>
-          </div>
-          <div className="relative w-full h-[80vh] flex items-center justify-center rounded-xl md:rounded-2xl overflow-hidden bg-black/50">
+        <DialogContent className="max-w-[95vw] w-fit p-0 bg-transparent border-none shadow-none z-[200] [&>button]:hidden flex justify-center items-center">
+          <DialogTitle className="sr-only">Image Preview</DialogTitle>
+          <div className="relative w-fit h-fit bg-black/95 p-2 md:p-3 rounded-xl md:rounded-2xl border border-white/10 shadow-2xl flex items-center justify-center">
+            <div className="absolute top-4 right-4 md:top-5 md:right-5 z-[300]">
+              <DialogClose asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 hover:bg-black/80 text-white shadow-xl border border-white/20 backdrop-blur-md transition-all duration-300"
+                >
+                  <X className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </DialogClose>
+            </div>
             {selectedImage && (
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="max-w-full max-h-full object-contain"
+                className="w-auto h-auto max-w-[90vw] max-h-[80vh] md:max-h-[85vh] object-contain rounded-lg"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />

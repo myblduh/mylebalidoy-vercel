@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ChevronUp,
   ExternalLink,
+  X,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -86,8 +87,13 @@ export default function Certifications() {
                 </span>
               </div>
 
-              <div className="w-10 h-10 rounded-full border border-foreground/10 group-hover:border-brand flex items-center justify-center text-foreground/50 group-hover:text-brand group-hover:bg-brand/5 transition-all duration-300 shrink-0">
-                <ArrowUpRight className="w-4 h-4" />
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
+                  View Certificate
+                </span>
+                <div className="w-10 h-10 rounded-full border border-foreground/10 group-hover:border-brand flex items-center justify-center text-foreground/50 group-hover:text-brand group-hover:bg-brand/5 transition-all duration-300 shrink-0">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
               </div>
             </motion.div>
           ))}
@@ -114,31 +120,31 @@ export default function Certifications() {
         open={!!selectedCertification}
         onOpenChange={(open) => !open && setSelectedCertification(null)}
       >
-        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl">
-          {/* Custom Back Button */}
-          <div className="absolute top-6 left-6 z-50">
+        <DialogContent className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
+          {/* Custom Close Button */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
             <DialogClose asChild>
-              <Button className="gap-2 px-5 py-2.5 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105">
-                <ChevronDown className="w-4 h-4 rotate-90" />
-                <span className="text-xs font-bold uppercase tracking-widest hidden sm:inline-block">
-                  Back
-                </span>
+              <Button className="w-10 h-10 p-0 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
+                <X className="w-4 h-4" />
+                <span className="sr-only">Close</span>
               </Button>
             </DialogClose>
           </div>
 
           <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden no-scrollbar">
             {/* Visual Column */}
-            <div className="relative w-full h-[40vh] sm:h-full sm:col-span-7 lg:col-span-8 bg-white flex flex-col pt-20 sm:pt-0">
+            <div className="w-full sm:col-span-7 lg:col-span-8 bg-transparent flex flex-col pt-16 sm:pt-0 items-center justify-center p-4 sm:p-8">
               {selectedCertification && (
-                <Image
-                  src={selectedCertification.image || "/placeholder.svg"}
-                  alt={selectedCertification.title}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  draggable={false}
-                />
+                <div className="w-full drop-shadow-2xl">
+                  <Image
+                    src={selectedCertification.image || "/placeholder.svg"}
+                    alt={selectedCertification.title}
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-contain"
+                    draggable={false}
+                  />
+                </div>
               )}
             </div>
 

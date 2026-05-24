@@ -16,7 +16,7 @@
   {
     "title": "Microsoft IT Support Specialist",
     "image": "/assets/certs/8.png",
-    "description": "Troubleshoots technical issues, manages user accounts, and maintains hardware and software. They specialize in configuring and securing Microsoft 365 ecosystems, Windows operating systems, and device management tools to ensure smooth daily operations for businesses and end-users.",
+    "description": "Troubleshoots technical issues, manages user accounts, and maintains hardware and software. They specialize in configuring and securing Microsoft 365 ecosystems, Windows operating systems, and device management tools.",
     "issuer": "Microsoft",
     "date": "January 2026",
     "links": [
@@ -38,7 +38,7 @@
   {
     "title": "Google Prompting Essentials",
     "image": "/assets/certs/11.png",
-    "description": "Gained hands-on practice for everyday tasks, such as drafting emails, summarizing lengthy documents, generating ideas, and turning meeting notes into action items. Understood the basics of prompt engineering and using AI tools to streamline workflows and boost productivity.",
+    "description": "Gained hands-on practice and learned the basics of prompt engineering and using AI tools to streamline workflows and boost productivity.",
     "issuer": "Google",
     "date": "June 2025",
     "links": [
@@ -52,7 +52,7 @@
   {
     "title": "Google Agile Essentials",
     "image": "/assets/certs/10.png",
-    "description": "Understood the basics of Agile and Scrum methodology, an iterative approach to project management and software development that helps teams deliver value to their customers faster and with fewer headaches. It emphasizes collaboration, flexibility, and continuous improvement.",
+    "description": "Understood the basics of Agile and Scrum methodology, an iterative approach to project management and software development that helps teams deliver value to their customers faster. It emphasizes collaboration, flexibility, and continuous improvement.",
     "issuer": "Google",
     "date": "May 2025",
     "links": [

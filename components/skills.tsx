@@ -1,18 +1,18 @@
-import { Cpu, Terminal, Palette, type LucideIcon } from "lucide-react";
+import Image from "next/image";
 import skillsData from "@/data/skills.json";
 
-const iconMap: Record<string, LucideIcon> = {
-  Terminal,
-  Cpu,
-  Palette,
+const iconMap: Record<string, string> = {
+  Terminal: "/assets/icons/frontend_icon.png",
+  Cpu: "/assets/icons/backend_icon.png",
+  Palette: "/assets/icons/design_icon.png",
 };
 
 export default function Skills() {
   const skillCategories = skillsData.map((category) => {
-    const Icon = iconMap[category.icon] || Cpu;
+    const iconSrc = iconMap[category.icon] || iconMap.Cpu;
     return {
       ...category,
-      icon: <Icon className="w-5 h-5" />,
+      iconSrc,
     };
   });
 
@@ -33,10 +33,16 @@ export default function Skills() {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="project-card p-10 flex flex-col items-start text-left"
+              className="project-card p-6 flex flex-col items-start text-left"
             >
-              <div className="bg-brand/5 dark:bg-brand/10 p-4 rounded-2xl mb-6 text-brand border border-brand/10">
-                {category.icon}
+              <div className="relative w-16 h-16 mb-6">
+                <Image
+                  src={category.iconSrc}
+                  alt={`${category.title} Icon`}
+                  fill
+                  className="object-contain"
+                  draggable={false}
+                />
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4 uppercase tracking-[0.1em]">
                 {category.title}

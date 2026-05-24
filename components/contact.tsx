@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
@@ -106,15 +106,15 @@ export function Contact() {
           viewport={{ once: true }}
         >
           <Link
-            href="/resume"
+            href="https://www.behance.net/mylebalidoy/"
             className="group flex items-center justify-between p-4 md:p-6 rounded-2xl bg-white/5 hover:bg-brand/20 border border-white/10 hover:border-brand/50 transition-all duration-300 backdrop-blur-md"
           >
             <div>
               <p className="text-[10px] md:text-xs text-brand font-semibold mb-0.5 md:mb-1 uppercase tracking-widest">
-                Resume
+                Behance
               </p>
               <p className="text-sm sm:text-base md:text-xl text-white font-medium group-hover:text-purple-300 transition-colors">
-                View Digital Resume
+                behance.net/mylebalidoy
               </p>
             </div>
             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-white/50 group-hover:text-brand group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -204,6 +204,14 @@ export function Contact() {
             className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300"
           >
             <Linkedin className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.behance.net/mylebalidoy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300 flex items-center justify-center"
+          >
+            <Palette className="w-6 h-6" />
           </a>
           <a
             href="mailto:mylebalidoy@gmail.com"

@@ -1,6 +1,6 @@
 {
   "journey": [
-    "Greetings, my name is Myle! I'm a UI/UX Designer with 5+ months of experience and a Microsoft UX Design certification, crafting inclusive, user-centered digital experiences. I'm a graduating BS Information Technology senior, skilled at translating complex requirements into clean, accessible interfaces."
+    "Greetings, my name is Myle! I'm a UI/UX Designer who likes to craft inclusive and user-centered digital experiences. I'm a graduating BS Information Technology senior, skilled at translating complex requirements into clean, accessible interfaces."
   ],
   "cards": [
     {
@@ -10,16 +10,22 @@
       "icon": "GraduationCap"
     },
     {
-      "title": "Awards",
-      "subtitle": "Protothon 2026",
-      "details": "<strong>1st Runner Up - Enterprise Track</strong> for designing <strong>Trackify</strong>",
+      "title": "Awardee",
+      "subtitle": "Protothon 2026: The Online UX Hackatahon",
+      "details": "1st Runner Up - Enterprise Track",
       "icon": "Trophy"
     },
     {
       "title": "Projects",
       "subtitle": "10+ Completed",
-      "details": "Web applications and designs.",
+      "details": "Web applications and UI designs.",
       "icon": "Layout"
+    },
+    {
+      "title": "Experience",
+      "subtitle": "UI/UX & Visual Designer",
+      "details": "8 months of experience.",
+      "icon": "Briefcase"
     }
   ],
   "resumePath": "/assets/Myle_UXDesigner_Resume.pdf"

@@ -19,9 +19,6 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -29,7 +26,9 @@ const nextConfig = {
     unoptimized: false,
   },
   transpilePackages: ["@shadergradient/react"],
-  turbopack: {},
+  turbopack: {
+    root: __dirname,
+  },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
