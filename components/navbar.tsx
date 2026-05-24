@@ -103,7 +103,7 @@ export default function Navbar() {
             <nav
               className={`header-nav ${
                 scrolled
-                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border-black/10 dark:border-white/10"
+                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border-transparent dark:border dark:border-white/10"
                   : "bg-transparent border-transparent"
               }`}
             >
@@ -117,7 +117,7 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <div className="ml-4 pl-4 border-l border-foreground/10 flex items-center">
+              <div className="ml-4 pl-4 border-l-0 dark:border-l dark:border-white/10 flex items-center">
                 <ThemeToggle />
               </div>
             </nav>

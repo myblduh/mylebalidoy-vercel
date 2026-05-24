@@ -72,7 +72,6 @@ export default function Profile() {
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         onMouseEnter={() => setHoveredBubble(key)}
         onMouseLeave={() => setHoveredBubble(null)}
-        onClick={() => setHoveredBubble(hoveredBubble === key ? null : key)}
         className={`${isAbsolute ? "absolute" : "relative"} ${additionalClass} ${sizeClass} shrink-0 cursor-pointer flex items-center justify-center select-none pointer-events-auto transition-all duration-300 ${hoveredBubble === key ? "z-50" : "z-20"}`}
       >
         <div className="relative w-full h-full z-10 transition-all duration-300 hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.7)]">
