@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MousePointer2 } from "lucide-react";
@@ -11,7 +11,8 @@ export default function Profile() {
   const [isHoveredMobile, setIsHoveredMobile] = useState(false);
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
   const [randomBubbles, setRandomBubbles] = useState<any[]>([]);
-
+  const physicsRef = useRef<{ [key: string]: { y: number; vy: number } }>({});
+  const containerRef = useRef<HTMLDivElement>(null);
   const getRandomLeft = (forceLeft?: boolean) => {
     // Scatter bubbles to the left (0% to 25%) and right (75% to 100%) to be less compact
     const isLeft = forceLeft !== undefined ? forceLeft : Math.random() > 0.5;
@@ -21,13 +22,12 @@ export default function Profile() {
   useEffect(() => {
     const bubbles = Array.from({ length: 16 }).map((_, i) => ({
       id: `bg-bubble-${i}-${Date.now()}`,
-      left: getRandomLeft(i % 2 === 0), // Alternate left/right to ensure 8 on each side
-      top: Math.random() * 90 + 5,
+      initialLeft: getRandomLeft(i % 2 === 0), // percentage
+      initialTop: Math.random() * 80 + 10,      // 10% to 90%
       size: Math.random() * 40 + 40, // 40px to 80px
-      duration: Math.random() * 20 + 25, // Extremely slow float (25s to 45s)
-      delay: i * 1.5 + Math.random(), // Stagger spawns sequentially one by one
-      driftX: (Math.random() - 0.5) * 80,
-      driftY: -(Math.random() * 200 + 100), // Float UP gently
+      // Guarantee mix of up and down: index % 4 < 2 splits the directions evenly across both left and right sides
+      vy: (i % 4 < 2 ? 1 : -1) * (Math.random() * 20 + 10),
+      delay: i * 0.2 + Math.random() * 0.2, // Stagger spawns rapidly
     }));
     setRandomBubbles(bubbles);
   }, []);
@@ -65,25 +65,79 @@ export default function Profile() {
       setRandomBubbles((prev) => {
         if (prev.length >= 16) return prev;
         // Force exactly 8 on each side at all times
-        const leftCount = prev.filter(b => b.left <= 50).length;
+        const leftCount = prev.filter(b => b.initialLeft <= 50).length;
         const spawnOnLeft = leftCount < 8;
 
         return [
           ...prev,
           {
             id: `bg-bubble-${Date.now()}-${Math.random()}`,
-            left: getRandomLeft(spawnOnLeft),
-            top: Math.random() * 90 + 5,
+            initialLeft: getRandomLeft(spawnOnLeft),
+            initialTop: Math.random() * 80 + 10,
             size: Math.random() * 40 + 40,
-            duration: Math.random() * 20 + 25,
+            vy: (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 20 + 10),
             delay: 0,
-            driftX: (Math.random() - 0.5) * 80,
-            driftY: -(Math.random() * 200 + 100),
           }
         ];
       });
     }, 1000 + Math.random() * 1500);
   };
+
+  // Physics engine for perfectly smooth edge bouncing
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTime = performance.now();
+
+    const updatePhysics = (time: number) => {
+      // Limit dt to max 0.1s to avoid huge jumps on tab switch
+      const dt = Math.min((time - lastTime) / 1000, 0.1); 
+      lastTime = time;
+
+      if (!containerRef.current || containerRef.current.offsetHeight === 0) {
+        animationFrameId = requestAnimationFrame(updatePhysics);
+        return;
+      }
+
+      const w = containerRef.current.offsetWidth;
+      const h = containerRef.current.offsetHeight;
+
+      randomBubbles.forEach(bubble => {
+        let p = physicsRef.current[bubble.id];
+        if (!p) {
+          p = {
+            y: (bubble.initialTop / 100) * h,
+            vy: bubble.vy,
+          };
+          physicsRef.current[bubble.id] = p;
+        }
+
+        const actualSize = w < 768 ? bubble.size * 0.5 : bubble.size;
+
+        // Force X to perfectly track window resizing (purely up and down motion)
+        const currentX = (bubble.initialLeft / 100) * w;
+
+        p.y += p.vy * dt;
+
+        if (p.y <= 0) {
+          p.y = 0;
+          p.vy *= -1;
+        } else if (p.y + actualSize >= h) {
+          p.y = h - actualSize;
+          p.vy *= -1;
+        }
+
+        const el = document.getElementById(`bubble-el-${bubble.id}`);
+        if (el) {
+          el.style.transform = `translate3d(${currentX}px, ${p.y}px, 0)`;
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(updatePhysics);
+    };
+
+    animationFrameId = requestAnimationFrame(updatePhysics);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [randomBubbles]);
 
   const designThinkingBubbles = [
     {
@@ -198,54 +252,34 @@ export default function Profile() {
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand/10 blur-[100px] rounded-full pointer-events-none -z-10" />
 
       {/* Interactive Background Bubbles */}
-      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+      <div ref={containerRef} className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
         <AnimatePresence>
           {randomBubbles.map((bubble) => (
-            <motion.div
-              key={bubble.id}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: bubble.driftY,
-                x: bubble.driftX,
-              }}
-              exit={{ scale: 1.2, transition: { duration: 0.05 } }}
-              transition={{
-                opacity: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
-                scale: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
-                y: {
-                  duration: bubble.duration / 2,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                  delay: bubble.delay,
-                },
-                x: {
-                  duration: bubble.duration / 2,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                  delay: bubble.delay,
-                },
-              }}
-              onPointerDown={() => handlePop(bubble.id)}
-              className="absolute cursor-pointer flex items-center justify-center pointer-events-auto hover:scale-110 active:scale-90 transition-transform w-[calc(var(--bubble-size)*0.5)] h-[calc(var(--bubble-size)*0.5)] md:w-[var(--bubble-size)] md:h-[var(--bubble-size)]"
-              style={{
-                left: `${bubble.left}%`,
-                top: `${bubble.top}%`,
-                "--bubble-size": `${bubble.size}px`,
-              } as React.CSSProperties}
-            >
-              <Image
-                src="/assets/bubble.png"
-                alt="Poppable Bubble"
-                fill
-                sizes="50px"
-                className="object-contain pointer-events-none"
-                draggable={false}
-              />
-            </motion.div>
+            <div key={bubble.id} id={`bubble-el-${bubble.id}`} className="absolute top-0 left-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ scale: 1.2, transition: { duration: 0.05 } }}
+                transition={{
+                  opacity: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
+                  scale: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
+                }}
+                onClick={() => handlePop(bubble.id)}
+                className="cursor-pointer flex items-center justify-center pointer-events-auto hover:scale-110 active:scale-90 transition-transform w-[calc(var(--bubble-size)*0.5)] h-[calc(var(--bubble-size)*0.5)] md:w-[var(--bubble-size)] md:h-[var(--bubble-size)]"
+                style={{
+                  "--bubble-size": `${bubble.size}px`,
+                } as React.CSSProperties}
+              >
+                <Image
+                  src="/assets/bubble.png"
+                  alt="Poppable Bubble"
+                  fill
+                  sizes="50px"
+                  className="object-contain pointer-events-none"
+                  draggable={false}
+                />
+              </motion.div>
+            </div>
           ))}
         </AnimatePresence>
       </div>
