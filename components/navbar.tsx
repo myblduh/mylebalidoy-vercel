@@ -58,9 +58,13 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 w-full z-[110] transition-transform duration-500 ease-in-out bg-background dark:bg-[#0a0a0a] ${
+        className={`fixed left-0 top-0 w-full z-[110] transition-all duration-500 ease-in-out ${
           hidden ? "-translate-y-full" : "translate-y-0"
-        } ${scrolled ? "py-4 shadow-sm" : "py-6"}`}
+        } ${
+          scrolled
+            ? "py-4 shadow-sm bg-background/70 dark:bg-[#0a0a0a]/70 backdrop-blur-lg"
+            : "py-6 bg-transparent"
+        }`}
       >
         <div className="flex items-center justify-between px-6 md:px-12 w-full gap-4">
           <div className="flex items-center flex-1">
@@ -182,7 +186,7 @@ export default function Navbar() {
       </header>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden bg-white dark:bg-[#0a0a0a]">
+        <div className="fixed inset-0 z-[100] md:hidden bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl">
           <div className="flex flex-col h-full pt-28 pb-8 px-8 overflow-y-auto">
             <ul className="flex flex-col gap-8">
               {navItems.map((item) => (

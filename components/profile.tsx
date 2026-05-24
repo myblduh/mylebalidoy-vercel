@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MousePointer2 } from "lucide-react";
@@ -10,6 +10,76 @@ export default function Profile() {
   const [isHovered, setIsHovered] = useState(false);
   const [isHoveredMobile, setIsHoveredMobile] = useState(false);
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
+  const [randomBubbles, setRandomBubbles] = useState<any[]>([]);
+
+  const getRandomLeft = (forceLeft?: boolean) => {
+    // Scatter bubbles to the extreme left (1% to 18%) and right (82% to 99%)
+    const isLeft = forceLeft !== undefined ? forceLeft : Math.random() > 0.5;
+    return isLeft ? Math.random() * 17 + 1 : Math.random() * 17 + 82;
+  };
+
+  useEffect(() => {
+    const bubbles = Array.from({ length: 30 }).map((_, i) => ({
+      id: `bg-bubble-${i}-${Date.now()}`,
+      left: getRandomLeft(i % 2 === 0), // Alternate left/right to ensure 15 on each side
+      top: Math.random() * 90 + 5,
+      size: Math.random() * 40 + 40, // 40px to 80px
+      duration: Math.random() * 20 + 25, // Extremely slow float (25s to 45s)
+      delay: Math.random() * 5,
+      driftX: (Math.random() - 0.5) * 80,
+      driftY: -(Math.random() * 200 + 100), // Float UP gently
+    }));
+    setRandomBubbles(bubbles);
+  }, []);
+
+  const playPopSound = () => {
+    try {
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContextClass) return;
+      const audioCtx = new AudioContextClass();
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+
+      gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      oscillator.start();
+      oscillator.stop(audioCtx.currentTime + 0.1);
+    } catch (e) {
+      console.log("Audio playback failed", e);
+    }
+  };
+
+  const handlePop = (id: string) => {
+    playPopSound();
+    setRandomBubbles((prev) => prev.filter((b) => b.id !== id));
+
+    setTimeout(() => {
+      setRandomBubbles((prev) => {
+        if (prev.length >= 30) return prev;
+        return [
+          ...prev,
+          {
+            id: `bg-bubble-${Date.now()}-${Math.random()}`,
+            left: getRandomLeft(),
+            top: Math.random() * 90 + 5,
+            size: Math.random() * 40 + 40,
+            duration: Math.random() * 20 + 25,
+            delay: 0,
+            driftX: (Math.random() - 0.5) * 80,
+            driftY: -(Math.random() * 200 + 100),
+          }
+        ];
+      });
+    }, 1000 + Math.random() * 1500);
+  };
 
   const designThinkingBubbles = [
     {
@@ -123,7 +193,58 @@ export default function Profile() {
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/15 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand/10 blur-[100px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-30 pt-4 sm:pt-12 md:pt-8">
+      {/* Interactive Background Bubbles */}
+      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        <AnimatePresence>
+          {randomBubbles.map((bubble) => (
+            <motion.div
+              key={bubble.id}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0, bubble.driftY, 0],
+                x: [0, bubble.driftX, 0],
+              }}
+              exit={{ scale: 1.2, transition: { duration: 0.05 } }}
+              transition={{
+                opacity: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
+                scale: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
+                y: {
+                  duration: bubble.duration,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: bubble.delay,
+                },
+                x: {
+                  duration: bubble.duration,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: bubble.delay,
+                },
+              }}
+              onPointerDown={() => handlePop(bubble.id)}
+              className="absolute cursor-pointer flex items-center justify-center pointer-events-auto hover:scale-110 active:scale-90 transition-transform w-[calc(var(--bubble-size)*0.5)] h-[calc(var(--bubble-size)*0.5)] md:w-[var(--bubble-size)] md:h-[var(--bubble-size)]"
+              style={{
+                left: `${bubble.left}%`,
+                top: `${bubble.top}%`,
+                "--bubble-size": `${bubble.size}px`,
+              } as React.CSSProperties}
+            >
+              <Image
+                src="/assets/bubble.png"
+                alt="Poppable Bubble"
+                fill
+                sizes="50px"
+                className="object-contain pointer-events-none"
+                draggable={false}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-30 pt-4 sm:pt-12 md:pt-8 pointer-events-none">
         <div className="max-w-4xl relative w-full flex flex-col items-center">
           <p className="text-brand font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase text-[9px] sm:text-[11px] md:text-sm mb-4 mt-2 md:mt-0 relative z-30">
             UX Design Portfolio
@@ -186,7 +307,7 @@ export default function Profile() {
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-6 sm:mt-8 mb-12 sm:mb-16 relative z-40">
             {/* Desktop Persona Image (Anchored to left of buttons) */}
             <div
-              className="hidden md:block absolute bottom-0 right-[100%] mr-24 lg:mr-36 xl:mr-48 w-24 h-24 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rotate-[-15deg] drop-shadow-2xl z-10 transition-transform hover:scale-110 hover:rotate-0 duration-500 cursor-pointer select-none"
+              className="hidden md:block absolute bottom-0 right-[100%] mr-24 lg:mr-36 xl:mr-48 w-24 h-24 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rotate-[-15deg] drop-shadow-2xl z-10 transition-transform hover:scale-110 hover:rotate-0 duration-500 cursor-pointer select-none pointer-events-auto"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -225,13 +346,13 @@ export default function Profile() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-brand hover:bg-brand-hover text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-xl border border-white/10"
+                className="bg-brand hover:bg-brand-hover text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-xl border border-white/10 pointer-events-auto"
               >
                 View Resume
               </motion.button>
             </Link>
             <button
-              className="bg-white/5 border border-foreground/10 text-foreground px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-black/10 dark:hover:bg-white/15 hover:border-foreground/30 transition-all duration-300 backdrop-blur-md shadow-lg"
+              className="bg-white/5 border border-foreground/10 text-foreground px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-black/10 dark:hover:bg-white/15 hover:border-foreground/30 transition-all duration-300 backdrop-blur-md shadow-lg pointer-events-auto"
               onClick={() =>
                 document
                   .getElementById("contact")
@@ -245,7 +366,7 @@ export default function Profile() {
           {/* Bubbles Container Moved BELOW the buttons */}
 
           {/* Desktop Straight Line Container (Pure Flexbox) */}
-          <div className="hidden md:flex flex-row justify-between items-center w-full max-w-[640px] lg:max-w-[800px] mb-8 pointer-events-none z-40 mx-auto relative">
+          <div className="hidden md:flex flex-row justify-between items-center w-full max-w-[480px] lg:max-w-[600px] mb-8 pointer-events-none z-40 mx-auto relative">
             {designThinkingBubbles.map((bubble) =>
               renderBubble(bubble, "", false),
             )}
