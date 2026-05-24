@@ -13,19 +13,19 @@ export default function Profile() {
   const [randomBubbles, setRandomBubbles] = useState<any[]>([]);
 
   const getRandomLeft = (forceLeft?: boolean) => {
-    // Scatter bubbles to the extreme left (1% to 18%) and right (82% to 99%)
+    // Scatter bubbles to the left (0% to 25%) and right (75% to 100%) to be less compact
     const isLeft = forceLeft !== undefined ? forceLeft : Math.random() > 0.5;
-    return isLeft ? Math.random() * 17 + 1 : Math.random() * 17 + 82;
+    return isLeft ? Math.random() * 25 : Math.random() * 25 + 75;
   };
 
   useEffect(() => {
-    const bubbles = Array.from({ length: 30 }).map((_, i) => ({
+    const bubbles = Array.from({ length: 16 }).map((_, i) => ({
       id: `bg-bubble-${i}-${Date.now()}`,
-      left: getRandomLeft(i % 2 === 0), // Alternate left/right to ensure 15 on each side
+      left: getRandomLeft(i % 2 === 0), // Alternate left/right to ensure 8 on each side
       top: Math.random() * 90 + 5,
       size: Math.random() * 40 + 40, // 40px to 80px
       duration: Math.random() * 20 + 25, // Extremely slow float (25s to 45s)
-      delay: Math.random() * 5,
+      delay: i * 1.5 + Math.random(), // Stagger spawns sequentially one by one
       driftX: (Math.random() - 0.5) * 80,
       driftY: -(Math.random() * 200 + 100), // Float UP gently
     }));
@@ -63,12 +63,16 @@ export default function Profile() {
 
     setTimeout(() => {
       setRandomBubbles((prev) => {
-        if (prev.length >= 30) return prev;
+        if (prev.length >= 16) return prev;
+        // Force exactly 8 on each side at all times
+        const leftCount = prev.filter(b => b.left <= 50).length;
+        const spawnOnLeft = leftCount < 8;
+
         return [
           ...prev,
           {
             id: `bg-bubble-${Date.now()}-${Math.random()}`,
-            left: getRandomLeft(),
+            left: getRandomLeft(spawnOnLeft),
             top: Math.random() * 90 + 5,
             size: Math.random() * 40 + 40,
             duration: Math.random() * 20 + 25,
@@ -165,7 +169,7 @@ export default function Profile() {
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                className={`relative bg-black/85 dark:bg-white/95 text-white dark:text-black font-bold p-2.5 md:p-3 rounded-xl shadow-xl border border-white/10 dark:border-black/10 flex flex-col items-center w-36 md:w-48 text-center leading-tight`}
+                className={`relative bg-black dark:bg-white text-white dark:text-black font-bold p-2.5 md:p-3 rounded-xl shadow-xl border border-white/10 dark:border-black/10 flex flex-col items-center w-36 md:w-48 text-center leading-tight`}
               >
                 <span className="text-[10px] md:text-xs uppercase tracking-widest text-brand mb-1">
                   {bubble.name}
@@ -174,7 +178,7 @@ export default function Profile() {
                   {bubble.note}
                 </span>
                 <div
-                  className={`absolute top-full -translate-y-1/2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-black/85 dark:bg-white/95 rotate-45 border-r border-b border-white/10 dark:border-black/10`}
+                  className={`absolute top-full -translate-y-1/2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-black dark:bg-white rotate-45 border-r border-b border-white/10 dark:border-black/10`}
                 />
               </motion.div>
             </div>
@@ -203,22 +207,24 @@ export default function Profile() {
               animate={{
                 opacity: 1,
                 scale: 1,
-                y: [0, bubble.driftY, 0],
-                x: [0, bubble.driftX, 0],
+                y: bubble.driftY,
+                x: bubble.driftX,
               }}
               exit={{ scale: 1.2, transition: { duration: 0.05 } }}
               transition={{
                 opacity: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
                 scale: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
                 y: {
-                  duration: bubble.duration,
+                  duration: bubble.duration / 2,
                   repeat: Infinity,
+                  repeatType: "mirror",
                   ease: "easeInOut",
                   delay: bubble.delay,
                 },
                 x: {
-                  duration: bubble.duration,
+                  duration: bubble.duration / 2,
                   repeat: Infinity,
+                  repeatType: "mirror",
                   ease: "easeInOut",
                   delay: bubble.delay,
                 },
