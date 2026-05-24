@@ -294,7 +294,7 @@ export default function Profile() {
           </p>
 
           <div className="relative z-30">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.1] uppercase text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter leading-[1.1] uppercase text-center pointer-events-auto">
               <span className="hover:text-brand transition-colors duration-300 cursor-default">
                 Creating
               </span>{" "}
