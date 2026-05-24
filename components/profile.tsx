@@ -11,6 +11,7 @@ export default function Profile() {
   const [isHoveredMobile, setIsHoveredMobile] = useState(false);
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
   const [randomBubbles, setRandomBubbles] = useState<any[]>([]);
+  const randomBubblesRef = useRef<any[]>([]);
   const physicsRef = useRef<{ [key: string]: { y: number; vy: number } }>({});
   const containerRef = useRef<HTMLDivElement>(null);
   const getRandomLeft = (forceLeft?: boolean) => {
@@ -101,7 +102,7 @@ export default function Profile() {
       const w = containerRef.current.offsetWidth;
       const h = containerRef.current.offsetHeight;
 
-      randomBubbles.forEach(bubble => {
+      randomBubblesRef.current.forEach(bubble => {
         let p = physicsRef.current[bubble.id];
         if (!p) {
           p = {
@@ -137,7 +138,7 @@ export default function Profile() {
 
     animationFrameId = requestAnimationFrame(updatePhysics);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [randomBubbles]);
+  }, []);
 
   const designThinkingBubbles = [
     {
@@ -241,6 +242,8 @@ export default function Profile() {
       </motion.div>
     );
   };
+
+  randomBubblesRef.current = randomBubbles;
 
   return (
     <section
