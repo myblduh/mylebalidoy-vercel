@@ -24,13 +24,13 @@ const companies = [
     name: "Blueshift Energy",
     role: "UI/UX Designer",
     period: "July 2026 – Sep. 2026",
-    logo: "/assets/logos/blueshift.jfif",
+    logo: "/assets/logos/blueshift.png",
   },
   {
     name: "KMC Solutions",
     role: "UI/UX Designer Intern",
     period: "Jan. 2026 – May 2026",
-    logo: "/assets/logos/kmc.jfif",
+    logo: "/assets/logos/kmc.png",
   },
 ];
 
@@ -74,7 +74,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 px-6 md:px-12 lg:px-20 relative">
+    <section
+      id="about"
+      className="py-12 sm:py-16 md:py-20 px-6 md:px-12 lg:px-20 relative"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-8 max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
@@ -169,7 +172,6 @@ export default function About() {
                     </p>
                   ))}
 
-                  {/* Previously worked at + Company Tags */}
                   <div className="pt-2">
                     <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-white/50 mb-2.5 block">
                       Previously worked at
@@ -299,7 +301,10 @@ export default function About() {
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent aria-describedby={undefined} className="max-w-[90vw] md:max-w-5xl bg-black/90 border-white/10 p-2 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl z-[200] [&>button]:hidden">
+        <DialogContent
+          aria-describedby={undefined}
+          className="max-w-[90vw] md:max-w-5xl bg-black/90 border-white/10 p-2 md:p-6 shadow-2xl rounded-2xl sm:rounded-3xl z-[200] [&>button]:hidden"
+        >
           <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="absolute top-4 right-4 z-50">
             <DialogClose asChild>

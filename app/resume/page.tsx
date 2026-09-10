@@ -392,13 +392,13 @@ export default function DigitalResumePage() {
                         className="story-box story-box-brand cursor-pointer"
                         onClick={() =>
                           setSelectedImage({
-                            src: "/assets/logos/blueshift.jfif",
+                            src: "/assets/logos/blueshift.png",
                             alt: "UI/UX Designer at Blueshift Energy",
                           })
                         }
                       >
                         <img
-                          src="/assets/logos/blueshift.jfif"
+                          src="/assets/logos/blueshift.png"
                           alt="UI/UX Designer at Blueshift Energy"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
