@@ -1,5 +1,19 @@
 [
   {
+    "title": "Graphic Design Essentials",
+    "image": "/assets/certs/12.png",
+    "description": "Completed the Graphic Design Essentials certification, demonstrating foundational knowledge in visual communication, layout hierarchy, color theory, and digital design using Canva.",
+    "issuer": "Canva",
+    "date": "June 2026",
+    "links": [
+      {
+        "text": "View",
+        "url": "https://www.canva.com/design-school/certification-award/4f9b8e9e-17ef-4f3c-a0ed-a21dd9a9d1bb?referrer=course"
+      }
+    ],
+    "skills": ["Graphic Design", "Visual Design", "Canva"]
+  },
+  {
     "title": "Microsoft UX Design",
     "image": "/assets/certs/9.png",
     "description": "An entry-level specialization that teaches human-centered design, inclusive design principles, and accessibility compliance. Learners use industry-standard tools like Figma, Microsoft PowerPoint, and Fluent 2 to build digital portfolios through practical, hands-on projects.",

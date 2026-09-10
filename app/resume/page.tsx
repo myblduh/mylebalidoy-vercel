@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, X } from "lucide-react";
-import "./styles.css";
+import "./styles.css"; // cache-invalidation-refresh
 
 import projectsData from "@/data/projects.json";
 import designsData from "@/data/designs.json";
@@ -228,13 +228,13 @@ export default function DigitalResumePage() {
         </Link>
       </nav>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 pt-24">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 pt-24 pb-16">
         {/* Header Hero Card */}
         <motion.div
           initial="hidden"
           animate="show"
           variants={containerVariants}
-          className="resume-header-card"
+          className="resume-header-card my-3 md:my-0"
         >
           <motion.div
             variants={itemVariants}
@@ -243,7 +243,7 @@ export default function DigitalResumePage() {
             <div className="w-32 h-32 md:w-44 md:h-44 bg-white/5 border border-white/10 rounded-full md:rounded-[1.6rem] overflow-hidden shadow-2xl transition-all duration-500 hover:border-brand/30 hover:shadow-[0_0_50px_rgba(139,92,246,0.2)] flex flex-col backdrop-blur-md">
               <div className="flex-grow relative overflow-hidden bg-brand/5">
                 <img
-                  src="/assets/mylepersona.png"
+                  src="/assets/images/image4.jpg"
                   alt="Myle Balidoy"
                   loading="eager"
                   className="w-full h-full object-cover transition-all duration-700 group-hover/header:scale-105"
@@ -287,7 +287,7 @@ export default function DigitalResumePage() {
         </motion.div>
 
         {/* Main Content */}
-        <div className="flex flex-col space-y-12 mt-4">
+        <div className="flex flex-col space-y-14 md:space-y-16 mt-8 md:mt-6">
           {/* Education Section */}
           <motion.div
             id="education"
@@ -295,7 +295,7 @@ export default function DigitalResumePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="section-card scroll-mt-32"
+            className="section-card scroll-mt-32 my-2 md:my-0"
           >
             <motion.div
               variants={itemVariants}
@@ -340,7 +340,7 @@ export default function DigitalResumePage() {
 
           {/* Timeline Wrapper for Projects & Certifications */}
           <div
-            className="relative max-w-5xl w-full lg:col-span-12 pt-4"
+            className="relative max-w-5xl w-full lg:col-span-12 pt-6 md:pt-4"
             ref={timelineRef}
           >
             {/* The Glowing Animated Line mapped to scroll */}
@@ -354,7 +354,7 @@ export default function DigitalResumePage() {
               }}
             />
 
-            <div className="space-y-12 pb-8">
+            <div className="space-y-14 md:space-y-16 pb-8">
               {/* Experience */}
               <motion.div
                 id="resume-experience"
@@ -362,7 +362,7 @@ export default function DigitalResumePage() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={containerVariants}
-                className="relative z-10 block scroll-mt-32"
+                className="relative z-10 block scroll-mt-32 py-3 md:py-0"
               >
                 <motion.div
                   variants={itemVariants}
@@ -382,6 +382,54 @@ export default function DigitalResumePage() {
                 </motion.div>
 
                 <div className="relative space-y-10 group">
+                  <motion.div
+                    variants={itemVariants}
+                    className="relative pl-[56px] md:pl-[64px] py-2"
+                  >
+                    <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
+                    <div className="timeline-card hover:border-brand/30 relative">
+                      <div
+                        className="story-box story-box-brand cursor-pointer"
+                        onClick={() =>
+                          setSelectedImage({
+                            src: "/assets/logos/blueshift.jfif",
+                            alt: "UI/UX Designer at Blueshift Energy",
+                          })
+                        }
+                      >
+                        <img
+                          src="/assets/logos/blueshift.jfif"
+                          alt="UI/UX Designer at Blueshift Energy"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
+                        UI/UX Designer
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-brand text-white border-transparent">
+                          July 2026 – Sep. 2026
+                        </span>
+                        <span className="badge-outline">
+                          Blueshift Energy (Contractual)
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-brand mt-1">•</span>
+                          Designed responsive commercial and residential solar
+                          landing pages with a focus on visual hierarchy.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-brand mt-1">•</span>
+                          Built Figma variables, components, and interactions to
+                          maintain a scalable, consistent design system.
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+
                   <motion.div
                     variants={itemVariants}
                     className="relative pl-[56px] md:pl-[64px] py-2"
@@ -466,9 +514,15 @@ export default function DigitalResumePage() {
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
                           <span className="mr-3 text-brand mt-1">•</span>
-                          Conducted keyword research, managed data entry, and
-                          designed app store previews to streamline the
-                          development workflow and boost user engagement.
+                          Created app store preview assets and marketing visuals
+                          that improved app store visibility and boost user
+                          engagement.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-brand mt-1">•</span>
+                          Researched competitor app listings and user search
+                          behavior to optimize discoverability and keyword
+                          placement.
                         </li>
                       </ul>
                     </div>
@@ -483,7 +537,7 @@ export default function DigitalResumePage() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={containerVariants}
-                className="relative z-10 block scroll-mt-32"
+                className="relative z-10 block scroll-mt-32 py-3 md:py-0"
               >
                 <motion.div
                   variants={itemVariants}
@@ -556,7 +610,7 @@ export default function DigitalResumePage() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={containerVariants}
-                className="relative z-10 block scroll-mt-32"
+                className="relative z-10 block scroll-mt-32 py-3 md:py-0"
               >
                 <motion.div
                   variants={itemVariants}
@@ -641,7 +695,7 @@ export default function DigitalResumePage() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={containerVariants}
-                className="relative z-10 block scroll-mt-32"
+                className="relative z-10 block scroll-mt-32 py-3 md:py-0"
               >
                 <motion.div
                   variants={itemVariants}
@@ -720,7 +774,7 @@ export default function DigitalResumePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="section-card"
+            className="section-card my-2 md:my-0"
           >
             <motion.div
               variants={itemVariants}
@@ -769,7 +823,7 @@ export default function DigitalResumePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="flex flex-col md:flex-row items-center justify-center gap-4 pt-12 pb-8 border-t border-white/10"
+            className="flex flex-col md:flex-row items-center justify-center gap-4 pt-12 pb-12 sm:pb-8 border-t border-white/10"
           >
             <a
               href="https://www.linkedin.com/in/mylebalidoy/"
@@ -827,7 +881,10 @@ export default function DigitalResumePage() {
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent aria-describedby={undefined} className="max-w-[95vw] w-fit p-0 bg-transparent border-none shadow-none z-[200] [&>button]:hidden flex justify-center items-center">
+        <DialogContent
+          aria-describedby={undefined}
+          className="max-w-[95vw] w-fit p-0 bg-transparent border-none shadow-none z-[200] [&>button]:hidden flex justify-center items-center"
+        >
           <DialogTitle className="sr-only">Image Preview</DialogTitle>
           <div className="relative w-fit h-fit bg-black/95 p-2 md:p-3 rounded-xl md:rounded-2xl border border-white/10 shadow-2xl flex items-center justify-center">
             <div className="absolute top-4 right-4 md:top-5 md:right-5 z-[300]">

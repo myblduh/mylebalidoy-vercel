@@ -1,6 +1,20 @@
 {
   "journey": [
-    "Greetings, my name is Myle! I'm a UI/UX Designer who likes to craft inclusive and user-centered digital experiences. I'm a graduating BS Information Technology senior, skilled at translating complex requirements into clean, accessible interfaces."
+    "Hello, I'm Myle! I'm a UI/UX Designer who likes to craft inclusive and user-centered digital experiences. I'm a BS Information Technology graduate, skilled at translating complex requirements into clean, accessible interfaces."
+  ],
+  "companies": [
+    {
+      "name": "Blueshift Energy",
+      "role": "UI/UX Designer",
+      "period": "July 2026 – Sep. 2026",
+      "logo": "/assets/logos/blueshift.jfif"
+    },
+    {
+      "name": "KMC Solutions",
+      "role": "UI/UX Designer Intern",
+      "period": "Jan. 2026 – May 2026",
+      "logo": "/assets/logos/kmc.jfif"
+    }
   ],
   "cards": [
     {
@@ -24,9 +38,9 @@
     {
       "title": "Experience",
       "subtitle": "UI/UX & Visual Designer",
-      "details": "8 months of experience.",
+      "details": "1 year of design experience.",
       "icon": "Briefcase"
     }
   ],
-  "resumePath": "/assets/Myle_UXDesigner_Resume.pdf"
+  "resumePath": "/assets/Myle_Resume.pdf"
 }

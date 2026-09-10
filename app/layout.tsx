@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Myle Balidoy",
+  title: "Myle Balidoy | UI/UX Designer",
   description:
     "UI/UX Designer crafting inclusive digital experiences by putting users first.",
   icons: {
@@ -34,7 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${inter.variable} font-sans`}>
+      <body
+        className={`${dmSans.variable} ${inter.variable} font-sans`}
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

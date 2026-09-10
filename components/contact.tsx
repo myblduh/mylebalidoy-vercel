@@ -32,7 +32,7 @@ export function Contact() {
     <section
       ref={ref}
       id="contact"
-      className="relative flex flex-col justify-between px-6 md:px-20 min-h-screen overflow-hidden bg-gradient-to-b from-zinc-950 via-[#000d1a] to-[#00050d] text-white pt-32 pb-12"
+      className="relative flex flex-col justify-between px-6 md:px-20 min-h-screen overflow-hidden bg-gradient-to-b from-zinc-950 via-[#000d1a] to-[#00050d] text-white pt-16 sm:pt-20 md:pt-32 pb-10 sm:pb-12"
     >
       {/* Background Gradient */}
       <div

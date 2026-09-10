@@ -55,9 +55,9 @@ export default function Designs() {
   const hasMoreToShow = designs.length > 6;
 
   return (
-    <section id="designs" className="py-24 px-6 md:px-12 lg:px-20 relative">
+    <section id="designs" className="py-12 sm:py-16 md:py-24 px-6 md:px-12 lg:px-20 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8 max-w-3xl">
+        <div className="mb-6 md:mb-8 max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
             Designs
           </h2>

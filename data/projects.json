@@ -1,7 +1,7 @@
 [
   {
     "title": "Lakbay Calamba: Digital Tourism System",
-    "image": "/assets/designs/lakbay.png",
+    "image": "/assets/projects/lakbay.png",
     "date": "July – Oct. 2025",
     "description": "A web platform for tourists to explore Calamba City with interactive maps and e-stamps via QR codes. Designed the UI/UX in Figma first to ensure a seamless visitor experience.",
     "skills": ["UI/UX", "Figma", "Web Design"]
@@ -11,8 +11,7 @@
     "image": "/assets/projects/sdt.png",
     "date": "Nov. 2024 – Mar. 2025",
     "description": "Web-based system for NU Laguna's Discipline Office that automates offense logging and monitoring using RFID-enabled IDs. Replaces manual books with real-time digital records. Features include behavioral analytics, automated email notifications to guardians, and secure access control for administrators.",
-    "skills": ["Web Development", "PHP", "MySQL", "RFID Integration"],
-    "links": [{ "text": "Visit Site", "url": "https://www.nulaguna-sdo.com/" }]
+    "skills": ["Web Development", "PHP", "MySQL", "RFID Integration"]
   },
   {
     "title": "SpendSmart: Budget Management System",

@@ -248,7 +248,7 @@ export default function Profile() {
   return (
     <section
       id="profile"
-      className="min-h-[100dvh] flex flex-col justify-center pt-28 pb-20 px-4 overflow-hidden relative"
+      className="min-h-[100dvh] flex flex-col justify-center pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-28 md:pb-20 px-4 overflow-hidden relative"
     >
       {/* Background Ambient Glows - Modern Aesthetic */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/15 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
@@ -273,14 +273,16 @@ export default function Profile() {
                   "--bubble-size": `${bubble.size}px`,
                 } as React.CSSProperties}
               >
-                <Image
-                  src="/assets/bubble.png"
-                  alt="Poppable Bubble"
-                  fill
-                  sizes="50px"
-                  className="object-contain pointer-events-none"
-                  draggable={false}
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/assets/bubble.png"
+                    alt="Poppable Bubble"
+                    fill
+                    sizes="50px"
+                    className="object-contain pointer-events-none"
+                    draggable={false}
+                  />
+                </div>
               </motion.div>
             </div>
           ))}

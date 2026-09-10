@@ -30,6 +30,12 @@
   @apply w-full h-full object-cover transition-transform duration-500;
 }
 
+.story-box-brand {
+  @apply border-purple-500/30 hover:border-purple-500/50;
+}
+.story-box-emerald {
+  @apply border-emerald-500/30 hover:border-emerald-500/50;
+}
 .story-box-blue {
   @apply border-blue-500/30 hover:border-blue-500/50;
 }
