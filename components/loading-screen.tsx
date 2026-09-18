@@ -1,5 +1,20 @@
 "use client";
 
+// Filter third-party THREE.Clock deprecation warnings from @shadergradient/react
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn;
+  console.warn = (...args: unknown[]) => {
+    if (
+      typeof args[0] === "string" &&
+      args[0].includes("THREE.Clock: This module has been deprecated")
+    ) {
+      return;
+    }
+    originalWarn(...args);
+  };
+}
+
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";

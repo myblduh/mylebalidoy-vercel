@@ -21,6 +21,12 @@ const iconMap: Record<string, string> = {
 
 const companies = [
   {
+    name: "re:spwn creative",
+    role: "Digital Designer",
+    period: "Sep. 2026 – Present",
+    logo: "/assets/logos/respwn.png",
+  },
+  {
     name: "Blueshift Energy",
     role: "UI/UX Designer",
     period: "July 2026 – Sep. 2026",
@@ -47,28 +53,28 @@ export default function About() {
       name: "Google Agile Essentials",
       image: "/assets/certs/badge1.png",
       positionClass:
-        "top-[18%] left-[10%] sm:top-[20%] sm:left-[12%] md:top-[22%] md:left-[12%]",
+        "top-[7%] left-[8%] sm:top-[14%] sm:left-[12%] md:top-[18%] md:left-[12%]",
       rotate: "12deg",
     },
     {
       name: "Google Prompting Essentials",
       image: "/assets/certs/badge2.png",
       positionClass:
-        "top-[18%] right-[10%] sm:top-[20%] sm:right-[12%] md:top-[22%] md:right-[12%]",
+        "top-[7%] right-[8%] sm:top-[14%] sm:right-[12%] md:top-[18%] md:right-[12%]",
       rotate: "-12deg",
     },
     {
       name: "Microsoft UX Design",
       image: "/assets/certs/badge3.png",
       positionClass:
-        "top-[38%] left-[10%] sm:top-[40%] sm:left-[18%] md:top-[44%] md:left-[12%]",
+        "top-[18%] left-[12%] sm:top-[28%] sm:left-[16%] md:top-[38%] md:left-[14%]",
       rotate: "-8deg",
     },
     {
       name: "Microsoft IT Support Specialist",
       image: "/assets/certs/badge4.png",
       positionClass:
-        "top-[38%] right-[15%] sm:top-[40%] sm:right-[12%] md:top-[44%] md:right-[12%]",
+        "top-[18%] right-[12%] sm:top-[28%] sm:right-[16%] md:top-[38%] md:right-[14%]",
       rotate: "8deg",
     },
   ];
@@ -92,7 +98,7 @@ export default function About() {
           {/* Left Column */}
           <div className="flex flex-col w-full">
             {/* My Journey — Image Card with black gradient overlay */}
-            <div className="relative overflow-hidden rounded-[40px] min-h-[460px] md:min-h-[500px] lg:h-full lg:min-h-0 w-full flex-1">
+            <div className="relative overflow-hidden rounded-[40px] min-h-[580px] sm:min-h-[520px] md:min-h-[500px] lg:h-full lg:min-h-0 w-full flex-1">
               {/* Background image */}
               <Image
                 src="/assets/images/image0.jpg"
@@ -102,8 +108,8 @@ export default function About() {
                 className="object-cover object-center"
                 draggable={false}
               />
-              {/* Black gradient — bottom to top */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />
+              {/* Black gradient — bottom to top, fades to transparent higher up so the photo remains visible */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 via-45% to-transparent pointer-events-none" />
 
               {/* Floating Certification Badges */}
               {floatingBadges.map((badge, idx) => (
@@ -161,8 +167,8 @@ export default function About() {
               ))}
 
               {/* Journey text on top of gradient */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-12 z-30">
-                <div className="space-y-4">
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 md:p-12 z-30">
+                <div className="space-y-3 sm:space-y-4">
                   {aboutData.journey.map((paragraph, idx) => (
                     <p
                       key={idx}
@@ -172,11 +178,11 @@ export default function About() {
                     </p>
                   ))}
 
-                  <div className="pt-2">
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-white/50 mb-2.5 block">
-                      Previously worked at
+                  <div className="pt-1.5 sm:pt-2">
+                    <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-white/50 mb-2 block">
+                      My design experiences:
                     </span>
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                       {companies.map((company) => (
                         <div
                           key={company.name}
@@ -191,8 +197,8 @@ export default function About() {
                             )
                           }
                         >
-                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 hover:border-brand/70 backdrop-blur-md transition-all duration-300 cursor-pointer shadow-lg group select-none">
-                            <div className="relative w-4 h-4 rounded-[3px] overflow-hidden shrink-0 border border-white/20">
+                          <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 hover:border-brand/70 backdrop-blur-md transition-all duration-300 cursor-pointer shadow-lg group select-none">
+                            <div className="relative w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-[3px] overflow-hidden shrink-0 border border-white/20">
                               <Image
                                 src={company.logo}
                                 alt={company.name}
@@ -201,7 +207,7 @@ export default function About() {
                                 className="object-cover"
                               />
                             </div>
-                            <span className="text-xs font-semibold text-white/90 group-hover:text-white transition-colors">
+                            <span className="text-[11px] sm:text-xs font-semibold text-white/90 group-hover:text-white transition-colors">
                               {company.name}
                             </span>
                           </div>

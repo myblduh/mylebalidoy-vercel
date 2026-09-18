@@ -10,6 +10,9 @@ import {
   Linkedin,
   Github,
   ExternalLink,
+  Briefcase,
+  Award,
+  GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -92,6 +95,33 @@ const InteractiveText = ({
   );
 };
 
+const deansListHonors = [
+  {
+    year: "2025 – 2026",
+    term: "1st Trimester",
+    badge: "Senior Year",
+    highlight: false,
+  },
+  {
+    year: "2024 – 2025",
+    term: "1st, 2nd & 3rd Trimester",
+    badge: "Full Year 🏆",
+    highlight: true,
+  },
+  {
+    year: "2023 – 2024",
+    term: "1st, 2nd & 3rd Trimester",
+    badge: "Full Year 🏆",
+    highlight: true,
+  },
+  {
+    year: "2022 – 2023",
+    term: "2nd Trimester",
+    badge: "First Year",
+    highlight: false,
+  },
+];
+
 export default function DigitalResumePage() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -159,7 +189,7 @@ export default function DigitalResumePage() {
   });
 
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-white/30 selection:text-white overflow-hidden pb-12">
+    <main className="relative min-h-screen bg-black text-white selection:bg-white/30 selection:text-white overflow-hidden pb-12">
       {/* Comet Cursor Effect */}
       <motion.div
         ref={cursorRef}
@@ -287,7 +317,7 @@ export default function DigitalResumePage() {
         </motion.div>
 
         {/* Main Content */}
-        <div className="flex flex-col space-y-14 md:space-y-16 mt-8 md:mt-6">
+        <div className="relative flex flex-col space-y-14 md:space-y-16 mt-8 md:mt-6">
           {/* Education Section */}
           <motion.div
             id="education"
@@ -314,25 +344,36 @@ export default function DigitalResumePage() {
               </h2>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <div>
-                <h3 className="text-white/90 font-bold mb-1 text-base md:text-lg tracking-tight">
-                  Bachelor of Science in Information Technology
-                </h3>
-                <p className="text-white/80 font-medium mb-1 text-sm md:text-base">
-                  National University - Laguna
-                </p>
-                <p className="text-brand/80 font-medium text-xs md:text-sm mb-4 tracking-wide uppercase">
-                  2022 – 2026
-                </p>
-                <div className="relative mt-4 ml-1.5">
-                  <div className="absolute left-[3px] top-2 bottom-0 w-[2px] bg-brand/20" />
-                  <ul className="space-y-4 text-white/80 text-sm leading-relaxed font-light relative z-10">
-                    <li className="relative pl-6">
-                      <span className="education-dot bg-brand" />
-                      <div>Specialization: Web and Mobile Development</div>
-                    </li>
-                  </ul>
+            <motion.div variants={itemVariants} className="space-y-6">
+              {/* Degree & School Header */}
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-white/10">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-1.5">
+                    Bachelor of Science in Information Technology
+                  </h3>
+                  <p className="text-white/80 text-sm md:text-base font-medium">
+                    National University - Laguna
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="badge bg-brand/20 text-purple-300 border-brand/40 px-3.5 py-1 font-mono text-xs uppercase tracking-widest font-bold shadow-[0_0_12px_rgba(139,92,246,0.2)]">
+                    2022 – 2026
+                  </span>
+                </div>
+              </div>
+
+              {/* Specialization Track Banner */}
+              <div className="flex items-center gap-3.5 p-4 md:p-5 rounded-2xl bg-gradient-to-r from-brand/15 via-purple-500/10 to-transparent border border-brand/25 backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-xl bg-brand/25 border border-brand/40 flex items-center justify-center text-purple-300 shadow-[0_0_12px_rgba(139,92,246,0.3)] shrink-0">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-brand block mb-0.5">
+                    Specialization Track
+                  </span>
+                  <p className="text-sm md:text-base font-bold text-white tracking-tight">
+                    Web and Mobile Development
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -388,15 +429,49 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
-                      <div
-                        className="story-box story-box-brand cursor-pointer"
-                        onClick={() =>
-                          setSelectedImage({
-                            src: "/assets/logos/blueshift.png",
-                            alt: "UI/UX Designer at Blueshift Energy",
-                          })
-                        }
-                      >
+                      <div className="story-box story-box-brand">
+                        <img
+                          src="/assets/logos/respwn.png"
+                          alt="Digital Designer at re:spwn creative"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
+                        Digital Designer
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-brand text-white border-transparent">
+                          Sep. 2026 – Present
+                        </span>
+                        <span className="badge-outline">
+                          re:spwn creative (Full-Time, Remote)
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-brand mt-1">•</span>
+                          Direct brand identity systems and guidelines to ensure
+                          visual consistency across all digital platforms and
+                          campaign assets.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-brand mt-1">•</span>
+                          Create responsive graphics, marketing collateral, and
+                          interactive visuals, collaborating directly with the
+                          development team.
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    variants={itemVariants}
+                    className="relative pl-[56px] md:pl-[64px] py-2"
+                  >
+                    <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
+                    <div className="timeline-card hover:border-brand/30 relative">
+                      <div className="story-box story-box-brand">
                         <img
                           src="/assets/logos/blueshift.png"
                           alt="UI/UX Designer at Blueshift Energy"
@@ -412,7 +487,7 @@ export default function DigitalResumePage() {
                           July 2026 – Sep. 2026
                         </span>
                         <span className="badge-outline">
-                          Blueshift Energy (Contractual)
+                          Blueshift Energy (Full-Time, Hybrid)
                         </span>
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
@@ -436,17 +511,9 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
-                      <div
-                        className="story-box story-box-brand cursor-pointer"
-                        onClick={() =>
-                          setSelectedImage({
-                            src: "/assets/images/image1.jpg",
-                            alt: "UI/UX Designer Intern at KMC Solutions",
-                          })
-                        }
-                      >
+                      <div className="story-box story-box-brand">
                         <img
-                          src="/assets/images/image1.jpg"
+                          src="/assets/logos/kmc.png"
                           alt="UI/UX Designer Intern at KMC Solutions"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
@@ -460,7 +527,7 @@ export default function DigitalResumePage() {
                           Jan. 2026 – May 2026
                         </span>
                         <span className="badge-outline">
-                          KMC Solutions (Internship)
+                          KMC Solutions (Internship, Hybrid)
                         </span>
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
@@ -484,21 +551,8 @@ export default function DigitalResumePage() {
                   >
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
-                      <div
-                        className="story-box story-box-brand cursor-pointer"
-                        onClick={() =>
-                          setSelectedImage({
-                            src: "/assets/images/image2.png",
-                            alt: "Data Entry & Design Assistant at Improbable Labs",
-                          })
-                        }
-                      >
-                        <img
-                          src="/assets/images/image2.png"
-                          alt="Data Entry & Design Assistant at Improbable Labs"
-                          draggable={false}
-                          onContextMenu={(e) => e.preventDefault()}
-                        />
+                      <div className="story-box story-box-brand flex items-center justify-center bg-white/[0.04] border border-white/10 rounded-lg">
+                        <Briefcase className="w-5 h-5 md:w-7 md:h-7 text-brand" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight">
                         Data Entry & Design Assistant
@@ -666,7 +720,7 @@ export default function DigitalResumePage() {
                             </span>
                           )}
                           <div className="flex flex-wrap gap-2">
-                            {project.skills?.slice(0, 3).map((skill) => (
+                            {project.skills?.slice(0, 3).map((skill: string) => (
                               <span
                                 key={skill}
                                 className="badge-outline text-[9px] py-0.5"

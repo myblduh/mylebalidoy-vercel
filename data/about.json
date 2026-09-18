@@ -4,6 +4,12 @@
   ],
   "companies": [
     {
+      "name": "re:spwn creative",
+      "role": "Digital Designer",
+      "period": "Sep. 2026 – Present",
+      "logo": "/assets/logos/respwn.png"
+    },
+    {
       "name": "Blueshift Energy",
       "role": "UI/UX Designer",
       "period": "July 2026 – Sep. 2026",

@@ -292,7 +292,7 @@ export default function Profile() {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-30 pt-4 sm:pt-12 md:pt-8 pointer-events-none">
         <div className="max-w-4xl relative w-full flex flex-col items-center">
           <p className="text-brand font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase text-[9px] sm:text-[11px] md:text-sm mb-4 mt-2 md:mt-0 relative z-30">
-            UX Design Portfolio
+            Myle's Portfolio
           </p>
 
           <div className="relative z-30">

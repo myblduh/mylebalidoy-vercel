@@ -1,16 +1,16 @@
 [
   {
-    "title": "Blueshift Residential & Commerical Landing Pages",
+    "title": "Blueshift Residential & Commercial Landing Page Redesign",
     "image": "/assets/designs/blueshift.png",
     "date": "July - Sep. 2026",
-    "description": "Designed and prototyped a responsive landing page for Blueshift Energy, a solar energy company offering residential and commercial solar solutions. The project focused on presenting complex solar information in a clear, engaging, and conversion-focused experience while maintaining a modern and trustworthy visual identity.",
+    "description": "Redesigned the landing page for Blueshift Energy, a solar energy company offering residential and commercial solar solutions. The project focused on presenting complex solar information in a clear, engaging, and conversion-focused experience while maintaining a modern and trustworthy visual identity.",
     "links": [
       {
         "text": "View Prototype",
         "url": "https://www.figma.com/proto/b7GGbp0OTOxl5rEy48J2FS/Blueshift-Landing-Page"
       }
     ],
-    "skills": ["Figma", "Webflow"]
+    "skills": ["UX Design", "Figma", "Webflow"]
   },
   {
     "title": "Trackify: Inventory Management System",
