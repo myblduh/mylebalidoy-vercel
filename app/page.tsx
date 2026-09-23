@@ -26,7 +26,7 @@ const faqSchema = {
       ],
       "worksFor": {
         "@type": "Organization",
-        "name": "re:spwn creative"
+        "name": "Re:spwn Creative Studio"
       },
       "alumniOf": {
         "@type": "CollegeOrUniversity",
@@ -64,7 +64,7 @@ const faqSchema = {
           "name": "What is Myle Balidoy's current role?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Myle Balidoy currently works as a Digital Designer at re:spwn creative (Full-Time, Remote), directing brand identity systems and guidelines, and designing responsive graphics, marketing collateral, and interactive visuals."
+            "text": "Myle Balidoy currently works as a Digital Designer at Re:spwn Creative Studio (Full-Time, Remote), directing brand identity systems and guidelines, and designing responsive graphics, marketing collateral, and interactive visuals."
           }
         },
         {
@@ -72,7 +72,7 @@ const faqSchema = {
           "name": "What is Myle Balidoy's professional work experience?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Myle's professional experience includes: Digital Designer at re:spwn creative (Sep. 2026–Present), UI/UX Designer at Blueshift Energy (July 2026–Sep. 2026) creating responsive solar landing pages and Figma design systems, UI/UX Designer Intern at KMC Solutions (Jan. 2026–May 2026) designing responsive web and mobile interfaces, and Data Entry & Design Assistant at Improbable Labs (Sep. 2025–Mar. 2026)."
+            "text": "Myle's professional experience includes: Digital Designer at Re:spwn Creative Studio (Sep. 2026–Present), UI/UX Designer at Blueshift Energy (July 2026–Sep. 2026) creating responsive solar landing pages and Figma design systems, UI/UX Designer Intern at KMC Solutions (Jan. 2026–May 2026) designing responsive web and mobile interfaces, and Data Entry & Design Assistant at Improbable Labs (Sep. 2025–Mar. 2026)."
           }
         },
         {

@@ -21,7 +21,7 @@ const iconMap: Record<string, string> = {
 
 const companies = [
   {
-    name: "re:spwn creative",
+    name: "Re:spwn Creative Studio",
     role: "Digital Designer",
     period: "Sep. 2026 – Present",
     logo: "/assets/logos/respwn.png",
