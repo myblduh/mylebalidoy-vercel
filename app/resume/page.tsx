@@ -431,8 +431,8 @@ export default function DigitalResumePage() {
                     <div className="timeline-card hover:border-brand/30 relative">
                       <div className="story-box story-box-brand">
                         <img
-                          src="/assets/logos/respwn.png"
-                          alt="Digital Designer at Re:spwn Creative Studio"
+                          src="/assets/logos/wovlo.png"
+                          alt="Digital Designer at Wovlo Studio"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
                         />
@@ -445,7 +445,7 @@ export default function DigitalResumePage() {
                           Sep. 2026 – Present
                         </span>
                         <span className="badge-outline">
-                          Re:spwn Creative Studio (Full-Time, Remote)
+                          Wovlo Studio (Full-Time, Remote)
                         </span>
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">

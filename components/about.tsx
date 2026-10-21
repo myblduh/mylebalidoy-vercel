@@ -21,10 +21,10 @@ const iconMap: Record<string, string> = {
 
 const companies = [
   {
-    name: "Re:spwn Creative Studio",
+    name: "Wovlo Studio",
     role: "Digital Designer",
     period: "Sep. 2026 – Present",
-    logo: "/assets/logos/respwn.png",
+    logo: "/assets/logos/wovlo.png",
   },
   {
     name: "Blueshift Energy",
