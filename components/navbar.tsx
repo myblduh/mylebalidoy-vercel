@@ -107,7 +107,7 @@ export default function Navbar() {
             <nav
               className={`header-nav pointer-events-auto ${
                 scrolled
-                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border-transparent dark:border dark:border-white/10"
+                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border border-black/10 dark:border-white/10"
                   : "bg-transparent border-transparent"
               }`}
             >
@@ -121,7 +121,7 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <div className="ml-4 pl-4 border-l-0 dark:border-l dark:border-white/10 flex items-center">
+              <div className="ml-4 pl-4 border-l border-black/20 dark:border-white/10 flex items-center">
                 <ThemeToggle />
               </div>
             </nav>
@@ -133,7 +133,7 @@ export default function Navbar() {
             </div>
             <div className="relative group hidden md:block pointer-events-auto">
               <Link href="/resume">
-                <Button className="font-bold tracking-widest uppercase text-xs rounded-full px-8 py-5 transition-all duration-300 overflow-hidden relative bg-black text-white hover:bg-black/90 shadow-xl dark:bg-brand dark:hover:bg-brand/90 dark:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                <Button className="font-semibold tracking-normal text-xs sm:text-sm rounded-full px-6 sm:px-8 py-3.5 sm:py-4 transition-all duration-300 overflow-hidden relative bg-black text-white hover:bg-black/90 shadow-xl dark:bg-brand dark:hover:bg-brand/90 dark:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
                   <span className="relative z-10">Resume</span>
                 </Button>
               </Link>

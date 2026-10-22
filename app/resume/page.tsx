@@ -252,7 +252,7 @@ export default function DigitalResumePage() {
             size={18}
             className="group-hover:scale-110 transition-transform"
           />
-          <span className="text-sm font-semibold uppercase tracking-widest hidden sm:inline">
+          <span className="text-sm font-medium tracking-normal hidden sm:inline">
             Home
           </span>
         </Link>
@@ -289,7 +289,7 @@ export default function DigitalResumePage() {
             variants={itemVariants}
             className="flex flex-col justify-center text-center md:text-left md:mt-2"
           >
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/50 mb-3 block font-medium">
+            <span className="text-xs md:text-sm font-semibold tracking-wide text-white/60 mb-3 block">
               Digital Resume
             </span>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 shadow-sm text-shadow-sm pointer-events-auto">
@@ -356,7 +356,7 @@ export default function DigitalResumePage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="badge bg-brand/20 text-purple-300 border-brand/40 px-3.5 py-1 font-mono text-xs uppercase tracking-widest font-bold shadow-[0_0_12px_rgba(139,92,246,0.2)]">
+                  <span className="badge bg-brand/20 text-purple-300 border-brand/40 px-3.5 py-1 text-xs font-semibold tracking-normal shadow-[0_0_12px_rgba(139,92,246,0.2)]">
                     2022 – 2026
                   </span>
                 </div>
@@ -368,7 +368,7 @@ export default function DigitalResumePage() {
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-brand block mb-0.5">
+                  <span className="text-xs font-semibold tracking-normal text-brand block mb-0.5">
                     Specialization Track
                   </span>
                   <p className="text-sm md:text-base font-bold text-white tracking-tight">
@@ -723,7 +723,7 @@ export default function DigitalResumePage() {
                             {project.skills?.slice(0, 3).map((skill: string) => (
                               <span
                                 key={skill}
-                                className="badge-outline text-[9px] py-0.5"
+                                className="badge-outline text-[10px] sm:text-xs font-medium py-0.5 px-2.5"
                               >
                                 {skill}
                               </span>
@@ -860,7 +860,7 @@ export default function DigitalResumePage() {
                     {category.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.7)] text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full"
+                        className="px-3.5 py-1.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.85)] text-xs sm:text-[13px] font-medium tracking-normal rounded-full hover:border-brand/40 hover:text-white transition-colors"
                       >
                         {skill}
                       </span>
@@ -886,7 +886,7 @@ export default function DigitalResumePage() {
               className="flex items-center justify-center w-full md:w-auto gap-3 px-8 py-4 bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)] hover:border-brand/50 rounded-full transition-all duration-300 text-white group backdrop-blur-md"
             >
               <Linkedin className="w-5 h-5 text-brand group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-bold uppercase tracking-widest">
+              <span className="text-sm font-semibold tracking-normal">
                 LinkedIn
               </span>
             </a>
@@ -897,7 +897,7 @@ export default function DigitalResumePage() {
               className="flex items-center justify-center w-full md:w-auto gap-3 px-8 py-4 bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)] hover:border-brand/50 rounded-full transition-all duration-300 text-white group backdrop-blur-md"
             >
               <Github className="w-5 h-5 text-brand group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-bold uppercase tracking-widest">
+              <span className="text-sm font-semibold tracking-normal">
                 GitHub
               </span>
             </a>
@@ -908,7 +908,7 @@ export default function DigitalResumePage() {
               className="flex items-center justify-center w-full md:w-auto gap-3 px-8 py-4 bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)] hover:border-brand/50 rounded-full transition-all duration-300 text-white group backdrop-blur-md"
             >
               <ExternalLink className="w-5 h-5 text-brand group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-bold uppercase tracking-widest">
+              <span className="text-sm font-semibold tracking-normal">
                 Behance
               </span>
             </a>

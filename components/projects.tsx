@@ -107,7 +107,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-brand/60 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                <p className="text-brand/80 dark:text-brand/90 text-xs sm:text-[13px] font-semibold tracking-normal mb-4">
                   {project.date}
                 </p>
 
@@ -119,7 +119,7 @@ export default function Projects() {
                   {project.skills.slice(0, 3).map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 sm:px-3 py-1 bg-brand/5 dark:bg-brand/10 text-brand text-[9px] sm:text-[10px] uppercase font-bold tracking-widest rounded-full border border-brand/10"
+                      className="px-2.5 sm:px-3 py-1 bg-brand/5 dark:bg-brand/10 text-brand text-[10px] sm:text-xs font-medium tracking-normal rounded-full border border-brand/10"
                     >
                       {skill}
                     </span>
@@ -139,7 +139,7 @@ export default function Projects() {
               }}
               className="pill-button px-10 py-4 flex items-center gap-3"
             >
-              <span className="text-xs font-bold uppercase tracking-widest">
+              <span className="text-xs sm:text-sm font-semibold tracking-normal">
                 {showAll ? "Show Less" : "View All Projects"}
               </span>
               {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -187,11 +187,11 @@ export default function Projects() {
             {/* Content Column */}
             <div className="p-8 sm:p-12 flex flex-col sm:overflow-y-auto h-auto sm:h-full sm:col-span-5 lg:col-span-4 bg-[#fcfcfc] dark:bg-[#0a0a0a] border-l border-foreground/5 no-scrollbar">
               <DialogHeader className="text-left mb-8 sm:mt-12">
-                <DialogTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight tracking-tight uppercase">
+                <DialogTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight tracking-tight">
                   {selectedProject?.title}
                 </DialogTitle>
                 {selectedProject?.date && (
-                  <p className="text-[10px] sm:text-xs text-brand font-bold uppercase tracking-[0.2em]">
+                  <p className="text-xs sm:text-sm text-brand font-semibold tracking-normal">
                     {selectedProject.date}
                   </p>
                 )}
@@ -208,7 +208,7 @@ export default function Projects() {
                   {selectedProject?.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 sm:px-3 py-1 sm:py-1.5 bg-foreground/5 text-foreground/70 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest font-bold rounded-full border border-foreground/5"
+                      className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-foreground/5 text-foreground/75 text-[10px] sm:text-xs font-medium tracking-normal rounded-full border border-foreground/5"
                     >
                       {skill}
                     </span>
@@ -221,7 +221,7 @@ export default function Projects() {
                       key={i}
                       asChild
                       variant={i === 0 ? "default" : "outline"}
-                      className={`w-full rounded-full uppercase tracking-[0.2em] text-[10px] sm:text-xs font-bold gap-2 sm:gap-3 py-3 sm:py-6 ${i === 0 ? "bg-brand hover:bg-brand/90 text-white" : "bg-transparent border-foreground/10 hover:bg-foreground/5 text-foreground"}`}
+                      className={`w-full rounded-full text-xs sm:text-sm font-semibold tracking-normal gap-2 sm:gap-3 py-3 sm:py-4 ${i === 0 ? "bg-brand hover:bg-brand/90 text-white shadow-md" : "bg-transparent border-foreground/10 hover:bg-foreground/5 text-foreground"}`}
                     >
                       <a
                         href={link.url}

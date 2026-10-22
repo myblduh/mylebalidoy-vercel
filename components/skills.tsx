@@ -48,14 +48,14 @@ export default function Skills() {
                 </div>
               </div>
               <div className="flex-1">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-3 sm:mb-4 uppercase tracking-[0.1em] leading-tight">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-3 sm:mb-4 tracking-tight leading-tight">
                   {category.title}
                 </h2>
                 <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-start">
                   {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
-                      className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[11px] uppercase tracking-widest font-bold bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 text-gray-500 dark:text-gray-400 transition-all duration-300 md:hover:border-brand md:hover:text-brand md:hover:bg-brand/5"
+                      className="px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-medium bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 text-foreground/80 dark:text-gray-300 transition-all duration-300 md:hover:border-brand md:hover:text-brand md:hover:bg-brand/5 shadow-xs"
                     >
                       {skill}
                     </div>

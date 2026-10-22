@@ -76,7 +76,7 @@ export default function Certifications() {
               className="project-card group cursor-pointer p-6 flex justify-between items-center gap-6"
             >
               <div className="flex-1">
-                <span className="text-[9px] uppercase tracking-widest text-brand font-bold px-3 py-1 bg-brand/5 dark:bg-brand/10 rounded-full border border-brand/10 w-fit mb-3 inline-block">
+                <span className="text-xs font-semibold tracking-normal text-brand px-3 py-1 bg-brand/5 dark:bg-brand/10 rounded-full border border-brand/10 w-fit mb-3 inline-block">
                   {cert.issuer}
                 </span>
                 <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-brand transition-colors duration-300 tracking-tight leading-tight line-clamp-2">
@@ -88,7 +88,7 @@ export default function Certifications() {
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
+                <span className="text-xs font-semibold tracking-normal text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
                   View Certificate
                 </span>
                 <div className="w-10 h-10 rounded-full border border-foreground/10 group-hover:border-brand flex items-center justify-center text-foreground/50 group-hover:text-brand group-hover:bg-brand/5 transition-all duration-300 shrink-0">
@@ -106,7 +106,7 @@ export default function Certifications() {
               onClick={() => setShowAll(!showAll)}
               className="pill-button px-10 py-4 flex items-center gap-3"
             >
-              <span className="text-xs font-bold uppercase tracking-widest">
+              <span className="text-xs sm:text-sm font-semibold tracking-normal">
                 {showAll ? "Show Less" : "View All Certifications"}
               </span>
               {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -153,14 +153,14 @@ export default function Certifications() {
             {/* Content Column */}
             <div className="p-8 sm:p-12 flex flex-col sm:overflow-y-auto h-auto sm:h-full sm:col-span-5 lg:col-span-4 bg-[#fcfcfc] dark:bg-[#0a0a0a] border-l border-foreground/5 no-scrollbar">
               <DialogHeader className="text-left mb-8 mt-4 sm:mt-12">
-                <DialogTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight tracking-tight uppercase">
+                <DialogTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight tracking-tight">
                   {selectedCertification?.title}
                 </DialogTitle>
                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="px-3 py-1 bg-brand/10 text-brand text-[9px] uppercase font-bold tracking-widest rounded-full border border-brand/20">
+                  <span className="px-3 py-1 bg-brand/10 text-brand text-xs font-semibold tracking-normal rounded-full border border-brand/20">
                     {selectedCertification?.issuer}
                   </span>
-                  <span className="px-3 py-1 bg-foreground/5 text-foreground/60 text-[9px] uppercase font-bold tracking-widest rounded-full border border-foreground/5">
+                  <span className="px-3 py-1 bg-foreground/5 text-foreground/70 text-xs font-medium tracking-normal rounded-full border border-foreground/5">
                     {selectedCertification?.date}
                   </span>
                 </div>
@@ -177,7 +177,7 @@ export default function Certifications() {
                   {selectedCertification?.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-foreground/5 text-foreground/70 text-[10px] uppercase tracking-widest font-bold rounded-full border border-foreground/5"
+                      className="px-2.5 sm:px-3 py-1 bg-foreground/5 text-foreground/75 text-xs font-medium tracking-normal rounded-full border border-foreground/5"
                     >
                       {skill}
                     </span>
@@ -190,7 +190,7 @@ export default function Certifications() {
                       key={i}
                       asChild
                       variant="default"
-                      className="w-full rounded-full uppercase tracking-[0.2em] text-[10px] font-bold gap-3 py-6 bg-brand hover:bg-brand/90 text-white"
+                      className="w-full rounded-full text-xs sm:text-sm font-semibold tracking-normal gap-3 py-3.5 sm:py-4 bg-brand hover:bg-brand/90 text-white shadow-md"
                     >
                       <a
                         href={link.url}

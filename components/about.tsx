@@ -179,7 +179,7 @@ export default function About() {
                   ))}
 
                   <div className="pt-1.5 sm:pt-2">
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-white/50 mb-2 block">
+                    <span className="text-xs font-medium tracking-normal text-white/60 mb-2 block">
                       My design experiences:
                     </span>
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -251,7 +251,7 @@ export default function About() {
                 return (
                   <div
                     key={idx}
-                    className={`project-card p-5 sm:p-6 flex flex-row sm:flex-col items-start gap-5 sm:gap-6 ${isAward ? "cursor-pointer hover:bg-amber-500/5 transition-colors" : ""}`}
+                    className={`project-card p-5 sm:p-6 flex flex-row sm:flex-col items-start gap-5 sm:gap-6 ${isAward ? "cursor-pointer hover:bg-white dark:hover:bg-white/10 transition-colors" : ""}`}
                     onClick={
                       isAward
                         ? () =>
@@ -283,8 +283,8 @@ export default function About() {
                       <p
                         className={
                           isAward
-                            ? "text-amber-500 dark:text-amber-400 text-[10px] font-bold mb-2 uppercase tracking-[0.15em] md:tracking-widest"
-                            : "text-brand text-[10px] font-bold mb-2 uppercase tracking-[0.15em] md:tracking-widest"
+                            ? "text-amber-500 dark:text-amber-400 text-xs font-semibold mb-2 tracking-normal"
+                            : "text-brand text-xs font-semibold mb-2 tracking-normal"
                         }
                       >
                         {card.subtitle}

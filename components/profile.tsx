@@ -391,13 +391,13 @@ export default function Profile() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-brand hover:bg-brand-hover text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-xl border border-white/10 pointer-events-auto"
+                className="bg-brand hover:bg-brand-hover text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-normal transition-all duration-300 shadow-xl border border-white/10 pointer-events-auto"
               >
                 View Resume
               </motion.button>
             </Link>
             <button
-              className="bg-white/5 border border-foreground/10 text-foreground px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-black/10 dark:hover:bg-white/15 hover:border-foreground/30 transition-all duration-300 backdrop-blur-md shadow-lg pointer-events-auto"
+              className="bg-white/5 border border-foreground/10 text-foreground px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-semibold text-xs sm:text-sm tracking-normal hover:bg-black/10 dark:hover:bg-white/15 hover:border-foreground/30 transition-all duration-300 backdrop-blur-md shadow-lg pointer-events-auto"
               onClick={() =>
                 document
                   .getElementById("contact")
