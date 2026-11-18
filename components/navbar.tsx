@@ -132,7 +132,7 @@ export default function Navbar() {
               <ThemeToggle />
             </div>
             <div className="relative group hidden md:block pointer-events-auto">
-              <Link href="/resume">
+              <Link href="/resume" prefetch={false}>
                 <Button className="font-semibold tracking-normal text-xs sm:text-sm rounded-full px-6 sm:px-8 py-3.5 sm:py-4 transition-all duration-300 overflow-hidden relative bg-black text-white hover:bg-black/90 shadow-xl dark:bg-brand dark:hover:bg-brand/90 dark:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]">
                   <span className="relative z-10">Resume</span>
                 </Button>
@@ -206,6 +206,7 @@ export default function Navbar() {
                   aria-label="Resume"
                   onClick={handleNavClick}
                   href="/resume"
+                  prefetch={false}
                   className="mobile-nav-link text-brand hover:text-brand/80"
                 >
                   Resume

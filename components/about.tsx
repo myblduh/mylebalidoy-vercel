@@ -71,8 +71,8 @@ export default function About() {
       rotate: "-8deg",
     },
     {
-      name: "Microsoft IT Support Specialist",
-      image: "/assets/certs/badge4.png",
+      name: "IBM UX Design Fundamentals",
+      image: "/assets/certs/badge5.png",
       positionClass:
         "top-[18%] right-[12%] sm:top-[28%] sm:right-[16%] md:top-[38%] md:right-[14%]",
       rotate: "8deg",

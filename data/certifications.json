@@ -1,5 +1,13 @@
 [
   {
+    "title": "User Experience Design Fundamentals",
+    "image": "/assets/certs/13.png",
+    "description": "Learned the fundamentals of UX design, including user research, wireframing, prototyping, and usability testing, and applied them to a website redesign case study.",
+    "issuer": "IBM",
+    "date": "November 2026",
+    "skills": ["UX Design", "UX Research", "Wireframing", "Prototyping"]
+  },
+  {
     "title": "Graphic Design Essentials",
     "image": "/assets/certs/12.png",
     "description": "Completed the Graphic Design Essentials certification, demonstrating foundational knowledge in visual communication, layout hierarchy, color theory, and digital design using Canva.",

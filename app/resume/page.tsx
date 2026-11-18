@@ -15,6 +15,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const ShaderGradientCanvas = dynamic(
@@ -207,39 +208,40 @@ export default function DigitalResumePage() {
 
       {/* Dynamic Background Effect */}
       <div className="fixed top-0 left-0 w-full h-[120vh] z-0 opacity-20 pointer-events-none">
-        <ShaderGradientCanvas
-          style={{ pointerEvents: "none" }}
-          pointerEvents="none"
-          lazyLoad={false}
-          pixelDensity={0.5}
-        >
-          <ShaderGradient
-            animate={"on"}
-            enableTransition={false}
-            brightness={1.1}
-            color1="#5606ff"
-            color2="#fe8989"
-            color3="#000000"
-            cAzimuthAngle={180}
-            cDistance={3.9}
-            cPolarAngle={115}
-            cameraZoom={1}
-            positionX={-0.5}
-            positionY={0.1}
-            positionZ={0}
-            rotationZ={235}
-            shader="defaults"
-            type="waterPlane"
-            uDensity={1.1}
-            uFrequency={5.5}
-            uSpeed={0.1}
-            uStrength={2.4}
-            uTime={0.2}
-            wireframe={false}
-            // @ts-ignore
-            pixelDensity={1}
-          />
-        </ShaderGradientCanvas>
+        {isMounted && (
+          <ShaderGradientCanvas
+            style={{ pointerEvents: "none" }}
+            pointerEvents="none"
+            lazyLoad={true}
+            pixelDensity={0.75}
+          >
+            <ShaderGradient
+              animate={"on"}
+              enableTransition={false}
+              brightness={1.1}
+              color1="#5606ff"
+              color2="#fe8989"
+              color3="#000000"
+              cAzimuthAngle={180}
+              cDistance={3.9}
+              cPolarAngle={115}
+              cameraZoom={1}
+              positionX={-0.5}
+              positionY={0.1}
+              positionZ={0}
+              rotationZ={235}
+              shader="defaults"
+              type="waterPlane"
+              uDensity={1.1}
+              uFrequency={5.5}
+              uSpeed={0.35}
+              uStrength={2.4}
+              wireframe={false}
+              // @ts-ignore
+              pixelDensity={0.75}
+            />
+          </ShaderGradientCanvas>
+        )}
       </div>
 
       {/* Home Button (Top Left) */}
@@ -272,10 +274,12 @@ export default function DigitalResumePage() {
           >
             <div className="w-32 h-32 md:w-44 md:h-44 bg-white/5 border border-white/10 rounded-full md:rounded-[1.6rem] overflow-hidden shadow-2xl transition-all duration-500 hover:border-brand/30 hover:shadow-[0_0_50px_rgba(139,92,246,0.2)] flex flex-col backdrop-blur-md">
               <div className="flex-grow relative overflow-hidden bg-brand/5">
-                <img
+                <Image
                   src="/assets/images/image4.jpg"
                   alt="Myle Balidoy"
-                  loading="eager"
+                  fill
+                  sizes="(max-width: 768px) 128px, 176px"
+                  priority
                   className="w-full h-full object-cover transition-all duration-700 group-hover/header:scale-105"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
@@ -332,10 +336,14 @@ export default function DigitalResumePage() {
               className="flex items-center gap-4 mb-8"
             >
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                <img
+                <Image
                   src="/assets/icons/education_icon.png"
                   alt="Education"
+                  width={56}
+                  height={56}
                   className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
                   draggable={false}
                 />
               </div>
@@ -410,10 +418,14 @@ export default function DigitalResumePage() {
                   className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                    <img
+                    <Image
                       src="/assets/icons/experience_icon.png"
                       alt="Experience"
+                      width={56}
+                      height={56}
                       className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                   </div>
@@ -430,9 +442,14 @@ export default function DigitalResumePage() {
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
                       <div className="story-box story-box-brand">
-                        <img
+                        <Image
                           src="/assets/logos/wovlo.png"
                           alt="Digital Designer at Wovlo Studio"
+                          fill
+                          sizes="(max-width: 768px) 48px, 64px"
+                          className="object-cover transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
                         />
@@ -472,9 +489,14 @@ export default function DigitalResumePage() {
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
                       <div className="story-box story-box-brand">
-                        <img
+                        <Image
                           src="/assets/logos/blueshift.png"
                           alt="UI/UX Designer at Blueshift Energy"
+                          fill
+                          sizes="(max-width: 768px) 48px, 64px"
+                          className="object-cover transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
                         />
@@ -512,9 +534,14 @@ export default function DigitalResumePage() {
                     <div className="timeline-dot bg-brand shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                     <div className="timeline-card hover:border-brand/30 relative">
                       <div className="story-box story-box-brand">
-                        <img
+                        <Image
                           src="/assets/logos/kmc.png"
                           alt="UI/UX Designer Intern at KMC Solutions"
+                          fill
+                          sizes="(max-width: 768px) 48px, 64px"
+                          className="object-cover transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
                         />
@@ -598,10 +625,14 @@ export default function DigitalResumePage() {
                   className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
-                    <img
+                    <Image
                       src="/assets/icons/award_icon.png"
                       alt="Awards"
+                      width={56}
+                      height={56}
                       className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                   </div>
@@ -626,9 +657,14 @@ export default function DigitalResumePage() {
                           })
                         }
                       >
-                        <img
+                        <Image
                           src="/assets/images/image3.png"
                           alt="1st Runner Up - Enterprise Track"
+                          fill
+                          sizes="(max-width: 768px) 48px, 64px"
+                          className="object-cover transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                           draggable={false}
                           onContextMenu={(e) => e.preventDefault()}
                         />
@@ -671,10 +707,14 @@ export default function DigitalResumePage() {
                   className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                    <img
+                    <Image
                       src="/assets/icons/projects_icon.png"
                       alt="Projects"
+                      width={56}
+                      height={56}
                       className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                   </div>
@@ -702,9 +742,14 @@ export default function DigitalResumePage() {
                               })
                             }
                           >
-                            <img
+                            <Image
                               src={project.image}
                               alt={project.title}
+                              fill
+                              sizes="(max-width: 768px) 48px, 64px"
+                              className="object-cover transition-transform duration-500"
+                              loading="lazy"
+                              decoding="async"
                               draggable={false}
                               onContextMenu={(e) => e.preventDefault()}
                             />
@@ -756,10 +801,14 @@ export default function DigitalResumePage() {
                   className="flex items-center gap-6 mb-2 ml-[4px] sm:ml-0"
                 >
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">
-                    <img
+                    <Image
                       src="/assets/icons/certification_icon.png"
                       alt="Certifications"
+                      width={56}
+                      height={56}
                       className="w-full h-full object-contain"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                   </div>
@@ -787,9 +836,14 @@ export default function DigitalResumePage() {
                               })
                             }
                           >
-                            <img
+                            <Image
                               src={cert.image}
                               alt={cert.title}
+                              fill
+                              sizes="(max-width: 768px) 48px, 64px"
+                              className="object-cover transition-transform duration-500"
+                              loading="lazy"
+                              decoding="async"
                               draggable={false}
                               onContextMenu={(e) => e.preventDefault()}
                             />
@@ -835,10 +889,14 @@ export default function DigitalResumePage() {
               className="flex items-center gap-4 mb-8"
             >
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
-                <img
+                <Image
                   src="/assets/icons/backend_icon.png"
                   alt="Technical Toolbox"
+                  width={56}
+                  height={56}
                   className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
                   draggable={false}
                 />
               </div>
@@ -957,6 +1015,8 @@ export default function DigitalResumePage() {
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 className="w-auto h-auto max-w-[90vw] max-h-[80vh] md:max-h-[85vh] object-contain rounded-lg"
+                loading="eager"
+                decoding="async"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />

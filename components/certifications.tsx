@@ -157,7 +157,7 @@ export default function Certifications() {
                   {selectedCertification?.title}
                 </DialogTitle>
                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="px-3 py-1 bg-brand/10 text-brand text-xs font-semibold tracking-normal rounded-full border border-brand/20">
+                  <span className="px-3 py-1 bg-purple-100 text-purple-700 border-purple-300 dark:bg-brand/10 dark:text-brand dark:border-brand/20 text-xs font-semibold tracking-normal rounded-full border">
                     {selectedCertification?.issuer}
                   </span>
                   <span className="px-3 py-1 bg-foreground/5 text-foreground/70 text-xs font-medium tracking-normal rounded-full border border-foreground/5">

@@ -14,6 +14,7 @@ export default function Profile() {
   const randomBubblesRef = useRef<any[]>([]);
   const physicsRef = useRef<{ [key: string]: { y: number; vy: number } }>({});
   const containerRef = useRef<HTMLDivElement>(null);
+  const bubbleElementsRef = useRef<Map<string, HTMLElement>>(new Map());
   const getRandomLeft = (forceLeft?: boolean) => {
     // Scatter bubbles to the left (0% to 25%) and right (75% to 100%) to be less compact
     const isLeft = forceLeft !== undefined ? forceLeft : Math.random() > 0.5;
@@ -127,7 +128,14 @@ export default function Profile() {
           p.vy *= -1;
         }
 
-        const el = document.getElementById(`bubble-el-${bubble.id}`);
+        let el = bubbleElementsRef.current.get(bubble.id);
+        if (!el || !el.isConnected) {
+          const found = document.getElementById(`bubble-el-${bubble.id}`);
+          if (found) {
+            bubbleElementsRef.current.set(bubble.id, found);
+            el = found;
+          }
+        }
         if (el) {
           el.style.transform = `translate3d(${currentX}px, ${p.y}px, 0)`;
         }
@@ -387,7 +395,7 @@ export default function Profile() {
                 )}
               </AnimatePresence>
             </div>
-            <Link href="/resume">
+            <Link href="/resume" prefetch={false}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
