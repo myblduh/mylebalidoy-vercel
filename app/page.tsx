@@ -32,6 +32,24 @@ const faqSchema = {
         "@type": "CollegeOrUniversity",
         "name": "National University - Laguna"
       },
+      "email": "mailto:mylebalidoy@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Laguna",
+        "addressCountry": "PH"
+      },
+      "award": "1st Runner Up, Enterprise Track - Protothon 2026: The Online UX Hackathon",
+      "hasCredential": [
+        "User Experience Design Fundamentals (IBM)",
+        "Graphic Design Essentials (Canva)",
+        "Microsoft UX Design",
+        "Microsoft IT Support Specialist",
+        "Google Prompting Essentials",
+        "Google Agile Essentials"
+      ].map((name) => ({
+        "@type": "EducationalOccupationalCredential",
+        "name": name
+      })),
       "knowsAbout": [
         "UI/UX Design",
         "Digital Design",
@@ -46,6 +64,24 @@ const faqSchema = {
         "Next.js",
         "Tailwind CSS"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mylebalidoy.vercel.app/#website",
+      "url": "https://mylebalidoy.vercel.app",
+      "name": "Myle Balidoy | UI/UX Designer Portfolio",
+      "description":
+        "Portfolio of Myle Balidoy, a UI/UX Designer and Digital Designer from Laguna, Philippines.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://mylebalidoy.vercel.app/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://mylebalidoy.vercel.app/#profilepage",
+      "url": "https://mylebalidoy.vercel.app",
+      "name": "Myle Balidoy | UI/UX Designer Portfolio",
+      "isPartOf": { "@id": "https://mylebalidoy.vercel.app/#website" },
+      "mainEntity": { "@id": "https://mylebalidoy.vercel.app/#person" }
     },
     {
       "@type": "FAQPage",
@@ -96,7 +132,7 @@ const faqSchema = {
           "name": "What awards and certifications has Myle Balidoy received?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Myle won 1st Runner Up in the Enterprise Track at Protothon 2026: The Online UX Hackathon. She also holds industry certifications in Google Agile Essentials, Google Prompting Essentials, Microsoft UX Design, and Microsoft IT Support Specialist."
+            "text": "Myle won 1st Runner Up in the Enterprise Track at Protothon 2026: The Online UX Hackathon. She also holds industry certifications including IBM User Experience Design Fundamentals, Canva Graphic Design Essentials, Google Agile Essentials, Google Prompting Essentials, Microsoft UX Design, and Microsoft IT Support Specialist."
           }
         },
         {

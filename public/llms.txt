@@ -1,0 +1,44 @@
+# Myle Balidoy
+
+> Myle Balidoy is a UI/UX Designer and Digital Designer based in Laguna, Philippines. She designs inclusive, user-centered, accessible web and mobile experiences, Figma design systems, and brand identities. This is her official portfolio website.
+
+Myle (she/her) is a B.S. Information Technology graduate (National University - Laguna, 2022-2026, Web and Mobile Development). She currently works as a Digital Designer at Wovlo Studio (remote). She is open to UI/UX design, product design, and digital design opportunities.
+
+## Pages
+
+- [Portfolio](https://mylebalidoy.vercel.app/): Featured designs, projects, about, skills, certifications, and contact.
+- [Resume](https://mylebalidoy.vercel.app/resume): Work experience, education, awards, and certifications.
+- [Resume PDF](https://mylebalidoy.vercel.app/assets/Myle_Resume.pdf): Downloadable resume.
+
+## Work experience
+
+- Digital Designer, Wovlo Studio (Sep. 2026 - Present, Full-Time, Remote)
+- UI/UX Designer, Blueshift Energy (July 2026 - Sep. 2026): responsive solar landing pages and Figma design system
+- UI/UX Designer Intern, KMC Solutions (Jan. 2026 - May 2026): responsive web and mobile interfaces
+- Data Entry & Design Assistant, Improbable Labs (Sep. 2025 - Mar. 2026)
+
+## Featured projects
+
+Trackify (fleet management and tracking platform), Payonnect (digital wallet and fintech app), Lakbay Calamba (tourism and cultural heritage platform), CosMarket (cosplay marketplace and community), Blueshift Energy (solar energy landing page design system), HealthMate (healthcare platform).
+
+## Skills
+
+UI/UX design, wireframing, interactive prototyping, responsive web design, design systems, brand identity, user research. Tools: Figma, FigJam, Adobe Creative Cloud, Canva. Frontend: HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS.
+
+## Awards and certifications
+
+- 1st Runner Up, Enterprise Track, Protothon 2026: The Online UX Hackathon
+- User Experience Design Fundamentals (IBM)
+- Graphic Design Essentials (Canva)
+- Microsoft UX Design (Microsoft)
+- Microsoft IT Support Specialist (Microsoft)
+- Google Prompting Essentials and Google Agile Essentials (Google)
+- Junior Cybersecurity Analyst and IT Customer Support Basics (Cisco Networking Academy)
+- IT Specialist - Network Security (Certiport)
+
+## Contact
+
+- Email: mylebalidoy@gmail.com
+- LinkedIn: https://www.linkedin.com/in/mylebalidoy/
+- Behance: https://www.behance.net/mylebalidoy/
+- GitHub: https://github.com/myblduh
