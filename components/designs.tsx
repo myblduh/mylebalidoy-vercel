@@ -68,7 +68,7 @@ function DesignCard({
 
       <div className="flex flex-1 flex-col p-5 md:p-8">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-base md:text-xl lg:text-2xl font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-brand">
+          <h3 className="min-w-0 flex-1 truncate text-base font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-brand md:overflow-visible md:whitespace-normal md:text-xl lg:text-2xl">
           {design.title}
         </h3>
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full md:h-11 md:w-11 border border-foreground/15 transition-all duration-300 group-hover:bg-brand group-hover:text-white group-hover:border-brand">

@@ -149,7 +149,7 @@ export default function GalleryTeaser() {
             </Reveal>
           </div>
           <Reveal delay={0.2}>
-            <Link href="/gallery" className="pill-button gap-2 px-8 py-4">
+            <Link href="/gallery" className="pill-button gap-1.5 px-5 py-2.5 text-xs sm:gap-2 sm:px-8 sm:py-4 sm:text-[13px]">
               <Lock size={15} /> Enter the gallery <ArrowUpRight size={16} />
             </Link>
           </Reveal>

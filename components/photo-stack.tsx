@@ -80,8 +80,6 @@ export default function PhotoStack() {
             <span className="absolute inset-x-0 bottom-3 text-center font-display text-lg italic text-black/70">
               {p.caption}
             </span>
-            {top && (
-            )}
           </motion.button>
         );
       })}

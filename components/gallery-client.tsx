@@ -483,7 +483,7 @@ export default function GalleryClient({
                 {c.type}
               </span>
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-2 pr-11 pt-6 text-[11px] font-semibold leading-tight text-white">
-                {c.label}
+                <span className="line-clamp-3">{c.label}</span>
               </span>
             </Link>
             <HeartButton ns="cases" id={c.id} className="absolute bottom-1.5 right-1.5 z-20" />
@@ -521,7 +521,7 @@ export default function GalleryClient({
                   </span>
                 )}
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] bg-gradient-to-t from-black/75 to-transparent p-2 pr-11 pt-8 text-[11px] font-semibold leading-tight text-white">
-                  <span className="line-clamp-2">{g.label}</span>
+                  <span className="line-clamp-3">{g.label}</span>
                 </span>
                 <button
                   onClick={() => toggleLike(g.id)}
