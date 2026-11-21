@@ -1,31 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  Award,
-  ArrowUpRight,
-  ChevronDown,
-  ChevronUp,
-  ExternalLink,
-  X,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Reveal, Eyebrow, WordReveal } from "@/components/reveal";
+import MediaViewer, { type ViewerItem } from "@/components/media-viewer";
 
 import certificationsData from "@/data/certifications.json";
-
-interface CertificationLink {
-  text: string;
-  url: string;
-}
 
 interface Certification {
   title: string;
@@ -34,181 +15,165 @@ interface Certification {
   issuer: string;
   date: string;
   skills: string[];
-  links?: CertificationLink[];
+  links?: { text: string; url: string }[];
 }
 
 export default function Certifications() {
-  const [selectedCertification, setSelectedCertification] =
-    useState<Certification | null>(null);
-  const [showAll, setShowAll] = useState(false);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+  const rail = useRef<HTMLDivElement>(null);
+  const anim = useRef(0);
 
   const certifications: Certification[] = certificationsData;
+  const viewerItems: ViewerItem[] = certifications.map((x) => ({
+    id: x.title,
+    title: x.title,
+    subtitle: `${x.issuer} · ${x.date}`,
+    image: x.image,
+    description: x.description,
+    tags: x.skills,
+    links: x.links,
+  }));
 
-  const visibleCertifications = showAll
-    ? certifications
-    : certifications.slice(0, 6);
-  const hasMoreToShow = certifications.length > 6;
+  const sync = () => {
+    const el = rail.current;
+    if (!el) return;
+    // an unmeasured (zero-width) rail must never count as "at the end"
+    const measured = el.scrollWidth > el.clientWidth + 8;
+    setAtStart(!measured || el.scrollLeft < 8);
+    setAtEnd(measured && el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
+  };
+  useEffect(() => {
+    const el = rail.current;
+    if (!el) return;
+    sync();
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    Array.from(el.children).forEach((c) => ro.observe(c));
+    return () => ro.disconnect();
+  }, []);
+
+  const nudge = (dir: 1 | -1) => {
+    const el = rail.current;
+    if (!el) return;
+    const card = el.children[0] as HTMLElement | undefined;
+    const step = (card?.offsetWidth ?? 360) + 24;
+    const per = Math.max(1, Math.floor(el.clientWidth / step));
+    const max = el.scrollWidth - el.clientWidth;
+    const from = el.scrollLeft;
+    const to = Math.max(0, Math.min(max, from + dir * step * per));
+    if (to === from) return;
+    cancelAnimationFrame(anim.current);
+    el.style.scrollSnapType = "none"; // snapping is paused while we animate, then restored
+    const start = performance.now();
+    const DURATION = 650;
+    const ease = (t: number) => 1 - Math.pow(1 - t, 4); // easeOutQuart: quick start, soft landing
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / DURATION);
+      el.scrollLeft = from + (to - from) * ease(t);
+      if (t < 1) anim.current = requestAnimationFrame(tick);
+      else el.style.scrollSnapType = "";
+    };
+    anim.current = requestAnimationFrame(tick);
+  };
 
   return (
-    <section id="certifications" className="py-12 sm:py-14 md:py-16 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-6 md:mb-8 max-w-3xl">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
-            Certifications
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm leading-relaxed max-w-2xl">
-            Industry-recognized credentials that validate my expertise in
-            various technical domains.
-          </p>
-        </div>
+    <section id="certifications" className="px-6 py-12 sm:py-16 md:px-12 md:py-24 lg:px-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-6 md:mb-10">
+          <div className="max-w-3xl">
+            <Reveal>
+              <Eyebrow n="06" label="Credentials" />
+            </Reveal>
+            <h2 className="mb-4 text-3xl font-bold tracking-tighter text-foreground md:text-5xl">
+              <WordReveal text="Certificates I've earned" highlight={["earned"]} />
+            </h2>
+            <p className="max-w-2xl text-xs leading-relaxed text-gray-500 dark:text-gray-400 md:text-sm">
+              Swipe or use the arrows through {certifications.length} certificates. Tap one to see it up close.
+            </p>
+          </div>
 
-        {/* 2-Column Grid List */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          {visibleCertifications.map((cert, index) => (
-            <motion.div
-              key={cert.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -8, scale: 1.01 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              onClick={() => setSelectedCertification(cert)}
-              className="project-card group cursor-pointer p-6 flex justify-between items-center gap-6"
+          {/* Arrows (shown on phones too) */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => nudge(-1)}
+              disabled={atStart}
+              aria-label="Previous certificates"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 sm:h-12 sm:w-12 transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-30"
             >
-              <div className="flex-1">
-                <span className="text-xs font-semibold tracking-normal text-brand px-3 py-1 bg-brand/5 dark:bg-brand/10 rounded-full border border-brand/10 w-fit mb-3 inline-block">
-                  {cert.issuer}
-                </span>
-                <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-brand transition-colors duration-300 tracking-tight leading-tight line-clamp-2">
-                  {cert.title}
-                </h3>
-                <span className="text-xs text-foreground/50 font-medium mt-3 block">
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              onClick={() => nudge(1)}
+              disabled={atEnd}
+              aria-label="Next certificates"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 sm:h-12 sm:w-12 transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Swipeable rail of certificate previews (bleeds to the screen edge) */}
+      <Reveal y={40}>
+        <div
+          ref={rail}
+          onScroll={sync}
+          onPointerDown={() => {
+            cancelAnimationFrame(anim.current);
+            if (rail.current) rail.current.style.scrollSnapType = "";
+          }}
+          onWheel={() => {
+            cancelAnimationFrame(anim.current);
+            if (rail.current) rail.current.style.scrollSnapType = "";
+          }}
+          className="no-scrollbar -mx-6 flex snap-x snap-mandatory -mt-6 gap-4 overflow-x-auto px-[max(1.5rem,calc((100vw-min(78vw,380px))/2))] sm:px-[max(1.5rem,calc((100vw-360px)/2))] pb-6 pt-8 md:-mx-12 md:scroll-pl-12 md:gap-6 md:px-12 lg:-mx-20 lg:scroll-pl-20 lg:px-20"
+        >
+          {certifications.map((cert, i) => (
+            <button
+              key={cert.title}
+              type="button"
+              onClick={() => setOpenIdx(i)}
+              aria-label={`View certificate: ${cert.title}`}
+              className="group flex w-[78vw] max-w-[380px] shrink-0 snap-center flex-col md:snap-start cursor-pointer text-left sm:w-[360px]"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-foreground/10 bg-white shadow-md transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-brand/60 group-hover:shadow-[0_28px_56px_-24px_rgba(139,92,246,0.45)] dark:bg-[#16161a]">
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  fill
+                  sizes="(max-width: 640px) 78vw, 380px"
+                  className="object-contain p-2"
+                  draggable={false}
+                />
+              </div>
+              <div className="mt-4 flex items-start justify-between gap-3 px-1">
+                <div className="min-w-0">
+                  <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/45">
+                    {cert.issuer}
+                  </p>
+                  <h3 className="mt-1 line-clamp-2 min-h-[2.75rem] text-base font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-brand">
+                    {cert.title}
+                  </h3>
+                </div>
+                <span className="shrink-0 whitespace-nowrap pt-0.5 text-right font-display text-base italic text-brand">
                   {cert.date}
                 </span>
               </div>
-
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold tracking-normal text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
-                  View Certificate
-                </span>
-                <div className="w-10 h-10 rounded-full border border-foreground/10 group-hover:border-brand flex items-center justify-center text-foreground/50 group-hover:text-brand group-hover:bg-brand/5 transition-all duration-300 shrink-0">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-            </motion.div>
+            </button>
           ))}
         </div>
+      </Reveal>
 
-        {/* View All Button */}
-        {hasMoreToShow && (
-          <div className="flex justify-center mt-12">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="pill-button px-10 py-4 flex items-center gap-3"
-            >
-              <span className="text-xs sm:text-sm font-semibold tracking-normal">
-                {showAll ? "Show Less" : "View All Certifications"}
-              </span>
-              {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Certification Details Dialog */}
-      <Dialog
-        open={!!selectedCertification}
-        onOpenChange={(open) => !open && setSelectedCertification(null)}
-      >
-        <DialogContent aria-describedby={undefined} className="w-[95vw] max-w-[1400px] bg-background dark:bg-[#0a0a0a] border border-foreground/10 rounded-3xl h-auto max-h-[90dvh] md:h-[90dvh] overflow-hidden p-0 [&>button]:hidden shadow-2xl flex flex-col">
-          {/* Custom Close Button */}
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50">
-            <DialogClose asChild>
-              <Button className="w-10 h-10 p-0 focus-visible:ring-0 bg-black/80 hover:bg-black text-white backdrop-blur-md rounded-full border border-white/10 shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
-                <X className="w-4 h-4" />
-                <span className="sr-only">Close</span>
-              </Button>
-            </DialogClose>
-          </div>
-
-          <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden no-scrollbar">
-            {/* Visual Column */}
-            <div className="w-full h-full sm:col-span-7 lg:col-span-8 bg-white flex flex-col items-center justify-center p-4 sm:p-8">
-              {selectedCertification && (
-                <div className="relative w-full h-full min-h-[300px] flex items-center justify-center drop-shadow-2xl">
-                  <Image
-                    src={selectedCertification.image || "/placeholder.svg"}
-                    alt={selectedCertification.title}
-                    width={1200}
-                    height={800}
-                    quality={100}
-                    unoptimized
-                    className="w-full h-full object-contain"
-                    draggable={false}
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Content Column */}
-            <div className="p-8 sm:p-12 flex flex-col sm:overflow-y-auto h-auto sm:h-full sm:col-span-5 lg:col-span-4 bg-[#fcfcfc] dark:bg-[#0a0a0a] border-l border-foreground/5 no-scrollbar">
-              <DialogHeader className="text-left mb-8 mt-4 sm:mt-12">
-                <DialogTitle className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-tight tracking-tight">
-                  {selectedCertification?.title}
-                </DialogTitle>
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="px-3 py-1 bg-purple-100 text-purple-700 border-purple-300 dark:bg-brand/10 dark:text-brand dark:border-brand/20 text-xs font-semibold tracking-normal rounded-full border">
-                    {selectedCertification?.issuer}
-                  </span>
-                  <span className="px-3 py-1 bg-foreground/5 text-foreground/70 text-xs font-medium tracking-normal rounded-full border border-foreground/5">
-                    {selectedCertification?.date}
-                  </span>
-                </div>
-              </DialogHeader>
-
-              <div className="mb-12">
-                <p className="text-foreground/60 leading-relaxed text-sm md:text-base font-medium">
-                  {selectedCertification?.description}
-                </p>
-              </div>
-
-              <div className="mt-auto pt-8 border-t border-foreground/10 flex flex-col gap-8">
-                <div className="flex flex-wrap gap-2">
-                  {selectedCertification?.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2.5 sm:px-3 py-1 bg-foreground/5 text-foreground/75 text-xs font-medium tracking-normal rounded-full border border-foreground/5"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  {selectedCertification?.links?.map((link, i) => (
-                    <Button
-                      key={i}
-                      asChild
-                      variant="default"
-                      className="w-full rounded-full text-xs sm:text-sm font-semibold tracking-normal gap-3 py-3.5 sm:py-4 bg-brand hover:bg-brand/90 text-white shadow-md"
-                    >
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center"
-                      >
-                        {link.text}
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <MediaViewer
+        items={viewerItems}
+        index={openIdx}
+        onIndex={setOpenIdx}
+        onClose={() => setOpenIdx(null)}
+        likeKey="certs"
+      />
     </section>
   );
 }

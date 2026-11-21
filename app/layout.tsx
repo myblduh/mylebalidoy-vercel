@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, DM_Sans } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.scss";
 import { ThemeProvider } from "@/components/theme-provider";
 import LoadingScreen from "@/components/loading-screen";
@@ -12,9 +12,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const displaySerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-dm",
+  variable: "--font-display",
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -25,11 +27,11 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Myle Balidoy | UI/UX Designer Portfolio",
+    default: "Myle Balidoy | UI/UX Designer",
     template: "%s | Myle Balidoy",
   },
   description: SITE_DESCRIPTION,
-  applicationName: "Myle Balidoy Portfolio",
+  applicationName: "Myle Balidoy'sre Portfolio",
   keywords: [
     "Myle Balidoy",
     "UI/UX Designer",
@@ -99,7 +101,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
-        className={`${dmSans.variable} ${inter.variable} font-sans`}
+        className={`${displaySerif.variable} ${inter.variable} font-sans`}
         suppressHydrationWarning
       >
         <ThemeProvider

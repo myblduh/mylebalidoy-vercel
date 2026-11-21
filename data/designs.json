@@ -1,37 +1,153 @@
 [
   {
-    "title": "Blueshift Residential & Commercial Landing Page Redesign",
-    "image": "/assets/designs/blueshift.png",
+    "slug": "solar-landing-page-redesign",
+    "title": "Solar Energy Landing Page: Residential & Commercial Redesign",
+    "image": "/assets/designs/solar-redesign.png",
     "date": "July - Sep. 2026",
-    "description": "Redesigned the landing page for Blueshift Energy, a solar energy company offering residential and commercial solar solutions. The project focused on presenting complex solar information in a clear, engaging, and conversion-focused experience while maintaining a modern and trustworthy visual identity.",
+    "platform": "web",
+    "confidential": true,
+    "role": "UI/UX Designer",
+    "description": "Redesigned the landing page for a solar energy company offering residential and commercial solar solutions. The project focused on presenting complex solar information in a clear, engaging, and conversion-focused experience while maintaining a modern and trustworthy visual identity.",
+    "overview": [
+      "A solar energy company needed a landing page that could speak to two very different audiences at once: homeowners comparing monthly savings, and businesses evaluating long-term return on investment.",
+      "The redesign reorganizes dense technical information into a clear story: who it is for, how it works, what it costs, and what to do next. The visual direction is modern and trustworthy, with a reusable Figma design system so the page can grow without drifting."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Audit the existing page",
+        "text": "Mapped the current content and flow to find where visitors were most likely to get lost between 'learning about solar' and 'requesting a quote'."
+      },
+      {
+        "title": "Split the journey by audience",
+        "text": "Residential and commercial visitors care about different proof points, so the structure gives each its own path without duplicating the page."
+      },
+      {
+        "title": "Build the system first",
+        "text": "Defined type, color, spacing and component rules in Figma before laying out sections, so every block stays consistent."
+      },
+      {
+        "title": "Prototype and hand off",
+        "text": "Linked the responsive layouts into a clickable prototype and prepared them for implementation in Webflow."
+      }
+    ],
     "links": [
       {
         "text": "View Prototype",
-        "url": "https://www.figma.com/proto/b7GGbp0OTOxl5rEy48J2FS/Blueshift-Landing-Page"
+        "url": "https://www.figma.com/proto/b7GGbp0OTOxl5rEy48J2FS/Prototype"
       }
     ],
-    "skills": ["UX Design", "Figma", "Webflow"]
+    "skills": [
+      "UX Design",
+      "Figma",
+      "Webflow"
+    ]
   },
   {
+    "slug": "trackify",
     "title": "Trackify: Inventory Management System",
     "image": "/assets/designs/trackify.png",
     "date": "May 2026",
-    "description": "Trackify is an all-in-one inventory tool built to handle demands for campus institutions. It has features such as real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports. It aims to make the inventory process easier for property custodians and logistical staff. Won 2nd place out of 35 teams in the Enterprise category for Protothon 2026.",
+    "platform": "web",
+    "role": "UX Designer",
+    "description": "Trackify is an inventory management system designed to simplify check-in and check-out workflows, track loss and damages, and manage university assets efficiently. Designed in just 15 hours for Protothon 2026, it won 2nd place out of 35 teams in the Enterprise track of an international online UX design competition.",
+    "overview": [
+      "Schools, colleges, sports gyms and IT departments manage large quantities of shared equipment every day. Cameras, laptops, bats and racquet gear constantly flow between staff and users, and traditional paper logs or spreadsheets lead to lost equipment, unresolved disputes over damage and wasted administrative hours.",
+      "Trackify is an enterprise-grade equipment tracking platform that makes checking items in and out fast, clear and frictionless. It features real-time borrower metadata, overdue alerts, barcode printing and scanning, and condition logs for property custodians and administrative staff."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Frictionless checkout",
+        "text": "Custodians scan a barcode, enter borrower details (name and email) and check out single or bulk items in seconds."
+      },
+      {
+        "title": "Real-time custody",
+        "text": "Each item keeps a detailed log of borrower history, check-in condition and active rental status, which removes disputes over damage."
+      },
+      {
+        "title": "Barcode printing built in",
+        "text": "Custodians can generate and print unique barcodes while creating an item, so all new gear is trackable from day one."
+      },
+      {
+        "title": "Research under a deadline",
+        "text": "A competitive analysis of legacy software like GigaTrak exposed gaps in experience and flexibility. A feature-prioritization matrix then split V1 (custodian dashboard, quick scan, borrower logs) from V2 (public reservation catalogs, borrower profiles)."
+      }
+    ],
     "links": [
       {
         "text": "View Prototype",
         "url": "https://www.figma.com/proto/hQF02ka1GxlybupM4Nlux3/Trackify-by-memoa.dev?node-id=0-1&t=j3AbChMaV5Bwysgt-1"
       },
-      { "text": "Presentation", "url": "https://canva.link/4dufmvv0e0qtcxf" }
+      {
+        "text": "Presentation",
+        "url": "https://canva.link/4dufmvv0e0qtcxf"
+      }
     ],
-    "skills": ["UX Design", "Figma", "System Design"],
-    "award": "2nd Place (Protothon 2026)"
+    "skills": [
+      "UX Design",
+      "Figma",
+      "System Design"
+    ],
+    "award": "1st Runner-Up (Protothon 2026)",
+    "challenge": "How might we help property custodians manage a high volume of university equipment for an effortless tracking experience?",
+    "results": [
+      "Won 2nd place out of 35 teams in the Enterprise track of Protothon 2026, an international online UX design competition.",
+      "Check-in and check-out run on barcode and bulk operations, with condition logs for damage and loss and instant flags for overdue returns.",
+      "By centering V1 on the administrative side, the clean UI removes clutter so staff can process items with minimal cognitive load.",
+      "Next: a reservation system, user account views and public item catalogs so borrowers can check availability beforehand."
+    ],
+    "figures": [
+      {
+        "src": "/assets/casestudies/trackify/user-persona.png",
+        "caption": "User persona: the property custodian Trackify is built around.",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/assets/casestudies/trackify/pain-points.png",
+        "caption": "Pain points found in how equipment is tracked today.",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/assets/casestudies/trackify/typography.png",
+        "caption": "Typography and colors for the Trackify interface.",
+        "width": 2529,
+        "height": 954
+      },
+      {
+        "src": "/assets/casestudies/trackify/result.png",
+        "caption": "The final Trackify dashboard and key screens.",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
   },
   {
+    "slug": "payonnect",
     "title": "Payonnect: Smart Umbrella Sharing System",
     "image": "/assets/designs/payonnect.png",
     "date": "Oct. 2025",
+    "platform": "mobile",
+    "role": "Product Designer",
     "description": "Payonnect is a convenient and eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes. The system tracks transactions, manages inventory and applies fair penalties for damaged or unreturned umbrellas.",
+    "overview": [
+      "Sudden rain catches commuters without an umbrella, while single-use purchases create waste. Payonnect lets people borrow an umbrella from an automated kiosk and return it at any other kiosk.",
+      "The mobile experience is built around one QR scan: pick up, ride, return. Behind it, the system tracks transactions, manages kiosk inventory, and applies fair penalties for damaged or unreturned umbrellas."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Reduce the flow to one scan",
+        "text": "Borrowing happens in the rain, often one-handed, so the primary path is a single QR scan with minimal confirmation."
+      },
+      {
+        "title": "Design the physical and digital together",
+        "text": "Screens were planned alongside the kiosk interaction so what the user sees matches what the hardware does."
+      },
+      {
+        "title": "Make penalties feel fair",
+        "text": "Clear return windows and transparent charges keep the rules understandable before a user ever borrows."
+      }
+    ],
     "links": [
       {
         "text": "View Prototype",
@@ -42,26 +158,100 @@
         "url": "https://www.behance.net/gallery/240213963/Payonnect-Smart-Umbrella-Sharing-System"
       }
     ],
-    "skills": ["Product Design", "Figma", "IoT UI"]
+    "skills": [
+      "Product Design",
+      "Figma",
+      "IoT UI"
+    ],
+    "challenge": "How might we make borrowing and returning an umbrella seamless and convenient for commuters caught in unexpected rain?",
+    "results": [
+      "A rental takes under a minute: scan the kiosk QR code, choose a payment method (QR Ph, GCash, Maya, GrabPay) and confirm.",
+      "Late and damaged returns are handled with clear alerts and fair, transparent fees.",
+      "A Business Model Canvas validated the model: rental fees, penalties, passes and kiosk advertising, with LGUs and transit hubs as partners."
+    ],
+    "figures": [
+      {
+        "src": "/assets/casestudies/payonnect/typography.png",
+        "caption": "Typography and colors for the Payonnect interface.",
+        "width": 1919,
+        "height": 2419
+      },
+      {
+        "src": "/assets/casestudies/payonnect/business-model-canvas.png",
+        "caption": "Business Model Canvas validating the kiosk network.",
+        "width": 1658,
+        "height": 933
+      }
+    ]
   },
   {
+    "slug": "iblotter",
     "title": "iBlotter: E-Barangay Blotter System",
     "image": "/assets/designs/iblotter.png",
     "date": "June 2025",
+    "platform": "web",
+    "role": "UX Researcher & UI Designer",
     "description": "iBlotter is a high-fidelity web-based prototype designed to modernize and streamline incident reporting and documentation for Barangay Dila in Sta. Rosa, Laguna. Moving beyond traditional paper forms, this system introduces a secure, digital environment for local officials to manage community concerns with greater efficiency and transparency.",
+    "overview": [
+      "Barangay Dila in Sta. Rosa, Laguna recorded incidents on paper blotters, which made records slow to search, easy to misplace, and hard to summarize.",
+      "iBlotter replaces that with a secure web system where officials can file, find and follow up on community concerns, with a clear record of every step."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Research with the people who use it",
+        "text": "The design started from how barangay officials actually record and look up incidents today."
+      },
+      {
+        "title": "Digitize the form, not the burden",
+        "text": "Paper fields were reworked into structured, guided inputs so entries are faster and more consistent."
+      },
+      {
+        "title": "Build trust through clarity",
+        "text": "Access, status and history are visible in the interface, supporting transparency and accountability."
+      }
+    ],
     "links": [
+      {
+        "text": "View Prototype",
+        "url": "https://www.figma.com/proto/BPgHZY7n3l83rnkCr6yoOJ/iBlotter-UI?node-id=0-1&t=ONLuXXYWxa4DNsxc-1"
+      },
       {
         "text": "Case Study",
         "url": "https://www.behance.net/gallery/242669303/iBlotter-E-Barangay-Blotter-System"
       }
     ],
-    "skills": ["UX Research", "Figma", "Web Prototyping"]
+    "skills": [
+      "UX Research",
+      "Figma",
+      "Web Prototyping"
+    ]
   },
   {
+    "slug": "cosmarket",
     "title": "CosMarket: Buy, Sell, and Rent Cosplays",
     "image": "/assets/designs/cosmarket.png",
     "date": "Mar. 2025",
+    "platform": "mobile",
+    "role": "UI/UX Designer",
     "description": "CosMarket is a mobile e-commerce application that focuses on buying, selling, and renting cosplays. It aims to provide a user-friendly platform for cosplay enthusiasts to access affordable and high-quality cosplay products.",
+    "overview": [
+      "Cosplay is expensive, and a costume is often worn only once or twice. CosMarket gives enthusiasts one place to buy, sell, or rent costumes at a more approachable price.",
+      "The mobile marketplace keeps browsing visual and quick, while listing, renting and checking out stay clear for both buyers and sellers."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Three modes, one flow",
+        "text": "Buying, selling and renting share a consistent structure so users never have to relearn the app."
+      },
+      {
+        "title": "Let the costumes lead",
+        "text": "Large imagery and a restrained UI keep attention on the products."
+      },
+      {
+        "title": "Build trust between strangers",
+        "text": "Seller details, condition information and rental terms are shown up front."
+      }
+    ],
     "links": [
       {
         "text": "View Prototype",
@@ -72,19 +262,110 @@
         "url": "https://www.behance.net/gallery/240193177/CosMarket-Buy-Sell-and-Rent-Cosplays"
       }
     ],
-    "skills": ["Figma", "E-commerce UI", "Marketplace"]
+    "skills": [
+      "Figma",
+      "E-commerce UI",
+      "Marketplace"
+    ],
+    "challenge": "How might we establish a reliable marketplace that guarantees secure transactions for buying, selling and renting cosplay products in the Philippine community?",
+    "results": [
+      "Usability testing with 10 cosplayers: 100% task completion with 0% confusion.",
+      "80% of participants praised the clean layout and intuitive navigation.",
+      "Seller reviews, chat and specialized filters reduce scams, joymining and lowballing seen on generic marketplaces."
+    ],
+    "figures": [
+      {
+        "src": "/assets/casestudies/cosmarket/problem-scams.png",
+        "caption": "Problem 1: scams from unverified listings and accounts.",
+        "width": 519,
+        "height": 503
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/problem-joymining.png",
+        "caption": "Problem 2: joymining, where buyers reserve items but never pay.",
+        "width": 595,
+        "height": 503
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/problem-lowballing.png",
+        "caption": "Problem 3: lowballing that devalues quality props and costumes.",
+        "width": 499,
+        "height": 502
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/user-persona.png",
+        "caption": "User persona: Aiko Tanaka, a college student who buys and sells cosplay.",
+        "width": 1230,
+        "height": 679
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/user-journey-map.png",
+        "caption": "User journey map across buying, selling and renting.",
+        "width": 1230,
+        "height": 688
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/information-architecture.png",
+        "caption": "Information architecture from Homepage to Browse, Product, Account and Checkout.",
+        "width": 1920,
+        "height": 765
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/typography.png",
+        "caption": "Typography and colors: Work Sans with a teal primary and bright accents.",
+        "width": 1920,
+        "height": 1319
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/lowfi-1.png",
+        "caption": "Low-fidelity wireframes.",
+        "width": 866,
+        "height": 529
+      },
+      {
+        "src": "/assets/casestudies/cosmarket/lowfi-2.png",
+        "caption": "Low-fidelity wireframes, continued.",
+        "width": 865,
+        "height": 528
+      }
+    ]
   },
   {
+    "slug": "healthmate",
     "title": "HealthMate: Daily Fitness Tracker",
     "image": "/assets/designs/hmate.png",
     "date": "Nov. 2023",
+    "platform": "mobile",
+    "role": "UI Designer",
     "description": "HealthMate is a mobile application prototype designed using Figma that helps users track their daily fitness activities and monitor their health goals. The app aims to simplify the process of managing workouts and achieving health goals.",
+    "overview": [
+      "Many fitness apps bury the few numbers people check every day. HealthMate keeps daily activity and health goals front and center.",
+      "The prototype focuses on a simple loop: see today, log activity, and check progress toward a goal."
+    ],
+    "behindTheScenes": [
+      {
+        "title": "Start with the daily check-in",
+        "text": "The home screen answers one question first: how am I doing today?"
+      },
+      {
+        "title": "Keep logging effortless",
+        "text": "Common entries take only a few taps so tracking becomes a habit."
+      },
+      {
+        "title": "Show progress, not just data",
+        "text": "Goals and trends are presented visually so progress is easy to read at a glance."
+      }
+    ],
     "links": [
       {
         "text": "View Prototype",
         "url": "https://www.figma.com/proto/V1lKU5yXF3DLreCUuWiq41/ui?node-id=0-1&t=Vu9LkMMEU2Rn6L2I-1"
       }
     ],
-    "skills": ["Mobile UI", "Figma", "Health Tech"]
+    "skills": [
+      "Mobile UI",
+      "Figma",
+      "Health Tech"
+    ]
   }
 ]

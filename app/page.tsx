@@ -3,7 +3,9 @@ import Profile from "@/components/profile";
 import About from "@/components/about";
 import Skills from "@/components/skills";
 import Projects from "@/components/projects";
+import DesignFlow from "@/components/design-flow";
 import Designs from "@/components/designs";
+import GalleryTeaser from "@/components/gallery-teaser";
 import Certifications from "@/components/certifications";
 import { Contact } from "@/components/contact";
 
@@ -140,7 +142,7 @@ const faqSchema = {
           "name": "What are Myle Balidoy's featured projects?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Her featured projects include Trackify (Fleet Management & Tracking Platform), Payonnect (Digital Wallet and Fintech App), Lakbay Calamba (Tourism & Cultural Heritage Platform), CosMarket (Cosplay Marketplace & Community), Blueshift Energy (Solar Energy Landing Page Design System), and HealthMate (Healthcare Platform)."
+            "text": "Her featured projects include Trackify (Fleet Management & Tracking Platform), Payonnect (Digital Wallet and Fintech App), Lakbay Calamba (Tourism & Cultural Heritage Platform), CosMarket (Cosplay Marketplace & Community), Solar Energy Landing Page Redesign (Residential & Commercial), and HealthMate (Healthcare Platform)."
           }
         },
         {
@@ -166,7 +168,9 @@ export default function Home() {
       <Navbar />
       <div>
         <Profile />
+        <DesignFlow />
         <Designs />
+        <GalleryTeaser />
         <Projects />
         <About />
         <Skills />

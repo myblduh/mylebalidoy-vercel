@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { useTheme } from "next-themes";
 
 export default function Navbar() {
+  // On the gallery the navbar tucks away and stays away (it would cover the search bar)
+  const isGallery = usePathname()?.startsWith("/gallery") ?? false;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,7 +25,9 @@ export default function Navbar() {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 10);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      if (isGallery) {
+        setHidden(currentScrollY > 50);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
         setHidden(true);
       } else if (currentScrollY < lastScrollY) {
         setHidden(false);
@@ -31,7 +36,7 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isGallery]);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -47,12 +52,12 @@ export default function Navbar() {
   const handleNavClick = () => setMobileMenuOpen(false);
 
   const navItems = [
-    { name: "Designs", href: "#designs" },
-    { name: "Projects", href: "#projects" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Certifications", href: "#certifications" },
-    { name: "Contact", href: "#contact" },
+    { name: "Designs", href: "/#designs" },
+    { name: "Development", href: "/#projects" },
+    { name: "About", href: "/#about" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Certifications", href: "/#certifications" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -60,11 +65,7 @@ export default function Navbar() {
       <header
         className={`fixed left-0 top-0 w-full z-[110] transition-all duration-500 ease-in-out pointer-events-none ${
           hidden ? "-translate-y-full" : "translate-y-0"
-        } ${
-          scrolled
-            ? "py-4 shadow-sm bg-background/70 dark:bg-[#0a0a0a]/70 backdrop-blur-lg"
-            : "py-6 bg-transparent"
-        }`}
+        } ${scrolled ? "py-4" : "py-6"}`}
       >
         <div className="flex items-center justify-between px-6 md:px-12 w-full gap-4">
           <div className="flex items-center flex-1">
@@ -107,7 +108,7 @@ export default function Navbar() {
             <nav
               className={`header-nav pointer-events-auto ${
                 scrolled
-                  ? "bg-black/5 dark:bg-white/5 backdrop-blur-xl shadow-lg border border-black/10 dark:border-white/10"
+                  ? "bg-white/80 dark:bg-[#0a0a0a]/70 backdrop-blur-xl shadow-lg border border-black/10 dark:border-white/10"
                   : "bg-transparent border-transparent"
               }`}
             >

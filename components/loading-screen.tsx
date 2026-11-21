@@ -46,9 +46,15 @@ export default function LoadingScreen({
   useEffect(() => {
     // The total animation duration is roughly 3s
     // We'll set the "loading state" to false after the exit animations finish
+    // Play the intro once per browser session; repeat visits go straight in.
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("intro-seen") === "1";
+      sessionStorage.setItem("intro-seen", "1");
+    } catch {}
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Wait 3 seconds as requested
+    }, seen ? 0 : 3000);
 
     return () => clearTimeout(timer);
   }, []);

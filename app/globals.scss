@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Typography: Inter for UI + body. Instrument Serif only for highlights
+   (an italic accent word in a heading, numerals, pull-quotes). */
+.font-display,
+.hl {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+.hl {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em; /* Instrument Serif runs a little small next to Inter */
+  letter-spacing: 0.005em; /* never inherit the tight heading tracking */
+  line-height: 0; /* never grow the line box, so the word shares the baseline of the text around it */
+  padding-inline: 0.06em; /* room for italic overhang */
+  text-transform: none;
+  color: var(--brand-accent);
+}
+
+/* Tools ticker in the hero */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Private gallery: nothing prints (also disables "Save as PDF" of the page). */
+@media print {
+  .gallery-protect { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+}
+
 /* Hide scrollbar across all browsers while keeping scroll functionality */
 html, body {
   scrollbar-width: none; /* Firefox */
@@ -36,6 +77,7 @@ body::-webkit-scrollbar {
 
   /* Section backgrounds - Shades of White/Light Gray */
   --bg-profile: #ffffff;
+  --bg-process: #f3effe; /* soft lavender, so the design flow isn't plain white */
   --bg-designs: #f9fafb;
   --bg-projects: #f3f4f6;
   --bg-about: #ffffff;
@@ -57,6 +99,7 @@ body::-webkit-scrollbar {
 
   /* Section backgrounds - Shades of Black/Dark Gray */
   --bg-profile: #0a0a0a;
+  --bg-process: #150f2b; /* deep violet-black instead of neutral black */
   --bg-designs: #121214;
   --bg-projects: #18181c;
   --bg-about: #0a0a0a;
@@ -76,7 +119,7 @@ html {
 }
 
 body {
-  font-family: var(--font-dm), var(--font-inter), sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   background-color: var(--background);
   color: var(--foreground);
   transition: background-color 0.5s ease, color 0.5s ease;
@@ -105,6 +148,9 @@ section {
 
 #profile {
   background-color: var(--bg-profile);
+}
+#process {
+  background-color: var(--bg-process);
 }
 #designs {
   background-color: var(--bg-designs);
@@ -225,3 +271,20 @@ section {
 }
 
 
+
+/* Tinted purple tag (skills, case studies, development). The brand color is a CSS variable,
+   so Tailwind's bg-brand/15 style opacity classes can't tint it; this does. */
+.tag-purple {
+  background: rgba(139, 92, 246, 0.14);
+  border: 1px solid rgba(139, 92, 246, 0.32);
+  color: #6d3fe0;
+}
+.dark .tag-purple {
+  background: rgba(167, 139, 250, 0.18);
+  border-color: rgba(167, 139, 250, 0.4);
+  color: #c4b5fd;
+}
+.tag-purple-hover:hover {
+  background: rgba(139, 92, 246, 0.22);
+  border-color: rgba(139, 92, 246, 0.55);
+}

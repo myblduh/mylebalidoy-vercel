@@ -1,0 +1,235 @@
+{
+  "_readme": "Edit freely. label = display name, type = tag on the tile, description = caption in the viewer, wovlo = credit as Wovlo Studio work. Non-Wovlo designs are presented as redesign concepts.",
+  "digital-cat-and-dog-treats": {
+    "label": "Cat & Dog Treats",
+    "type": "Redesign",
+    "description": "A mobile store for pet treats. A bold orange hero with a playful \"Pet-Approved Zoomies\" headline leads into product and trust sections, with a free-shipping bar and an always-reachable cart."
+  },
+  "digital-fragrance": {
+    "label": "Home Fragrance & Candles",
+    "type": "Redesign",
+    "description": "A warm, earthy mobile design for a clean-ingredient candle and room spray brand. A lifestyle hero, star-rating social proof and a seasonal \"Shop Autumn Favorites\" call to action keep the focus on the products."
+  },
+  "digital-garment-care-products": {
+    "label": "Garment Steamer",
+    "type": "Redesign",
+    "description": "A light, editorial mobile design for a combined iron and steamer. A calm blue palette and a simple \"press, steam and go in minutes\" message make the product feel effortless."
+  },
+  "digital-hygiene": {
+    "label": "Plant-Based Cleaning",
+    "type": "Redesign",
+    "description": "A premium mobile design for plant-based home cleaning products. A serif headline with an italic accent, a high-contrast black call to action and review stars give everyday cleaning a luxury feel."
+  },
+  "digital-ice-pops": {
+    "label": "Organic Ice Pops",
+    "type": "Redesign · Mobile + Web",
+    "description": "A playful, high-energy design for chef-crafted organic ice pops, designed for both mobile and desktop. Bold magenta and purple type pairs with clear actions to find pops nearby or book a pop party."
+  },
+  "digital-jewelry": {
+    "label": "Jewelry",
+    "type": "Redesign",
+    "description": "A minimal, editorial mobile design for a jewelry brand. A large portrait hero lets the pieces speak, with restrained navigation and generous white space."
+  },
+  "digital-kids-apparel": {
+    "label": "Kids Apparel",
+    "type": "Redesign",
+    "description": "A soft, neutral mobile design for baby and kids clothing. Warm photography and gentle typography communicate comfort and quality at first glance."
+  },
+  "digital-outdoor-apparel": {
+    "label": "Outdoor Apparel",
+    "type": "Redesign",
+    "description": "A clean mobile design for outdoor and travel apparel. A full-width group shot and the \"Pack Less. Do More.\" message position the clothing around real use."
+  },
+  "digital-pet-treats": {
+    "label": "Allergy-Friendly Dog Treats",
+    "type": "Redesign",
+    "description": "A mobile design for fresh, allergy-friendly dog treats. A warm cream and tan palette, product-pack photography and a 4.8-star rating build trust for owners of sensitive pups."
+  },
+  "digital-pumpkin-spice": {
+    "label": "Pumpkin Spice Energy Mix",
+    "type": "Redesign",
+    "description": "A seasonal mobile design for a pumpkin spice energy drink mix. Autumn leaves, a hand-held product shot and a five-star review line sell the limited-time flavor."
+  },
+  "digital-scent-candle": {
+    "label": "Luxury Scented Candles",
+    "type": "Redesign",
+    "description": "A dark, moody mobile design for luxury candles inspired by hotel lobbies. The \"Your Personal Scent Concierge\" message and a glowing candle hero set an upscale tone."
+  },
+  "digital-seed-crisps": {
+    "label": "Seed Crisps",
+    "type": "Redesign",
+    "description": "A fresh, friendly mobile design for seed-filled crisps. A confident serif headline, a deep green \"Shop the crisps\" button and playful product packs make snacking feel premium."
+  },
+  "digital-skin-care": {
+    "label": "Sensitive Skin Care",
+    "type": "Redesign",
+    "description": "A soft peach mobile design for a skincare line for sensitive skin. Large product photography, a free-shipping bar and a clean cart-first header keep shopping quick."
+  },
+  "digital-skin-glow": {
+    "label": "Natural Skin Serums",
+    "type": "Redesign",
+    "description": "A natural-look mobile design for undiluted, sensitive-skin serums. Products on stone and sand tones back the \"Nature, undiluted\" message, with money-back and free-delivery reassurance."
+  },
+  "digital-whey-protein": {
+    "label": "Grass-Fed Whey Protein",
+    "type": "Redesign",
+    "description": "A bold, trust-led mobile design for grass-fed whey protein. A strong \"There's a reason we're #1\" headline, lab-tested badges and shipping guarantees support a high-contrast black call to action."
+  },
+  "social-behind-the-scenes": {
+    "label": "Your Order's Journey",
+    "type": "Carousel",
+    "wovlo": true,
+    "description": "A five-slide carousel that walks followers through what happens to an order from checkout to their door, using warm photography and large, friendly type."
+  },
+  "social-bigbang-lightstick": {
+    "label": "Bigbang Lightstick Pre-order",
+    "type": "Story Promo",
+    "wovlo": true,
+    "description": "Vertical story ad for an official lightstick pre-order. Black and gold styling, a glowing product hero and a diagonal \"Slots this batch\" ribbon create urgency."
+  },
+  "social-bts-lightstick": {
+    "label": "BTS Lightstick Pre-order",
+    "type": "Story Promo",
+    "wovlo": true,
+    "description": "Vertical story ad for an official lightstick pre-order in the fan group's lavender palette, with a large product image and a limited-slots ribbon."
+  },
+  "social-christmas-bonus": {
+    "label": "Christmas Bonus",
+    "type": "Holiday Promo",
+    "wovlo": true,
+    "description": "A festive red announcement post with a shopping-bag-toting model, a Christmas tree and a handwritten wishlist note, inviting followers to claim their holiday bonus."
+  },
+  "social-cosrx-skincare-favorites": {
+    "label": "Korean Skincare Starter Kit",
+    "type": "Product Feature",
+    "wovlo": true,
+    "description": "Three-part story set featuring a five-step Korean skincare starter kit built around a popular brand's favorites, ending with a prompt to comment or message a wishlist."
+  },
+  "social-favorite-skincare": {
+    "label": "Spill Your Holy Grails",
+    "type": "Engagement Post",
+    "wovlo": true,
+    "description": "A friendly, lime-and-purple engagement post asking followers for their skincare holy grails, shown in portrait and feed-sized versions."
+  },
+  "social-first-batch-is-open": {
+    "label": "First Batch Is Now Open",
+    "type": "Announcement",
+    "wovlo": true,
+    "description": "Launch announcement for the first order batch with its open dates, using torn-paper shapes, sticker details and a winking model for a lively, on-brand feel."
+  },
+  "social-group-buy-discount": {
+    "label": "Buy Together, Bigger Savings",
+    "type": "Promo",
+    "wovlo": true,
+    "description": "Explains tiered group-buy discounts of 3%, 5% and 10% with starburst badges, branded boxes and a shopping bag, so the savings are understood at a glance."
+  },
+  "social-group-lightsticks": {
+    "label": "Official K-pop Lightsticks Collection",
+    "type": "Pre-order Promo",
+    "wovlo": true,
+    "description": "Teases an upcoming batch of official lightsticks with a lineup of products on a pink pedestal, trust icons and a \"Reserve yours now\" button."
+  },
+  "social-how-it-works": {
+    "label": "How It Works",
+    "type": "Carousel",
+    "wovlo": true,
+    "description": "Four-slide educational carousel that explains the ordering process step by step, with a dotted path, simple icons and a clear \"Start here\" opening."
+  },
+  "social-katseye-lightstick": {
+    "label": "Katseye Lightstick",
+    "type": "Story Promo",
+    "wovlo": true,
+    "description": "Teaser story asking \"Is your lightstick ready?\" ahead of a release, built around a silver product image on a soft lavender background."
+  },
+  "social-linkedin-post": {
+    "label": "Traffic vs Conversions",
+    "type": "LinkedIn Post",
+    "wovlo": true,
+    "description": "A B2B thought-leadership post about websites that get traffic but not sales. A simple funnel diagram (ad, landing page, product page, cart, checkout) leads to a \"Book a discovery call\" button."
+  },
+  "social-product-disclaimer": {
+    "label": "A Little Note About Our Products",
+    "type": "Informational Post",
+    "wovlo": true,
+    "description": "A clear, friendly disclaimer explaining that product photos are for illustration, brand names belong to their owners, and actual items may vary slightly."
+  },
+  "social-romandnd-makeup-favorites": {
+    "label": "Your Go-To Makeup Shade",
+    "type": "Engagement Post",
+    "wovlo": true,
+    "description": "A colorful makeup engagement post asking followers for their go-to product or shade, with lip tints, cushion and palette product shots and a \"Message us now\" prompt."
+  },
+  "social-shipped-from-korea": {
+    "label": "Shipped Direct From Korea",
+    "type": "Brand Post",
+    "wovlo": true,
+    "description": "A set of posts showing that products ship straight from Seoul, with trust icons for real Korean brands, direct sourcing and reliable delivery."
+  },
+  "social-teaser": {
+    "label": "We're Coming Back",
+    "type": "Teaser",
+    "wovlo": true,
+    "description": "A vibrant purple teaser, styled as a parcel label with a \"Coming Back\" stamp, announcing the shop's return with K-beauty, K-makeup and K-pop finds."
+  },
+  "social-torriden": {
+    "label": "Cica Soothing Cream",
+    "type": "Product Feature",
+    "wovlo": true,
+    "description": "A fresh green product spotlight for a soothing cica cream, pairing a model applying the cream with a close-up jar and clear ingredient callout."
+  },
+  "social-voucher-post": {
+    "label": "₱50 First Order Voucher",
+    "type": "Promo",
+    "wovlo": true,
+    "description": "A welcome-voucher post that offers a ₱50 discount on a first purchase, featuring a smiling model holding the voucher and gift boxes."
+  },
+  "banners-5-off-banner": {
+    "label": "5% Off Your Next Korean Find",
+    "type": "Promo Banner",
+    "wovlo": true,
+    "description": "Wide promotional banners offering 5% off, with shoppers, product boxes and a bold \"Your next Korean find is here\" message."
+  },
+  "banners-cover-photo": {
+    "label": "Discover More. Shop Wovlo.",
+    "type": "Cover Photo",
+    "wovlo": true,
+    "description": "Cover photos for the brand's social pages, introducing the shop (\"Discover more. Shop Wovlo\") with branded shopping bags and category cues for K-beauty, makeup and K-pop."
+  },
+  "banners-join-the-waitlist": {
+    "label": "Join the Waitlist",
+    "type": "Banner",
+    "wovlo": true,
+    "description": "Compact banners inviting people to join the waitlist and start their own business, showing the app on a phone beside branded parcels."
+  },
+  "banners-mobile-app-banner": {
+    "label": "Shop From Korea",
+    "type": "App Banner",
+    "wovlo": true,
+    "description": "A small in-app banner with a night-street Seoul backdrop and a lime \"Shop now\" button promoting K-beauty, skincare and more."
+  },
+  "appstore-budget-tracker": {
+    "label": "Budget Tracker",
+    "type": "App Store",
+    "description": "One of my first graphics for Improbable Labs. Four App Store thumbnails that introduce receipt scanning, saving, and organizing spending by category, on a bright blue background."
+  },
+  "appstore-color-scanner": {
+    "label": "Color Scanner",
+    "type": "App Store",
+    "description": "One of my first graphics for Improbable Labs. Four App Store thumbnails for a color scanner app: detect colors in real time, see HEX and RGB values, save them, and browse the full library."
+  },
+  "appstore-monthly-planner": {
+    "label": "Monthly Planner",
+    "type": "App Store",
+    "description": "One of my first graphics for Improbable Labs. Four App Store thumbnails for a planner app, covering the daily schedule, a calendar view, quick plan creation, and event history in a soft sky-blue style."
+  },
+  "appstore-pokemon-card-scanner": {
+    "label": "Pokemon Card Scanner",
+    "type": "App Store",
+    "description": "One of my first graphics for Improbable Labs. Five App Store thumbnails for a card scanner app: scan, search, collect, and check each card's market value, in a bold red trading-card style."
+  },
+  "appstore-workout-timer": {
+    "label": "Workout Timer",
+    "type": "App Store",
+    "description": "One of my first graphics for Improbable Labs. Three App Store thumbnails for a workout timer app, with a dark, high-energy look showing timer and audio cues, custom workouts, and presets."
+  }
+}

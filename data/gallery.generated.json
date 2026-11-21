@@ -1,0 +1,986 @@
+[
+  {
+    "id": "digital-cat-and-dog-treats",
+    "category": "digital",
+    "title": "Cat and Dog Treats",
+    "items": [
+      {
+        "id": "digital-cat-and-dog-treats-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1520
+      },
+      {
+        "id": "digital-cat-and-dog-treats-2",
+        "variant": "2",
+        "w": 780,
+        "h": 1520
+      },
+      {
+        "id": "digital-cat-and-dog-treats-3",
+        "variant": "3",
+        "w": 780,
+        "h": 1840
+      },
+      {
+        "id": "digital-cat-and-dog-treats-4",
+        "variant": "4",
+        "w": 780,
+        "h": 1840
+      },
+      {
+        "id": "digital-cat-and-dog-treats-5",
+        "variant": "5",
+        "w": 780,
+        "h": 4124
+      }
+    ]
+  },
+  {
+    "id": "digital-fragrance",
+    "category": "digital",
+    "title": "Fragrance",
+    "items": [
+      {
+        "id": "digital-fragrance-1",
+        "variant": "1",
+        "w": 782,
+        "h": 1316
+      },
+      {
+        "id": "digital-fragrance-2",
+        "variant": "2",
+        "w": 780,
+        "h": 1844
+      },
+      {
+        "id": "digital-fragrance-3",
+        "variant": "3",
+        "w": 780,
+        "h": 3736
+      }
+    ]
+  },
+  {
+    "id": "digital-garment-care-products",
+    "category": "digital",
+    "title": "Garment Care Products",
+    "items": [
+      {
+        "id": "digital-garment-care-products-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1766
+      },
+      {
+        "id": "digital-garment-care-products-2",
+        "variant": "2",
+        "w": 780,
+        "h": 2536
+      },
+      {
+        "id": "digital-garment-care-products-3",
+        "variant": "3",
+        "w": 780,
+        "h": 3540
+      }
+    ]
+  },
+  {
+    "id": "digital-hygiene",
+    "category": "digital",
+    "title": "Hygiene",
+    "items": [
+      {
+        "id": "digital-hygiene-1",
+        "variant": "1",
+        "w": 640,
+        "h": 1034
+      },
+      {
+        "id": "digital-hygiene-2",
+        "variant": "2",
+        "w": 640,
+        "h": 1510
+      },
+      {
+        "id": "digital-hygiene-3",
+        "variant": "3",
+        "w": 640,
+        "h": 3732
+      }
+    ]
+  },
+  {
+    "id": "digital-ice-pops",
+    "category": "digital",
+    "title": "Ice Pops",
+    "items": [
+      {
+        "id": "digital-ice-pops-1",
+        "variant": "Mobile",
+        "w": 780,
+        "h": 8346
+      },
+      {
+        "id": "digital-ice-pops-2",
+        "variant": "Web",
+        "w": 1440,
+        "h": 6352
+      }
+    ]
+  },
+  {
+    "id": "digital-jewelry",
+    "category": "digital",
+    "title": "Jewelry",
+    "items": [
+      {
+        "id": "digital-jewelry-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1826
+      },
+      {
+        "id": "digital-jewelry-2",
+        "variant": "2",
+        "w": 780,
+        "h": 2538
+      },
+      {
+        "id": "digital-jewelry-3",
+        "variant": "3",
+        "w": 780,
+        "h": 3574
+      }
+    ]
+  },
+  {
+    "id": "digital-kids-apparel",
+    "category": "digital",
+    "title": "Kids Apparel",
+    "items": [
+      {
+        "id": "digital-kids-apparel-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1580
+      },
+      {
+        "id": "digital-kids-apparel-2",
+        "variant": "2",
+        "w": 924,
+        "h": 1650
+      },
+      {
+        "id": "digital-kids-apparel-3",
+        "variant": "3",
+        "w": 780,
+        "h": 2426
+      }
+    ]
+  },
+  {
+    "id": "digital-outdoor-apparel",
+    "category": "digital",
+    "title": "Outdoor Apparel",
+    "items": [
+      {
+        "id": "digital-outdoor-apparel-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1342
+      },
+      {
+        "id": "digital-outdoor-apparel-2",
+        "variant": "2",
+        "w": 780,
+        "h": 1964
+      },
+      {
+        "id": "digital-outdoor-apparel-3",
+        "variant": "3",
+        "w": 780,
+        "h": 3576
+      }
+    ]
+  },
+  {
+    "id": "digital-pet-treats",
+    "category": "digital",
+    "title": "Pet Treats",
+    "items": [
+      {
+        "id": "digital-pet-treats-1",
+        "variant": "1",
+        "w": 639,
+        "h": 1183
+      },
+      {
+        "id": "digital-pet-treats-2",
+        "variant": "2",
+        "w": 640,
+        "h": 1412
+      },
+      {
+        "id": "digital-pet-treats-3",
+        "variant": "3",
+        "w": 640,
+        "h": 1808
+      }
+    ]
+  },
+  {
+    "id": "digital-pumpkin-spice",
+    "category": "digital",
+    "title": "Pumpkin Spice",
+    "items": [
+      {
+        "id": "digital-pumpkin-spice-1",
+        "variant": "1",
+        "w": 639,
+        "h": 1417
+      },
+      {
+        "id": "digital-pumpkin-spice-2",
+        "variant": "2",
+        "w": 639,
+        "h": 1351
+      },
+      {
+        "id": "digital-pumpkin-spice-3",
+        "variant": "3",
+        "w": 639,
+        "h": 3955
+      }
+    ]
+  },
+  {
+    "id": "digital-scent-candle",
+    "category": "digital",
+    "title": "Scent Candle",
+    "items": [
+      {
+        "id": "digital-scent-candle-1",
+        "variant": "1",
+        "w": 640,
+        "h": 1210
+      },
+      {
+        "id": "digital-scent-candle-2",
+        "variant": "2",
+        "w": 640,
+        "h": 2944
+      },
+      {
+        "id": "digital-scent-candle-3",
+        "variant": "3",
+        "w": 640,
+        "h": 3914
+      }
+    ]
+  },
+  {
+    "id": "digital-seed-crisps",
+    "category": "digital",
+    "title": "Seed Crisps",
+    "items": [
+      {
+        "id": "digital-seed-crisps-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1924
+      },
+      {
+        "id": "digital-seed-crisps-2",
+        "variant": "2",
+        "w": 780,
+        "h": 1518
+      },
+      {
+        "id": "digital-seed-crisps-3",
+        "variant": "3",
+        "w": 780,
+        "h": 3756
+      }
+    ]
+  },
+  {
+    "id": "digital-skin-care",
+    "category": "digital",
+    "title": "Skin Care",
+    "items": [
+      {
+        "id": "digital-skin-care-1",
+        "variant": "1",
+        "w": 640,
+        "h": 1504
+      },
+      {
+        "id": "digital-skin-care-2",
+        "variant": "2",
+        "w": 640,
+        "h": 3336
+      }
+    ]
+  },
+  {
+    "id": "digital-skin-glow",
+    "category": "digital",
+    "title": "Skin Glow",
+    "items": [
+      {
+        "id": "digital-skin-glow-1",
+        "variant": "1",
+        "w": 780,
+        "h": 1032
+      },
+      {
+        "id": "digital-skin-glow-2",
+        "variant": "2",
+        "w": 780,
+        "h": 3982
+      },
+      {
+        "id": "digital-skin-glow-3",
+        "variant": "3",
+        "w": 780,
+        "h": 2156
+      }
+    ]
+  },
+  {
+    "id": "digital-whey-protein",
+    "category": "digital",
+    "title": "Whey Protein",
+    "items": [
+      {
+        "id": "digital-whey-protein-1",
+        "variant": "1",
+        "w": 640,
+        "h": 1386
+      },
+      {
+        "id": "digital-whey-protein-2",
+        "variant": "2",
+        "w": 640,
+        "h": 1380
+      },
+      {
+        "id": "digital-whey-protein-3",
+        "variant": "3",
+        "w": 640,
+        "h": 2786
+      }
+    ]
+  },
+  {
+    "id": "social-behind-the-scenes",
+    "category": "social",
+    "title": "Behind The Scenes",
+    "items": [
+      {
+        "id": "social-behind-the-scenes-1",
+        "variant": "1",
+        "w": 3200,
+        "h": 2400
+      },
+      {
+        "id": "social-behind-the-scenes-2",
+        "variant": "2",
+        "w": 3200,
+        "h": 2400
+      },
+      {
+        "id": "social-behind-the-scenes-3",
+        "variant": "3",
+        "w": 3200,
+        "h": 2400
+      },
+      {
+        "id": "social-behind-the-scenes-4",
+        "variant": "4",
+        "w": 3200,
+        "h": 2400
+      },
+      {
+        "id": "social-behind-the-scenes-5",
+        "variant": "5",
+        "w": 3200,
+        "h": 2400
+      }
+    ]
+  },
+  {
+    "id": "social-bigbang-lightstick",
+    "category": "social",
+    "title": "Bigbang Lightstick",
+    "items": [
+      {
+        "id": "social-bigbang-lightstick-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-bigbang-lightstick-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "social-bts-lightstick",
+    "category": "social",
+    "title": "BTS Lightstick",
+    "items": [
+      {
+        "id": "social-bts-lightstick-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-bts-lightstick-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "social-christmas-bonus",
+    "category": "social",
+    "title": "Christmas Bonus",
+    "items": [
+      {
+        "id": "social-christmas-bonus-1",
+        "variant": "1",
+        "w": 1620,
+        "h": 2880
+      }
+    ]
+  },
+  {
+    "id": "social-cosrx-skincare-favorites",
+    "category": "social",
+    "title": "COSRX Skincare Favorites",
+    "items": [
+      {
+        "id": "social-cosrx-skincare-favorites-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-cosrx-skincare-favorites-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-cosrx-skincare-favorites-3",
+        "variant": "3",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "social-favorite-skincare",
+    "category": "social",
+    "title": "Favorite Skincare",
+    "items": [
+      {
+        "id": "social-favorite-skincare-1",
+        "variant": "1",
+        "w": 3200,
+        "h": 4000
+      },
+      {
+        "id": "social-favorite-skincare-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1350
+      }
+    ]
+  },
+  {
+    "id": "social-first-batch-is-open",
+    "category": "social",
+    "title": "First Batch is Open",
+    "items": [
+      {
+        "id": "social-first-batch-is-open-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-first-batch-is-open-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "social-group-buy-discount",
+    "category": "social",
+    "title": "Group Buy Discount",
+    "items": [
+      {
+        "id": "social-group-buy-discount-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 2050
+      },
+      {
+        "id": "social-group-buy-discount-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 2050
+      }
+    ]
+  },
+  {
+    "id": "social-group-lightsticks",
+    "category": "social",
+    "title": "Group Lightsticks",
+    "items": [
+      {
+        "id": "social-group-lightsticks-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1440
+      },
+      {
+        "id": "social-group-lightsticks-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1440
+      }
+    ]
+  },
+  {
+    "id": "social-how-it-works",
+    "category": "social",
+    "title": "How It Works",
+    "items": [
+      {
+        "id": "social-how-it-works-1",
+        "variant": "1",
+        "w": 3200,
+        "h": 3200
+      },
+      {
+        "id": "social-how-it-works-2",
+        "variant": "2",
+        "w": 3200,
+        "h": 3200
+      },
+      {
+        "id": "social-how-it-works-3",
+        "variant": "3",
+        "w": 3200,
+        "h": 3200
+      },
+      {
+        "id": "social-how-it-works-4",
+        "variant": "4",
+        "w": 3200,
+        "h": 3200
+      }
+    ]
+  },
+  {
+    "id": "social-katseye-lightstick",
+    "category": "social",
+    "title": "Katseye Lightstick",
+    "items": [
+      {
+        "id": "social-katseye-lightstick-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "id": "social-katseye-lightstick-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "social-linkedin-post",
+    "category": "social",
+    "title": "LinkedIn Post",
+    "items": [
+      {
+        "id": "social-linkedin-post-1",
+        "variant": "1",
+        "w": 2160,
+        "h": 2700
+      }
+    ]
+  },
+  {
+    "id": "social-product-disclaimer",
+    "category": "social",
+    "title": "Product Disclaimer",
+    "items": [
+      {
+        "id": "social-product-disclaimer-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "id": "social-product-disclaimer-2",
+        "variant": "2",
+        "w": 2160,
+        "h": 2160
+      }
+    ]
+  },
+  {
+    "id": "social-romandnd-makeup-favorites",
+    "category": "social",
+    "title": "Rom&nd Makeup Favorites",
+    "items": [
+      {
+        "id": "social-romandnd-makeup-favorites-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1440
+      },
+      {
+        "id": "social-romandnd-makeup-favorites-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1440
+      }
+    ]
+  },
+  {
+    "id": "social-shipped-from-korea",
+    "category": "social",
+    "title": "Shipped from Korea",
+    "items": [
+      {
+        "id": "social-shipped-from-korea-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1350
+      },
+      {
+        "id": "social-shipped-from-korea-2",
+        "variant": "2",
+        "w": 1080,
+        "h": 1350
+      },
+      {
+        "id": "social-shipped-from-korea-3",
+        "variant": "3",
+        "w": 1620,
+        "h": 3075
+      },
+      {
+        "id": "social-shipped-from-korea-4",
+        "variant": "4",
+        "w": 1080,
+        "h": 1350
+      }
+    ]
+  },
+  {
+    "id": "social-teaser",
+    "category": "social",
+    "title": "Teaser",
+    "items": [
+      {
+        "id": "social-teaser-1",
+        "variant": "1",
+        "w": 3200,
+        "h": 5689
+      }
+    ]
+  },
+  {
+    "id": "social-torriden",
+    "category": "social",
+    "title": "Torriden",
+    "items": [
+      {
+        "id": "social-torriden-1",
+        "variant": "1",
+        "w": 1500,
+        "h": 1500
+      },
+      {
+        "id": "social-torriden-2",
+        "variant": "2",
+        "w": 1500,
+        "h": 1500
+      }
+    ]
+  },
+  {
+    "id": "social-voucher-post",
+    "category": "social",
+    "title": "Voucher Post",
+    "items": [
+      {
+        "id": "social-voucher-post-1",
+        "variant": "1",
+        "w": 1080,
+        "h": 1920
+      }
+    ]
+  },
+  {
+    "id": "banners-5-off-banner",
+    "category": "banners",
+    "title": "5% Off Banner",
+    "items": [
+      {
+        "id": "banners-5-off-banner-1",
+        "variant": "1",
+        "w": 2400,
+        "h": 600
+      },
+      {
+        "id": "banners-5-off-banner-2",
+        "variant": "2",
+        "w": 2400,
+        "h": 600
+      },
+      {
+        "id": "banners-5-off-banner-3",
+        "variant": "3",
+        "w": 2400,
+        "h": 600
+      }
+    ]
+  },
+  {
+    "id": "banners-cover-photo",
+    "category": "banners",
+    "title": "Cover Photo",
+    "items": [
+      {
+        "id": "banners-cover-photo-1",
+        "variant": "1",
+        "w": 1500,
+        "h": 500
+      },
+      {
+        "id": "banners-cover-photo-2",
+        "variant": "2",
+        "w": 1500,
+        "h": 500
+      },
+      {
+        "id": "banners-cover-photo-3",
+        "variant": "3",
+        "w": 1500,
+        "h": 500
+      },
+      {
+        "id": "banners-cover-photo-4",
+        "variant": "4",
+        "w": 1900,
+        "h": 800
+      }
+    ]
+  },
+  {
+    "id": "banners-join-the-waitlist",
+    "category": "banners",
+    "title": "Join the Waitlist",
+    "items": [
+      {
+        "id": "banners-join-the-waitlist-1",
+        "variant": "1",
+        "w": 860,
+        "h": 400
+      },
+      {
+        "id": "banners-join-the-waitlist-2",
+        "variant": "2",
+        "w": 860,
+        "h": 400
+      }
+    ]
+  },
+  {
+    "id": "banners-mobile-app-banner",
+    "category": "banners",
+    "title": "Mobile App Banner",
+    "items": [
+      {
+        "id": "banners-mobile-app-banner-1",
+        "variant": "1",
+        "w": 860,
+        "h": 400
+      }
+    ]
+  },
+  {
+    "id": "appstore-budget-tracker",
+    "category": "appstore",
+    "title": "Budget Tracker",
+    "items": [
+      {
+        "id": "appstore-budget-tracker-1",
+        "variant": "1",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-budget-tracker-2",
+        "variant": "2",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-budget-tracker-3",
+        "variant": "3",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-budget-tracker-4",
+        "variant": "4",
+        "w": 1800,
+        "h": 3896
+      }
+    ]
+  },
+  {
+    "id": "appstore-color-scanner",
+    "category": "appstore",
+    "title": "Color Scanner",
+    "items": [
+      {
+        "id": "appstore-color-scanner-1",
+        "variant": "1",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-color-scanner-2",
+        "variant": "2",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-color-scanner-3",
+        "variant": "3",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-color-scanner-4",
+        "variant": "4",
+        "w": 1800,
+        "h": 3896
+      }
+    ]
+  },
+  {
+    "id": "appstore-monthly-planner",
+    "category": "appstore",
+    "title": "Monthly Planner",
+    "items": [
+      {
+        "id": "appstore-monthly-planner-1",
+        "variant": "1",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-monthly-planner-2",
+        "variant": "2",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-monthly-planner-3",
+        "variant": "3",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-monthly-planner-4",
+        "variant": "4",
+        "w": 1800,
+        "h": 3896
+      }
+    ]
+  },
+  {
+    "id": "appstore-pokemon-card-scanner",
+    "category": "appstore",
+    "title": "Pokemon Card Scanner",
+    "items": [
+      {
+        "id": "appstore-pokemon-card-scanner-1",
+        "variant": "1",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-pokemon-card-scanner-2",
+        "variant": "2",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-pokemon-card-scanner-3",
+        "variant": "3",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-pokemon-card-scanner-4",
+        "variant": "4",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-pokemon-card-scanner-5",
+        "variant": "5",
+        "w": 1800,
+        "h": 3896
+      }
+    ]
+  },
+  {
+    "id": "appstore-workout-timer",
+    "category": "appstore",
+    "title": "Workout Timer",
+    "items": [
+      {
+        "id": "appstore-workout-timer-1",
+        "variant": "1",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-workout-timer-2",
+        "variant": "2",
+        "w": 1800,
+        "h": 3896
+      },
+      {
+        "id": "appstore-workout-timer-3",
+        "variant": "3",
+        "w": 1800,
+        "h": 3896
+      }
+    ]
+  }
+]

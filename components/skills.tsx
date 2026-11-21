@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import skillsData from "@/data/skills.json";
+import { Reveal, Eyebrow, WordReveal } from "@/components/reveal";
 
 const iconMap: Record<string, string> = {
   Terminal: "/assets/icons/frontend_icon.png",
@@ -7,64 +12,116 @@ const iconMap: Record<string, string> = {
   Palette: "/assets/icons/design_icon.png",
 };
 
+// Design leads: it is the main skill set. Frontend next, then backend.
+const ORDER = ["Palette", "Terminal", "Cpu"];
+
+const blurbs: Record<string, string> = {
+  Palette: "Where I spend most of my time: interfaces, systems and visuals.",
+  Terminal: "Enough frontend to build what I design.",
+  Cpu: "Projects and coursework behind the scenes.",
+};
+
 export default function Skills() {
-  const skillCategories = skillsData.map((category) => {
-    const iconSrc = iconMap[category.icon] || iconMap.Cpu;
-    return {
-      ...category,
-      iconSrc,
-    };
-  });
+  const groups = [...skillsData]
+    .sort((a, b) => ORDER.indexOf(a.icon) - ORDER.indexOf(b.icon))
+    .map((g) => ({ ...g, iconSrc: iconMap[g.icon] || iconMap.Cpu, blurb: blurbs[g.icon] ?? "" }));
+  const [active, setActive] = useState(0);
+  const cur = groups[active];
 
   return (
-    <section id="skills" className="py-12 sm:py-14 md:py-16 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-6 md:mb-8 max-w-3xl">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
-            Skills
+    <section id="skills" className="px-6 py-10 sm:py-12 md:px-12 md:py-16 lg:px-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-5 max-w-3xl md:mb-7">
+          <Reveal>
+            <Eyebrow n="05" label="Toolkit" />
+          </Reveal>
+          <h2 className="mb-4 text-3xl font-bold tracking-tighter text-foreground md:text-5xl">
+            <WordReveal text="Skills & Tools" highlight={["Tools"]} />
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm leading-relaxed max-w-2xl">
-            The technical toolkit and professional skills I've honed through
-            experience and education.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="project-card p-5 sm:p-6 flex flex-row sm:flex-col items-start gap-5 sm:gap-0 text-left"
-            >
-              <div className="flex-shrink-0 w-12 sm:w-16 flex items-center justify-center pt-1 sm:pt-0 sm:mb-6">
-                <div className="relative w-12 h-12 sm:w-16 sm:h-16">
-                  <Image
-                    src={category.iconSrc}
-                    alt={`${category.title} Icon`}
-                    fill
-                    sizes="(max-width: 640px) 48px, 64px"
-                    className="object-contain"
-                    draggable={false}
-                  />
+        <Reveal y={40}>
+          {/* Tab bar: pill tabs, the selected one is filled. Scrolls sideways on small phones. */}
+          <div
+            role="tablist"
+            aria-label="Skill categories"
+            className="-mx-6 mb-3 flex snap-x gap-2 overflow-x-auto px-6 pb-1 no-scrollbar sm:mx-0 sm:px-0"
+          >
+            {groups.map((g, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={g.title}
+                  id={`skill-tab-${i}`}
+                  role="tab"
+                  aria-selected={on}
+                  aria-controls="skill-panel"
+                  onClick={() => setActive(i)}
+                  className={`shrink-0 snap-start cursor-pointer whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-4 sm:py-2 sm:text-[13px] md:px-5 md:py-2 md:text-sm ${
+                    on
+                      ? "border-brand bg-brand text-white shadow-lg shadow-brand/30"
+                      : "border-foreground/15 bg-white text-foreground/70 hover:border-brand/60 hover:text-brand dark:bg-[#16161a]"
+                  }`}
+                >
+                  {g.title}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Panel */}
+          <div
+            id="skill-panel"
+            role="tabpanel"
+            aria-labelledby={`skill-tab-${active}`}
+            className="relative overflow-hidden rounded-3xl border border-brand/40 bg-white p-4 dark:bg-[#16161a] sm:p-6 md:p-7"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={cur.title}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.28 }}
+              >
+                <div className="flex items-start justify-between gap-4 sm:gap-6">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-2xl italic leading-tight text-brand sm:text-3xl">
+                      {cur.title}
+                    </h3>
+                    <p className="mt-1 max-w-md text-xs leading-relaxed text-foreground/60 sm:text-sm">
+                      {cur.blurb}
+                    </p>
+                  </div>
+                  <span className="relative h-10 w-10 shrink-0 sm:h-12 sm:w-12 md:h-14 md:w-14">
+                    <Image
+                      src={cur.iconSrc}
+                      alt=""
+                      fill
+                      sizes="96px"
+                      className="object-contain drop-shadow-lg"
+                      draggable={false}
+                    />
+                  </span>
                 </div>
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-3 sm:mb-4 tracking-tight leading-tight">
-                  {category.title}
-                </h2>
-                <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-start">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div
-                      key={skillIndex}
-                      className="px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-medium bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 text-foreground/80 dark:text-gray-300 transition-all duration-300 md:hover:border-brand md:hover:text-brand md:hover:bg-brand/5 shadow-xs"
+
+                <ul className="mt-4 flex flex-wrap gap-2 sm:mt-5">
+                  {cur.skills.map((skill, k) => (
+                    <motion.li
+                      key={skill}
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.05 + k * 0.04, duration: 0.3 }}
+                      className="tag-purple tag-purple-hover rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors sm:text-[13px] md:px-4 md:text-sm"
                     >
                       {skill}
-                    </div>
+                    </motion.li>
                   ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
