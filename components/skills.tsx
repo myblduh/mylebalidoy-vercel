@@ -45,7 +45,7 @@ export default function Skills() {
           <div
             role="tablist"
             aria-label="Skill categories"
-            className="-mx-6 mb-3 flex snap-x gap-2 overflow-x-auto px-6 pb-1 no-scrollbar sm:mx-0 sm:px-0"
+            className="mb-4 flex flex-wrap justify-start gap-2"
           >
             {groups.map((g, i) => {
               const on = i === active;
@@ -57,7 +57,7 @@ export default function Skills() {
                   aria-selected={on}
                   aria-controls="skill-panel"
                   onClick={() => setActive(i)}
-                  className={`shrink-0 snap-start cursor-pointer whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-4 sm:py-2 sm:text-[13px] md:px-5 md:py-2 md:text-sm ${
+                  className={`cursor-pointer whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-4 sm:py-2 sm:text-[13px] md:px-5 md:py-2 md:text-sm ${
                     on
                       ? "border-brand bg-brand text-white shadow-lg shadow-brand/30"
                       : "border-foreground/15 bg-white text-foreground/70 hover:border-brand/60 hover:text-brand dark:bg-[#16161a]"
