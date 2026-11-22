@@ -398,12 +398,21 @@ export default function Profile() {
           <Depth sx={sx} sy={sy} d={46} className="absolute right-[-1%] top-[44%] z-30" rotate={5}>
             <div className="flex origin-right scale-[0.7] gap-1.5 rounded-2xl border border-foreground/10 bg-white/90 p-2.5 shadow-xl backdrop-blur dark:bg-[#16161a]/90 sm:scale-100">
               {[
-                "bg-[#8B5CF6]",
-                "bg-[#A78BFA]",
-                "bg-[#C4B5FD]",
-                "bg-[#1a1a1a] dark:bg-white", // the neutral flips to white in dark mode
+                { cls: "bg-[#8B5CF6]", hex: "#8B5CF6" },
+                { cls: "bg-[#A78BFA]", hex: "#A78BFA" },
+                { cls: "bg-[#C4B5FD]", hex: "#C4B5FD" },
+                // the neutral flips to white in dark mode, so its code flips too
+                { cls: "bg-[#1a1a1a] dark:bg-white", hex: "#1A1A1A", darkHex: "#FFFFFF" },
               ].map((c) => (
-                <span key={c} className={`h-7 w-7 rounded-full border border-black/10 dark:border-white/20 ${c}`} />
+                <span key={c.hex} className="group/sw relative">
+                  <span
+                    className={`block h-7 w-7 cursor-pointer rounded-full border border-black/10 transition-transform duration-200 group-hover/sw:scale-110 dark:border-white/20 ${c.cls}`}
+                  />
+                  <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-[#1a1a1a] px-2 py-1 font-mono text-[10px] font-semibold leading-none text-white opacity-0 dark:bg-white dark:text-[#1a1a1a] shadow-lg transition-all duration-150 group-hover/sw:translate-y-0 group-hover/sw:opacity-100">
+                    <span className={c.darkHex ? "dark:hidden" : ""}>{c.hex}</span>
+                    {c.darkHex && <span className="hidden dark:inline">{c.darkHex}</span>}
+                  </span>
+                </span>
               ))}
             </div>
           </Depth>

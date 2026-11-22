@@ -238,6 +238,41 @@ section {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Liquid-glass pill, like the iPhone's Dynamic Island: always visible, also over the hero */
+.header-nav-glass {
+  position: relative;
+  /* At the very top the page behind is plain white, so the glass gets its own cool tint
+     (not just white-on-white) to stand out from the background. */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 100%),
+    rgba(124, 100, 220, 0.14);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid rgba(60, 40, 140, 0.2);
+  box-shadow:
+    0 14px 34px -8px rgba(40, 25, 110, 0.38),         /* floats above the page */
+    0 3px 8px rgba(40, 25, 110, 0.16),
+    inset 0 1.5px 1px rgba(255, 255, 255, 1),         /* bright top rim of the glass */
+    inset 0 -1.5px 2px rgba(139, 92, 246, 0.3),       /* purple refraction at the bottom */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);         /* inner light edge, like a glass bevel */
+}
+.header-nav-glass.is-scrolled {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+.dark .header-nav-glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 14px 34px -8px rgba(0, 0, 0, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px rgba(139, 92, 246, 0.3),
+    0 0 0 0.5px rgba(255, 255, 255, 0.08);
+}
+.dark .header-nav-glass.is-scrolled {
+  background: linear-gradient(180deg, rgba(30, 30, 36, 0.8) 0%, rgba(14, 14, 18, 0.7) 100%);
+}
+
 .nav-link {
   font-size: 13px;
   font-weight: 500;

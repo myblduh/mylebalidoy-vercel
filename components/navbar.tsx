@@ -113,11 +113,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex justify-center flex-none">
             <nav
-              className={`header-nav pointer-events-auto ${
-                scrolled
-                  ? "bg-white/80 dark:bg-[#0a0a0a]/70 backdrop-blur-xl shadow-lg border border-black/10 dark:border-white/10"
-                  : "bg-transparent border-transparent"
-              }`}
+              className={`header-nav header-nav-glass pointer-events-auto ${scrolled ? "is-scrolled" : ""}`}
             >
               {navItems.map((item) => (
                 <Link
