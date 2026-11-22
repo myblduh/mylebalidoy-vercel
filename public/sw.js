@@ -1,4 +1,4 @@
-const CACHE = "portfolio-v1";
+const CACHE = "portfolio-v2";
 const OFFLINE_URLS = ["/"];
 
 self.addEventListener("install", (e) => {
