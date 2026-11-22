@@ -79,7 +79,7 @@ export default function About() {
           <Reveal>
             <Eyebrow n="04" label="Background" />
           </Reveal>
-          <h2 className="mb-4 text-3xl font-bold tracking-tighter text-foreground md:text-5xl">
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl tracking-tighter text-foreground md:text-5xl">
             <WordReveal text="About Me" highlight={["Me"]} />
           </h2>
         </div>
@@ -99,7 +99,7 @@ export default function About() {
             </Reveal>
             {body && (
               <Reveal delay={0.16}>
-                <p className="mt-6 max-w-xl text-sm leading-relaxed text-foreground/60 md:text-base">
+                <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-foreground/60 sm:text-sm md:text-base">
                   {body}
                 </p>
               </Reveal>
@@ -107,11 +107,11 @@ export default function About() {
 
             {/* Certification badges: their own row, away from the photo */}
             <Reveal delay={0.22}>
-              <div className="mt-8">
+              <div className="mt-8 text-center lg:text-left">
                 <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/45">
                   Certified in
                 </p>
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:justify-start">
                   {badges.map((b) => (
                     <motion.div
                       key={b.name}
@@ -119,7 +119,7 @@ export default function About() {
                       transition={{ type: "spring", stiffness: 320, damping: 18 }}
                       onMouseEnter={() => setHoveredBadge(b.name)}
                       onMouseLeave={() => setHoveredBadge(null)}
-                      className="relative flex h-16 w-16 cursor-default select-none items-center justify-center"
+                      className="relative flex h-14 w-14 cursor-default sm:h-16 sm:w-16 select-none items-center justify-center"
                     >
                       <Image
                         src="/assets/bubble.webp"
@@ -174,17 +174,17 @@ export default function About() {
           <ul className="border-t border-foreground/15">
             {companies.map((c, i) => (
               <Reveal as="li" key={c.name} delay={i * 0.08} y={30}>
-                <div className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 border-b border-foreground/15 py-6 transition-colors duration-300 hover:bg-foreground/[0.03] md:grid-cols-[minmax(180px,0.8fr)_1.6fr_auto] md:gap-x-10 md:px-3 md:py-8">
-                  <p className="order-2 col-span-2 font-display text-2xl italic text-brand md:order-none md:col-span-1 md:text-3xl">
+                <div className="group grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-0.5 border-b border-foreground/15 py-4 transition-colors sm:gap-x-6 sm:py-6 duration-300 hover:bg-foreground/[0.03] md:grid-cols-[minmax(180px,0.8fr)_1.6fr_auto] md:gap-x-10 md:px-3 md:py-8">
+                  <p className="order-2 col-span-2 font-display text-lg italic text-brand sm:text-2xl md:order-none md:col-span-1 md:text-3xl">
                     {c.period}
                   </p>
                   <div className="order-1 min-w-0 md:order-none">
-                    <h3 className="flex flex-wrap items-center gap-2 text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-brand md:text-2xl">
+                    <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-xl md:text-2xl">
                       {c.name}
                     </h3>
-                    <p className="mt-0.5 text-sm text-foreground/60">{c.role}</p>
+                    <p className="mt-0.5 text-xs text-foreground/60 sm:text-sm">{c.role}</p>
                   </div>
-                  <span className="relative order-1 h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-foreground/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 md:order-none md:h-14 md:w-14">
+                  <span className="relative order-1 h-10 w-10 shrink-0 sm:h-12 sm:w-12 overflow-hidden rounded-2xl border border-foreground/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 md:order-none md:h-14 md:w-14">
                     {c.logo ? (
                       <Image
                         src={c.logo}
@@ -207,7 +207,7 @@ export default function About() {
 
         {/* Row 3: key facts as one band of big figures */}
         <Reveal className="mt-14 md:mt-20" y={40}>
-          <dl className="grid grid-cols-2 overflow-hidden rounded-[32px] border border-foreground/10 bg-foreground/[0.03] lg:grid-cols-4">
+          <dl className="grid grid-cols-2 overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.03] sm:rounded-[32px] lg:grid-cols-4">
             {aboutData.cards.map((card, i) => {
               const isAward = card.icon === "Trophy";
               const Cell = isAward ? "button" : "div";
@@ -217,27 +217,27 @@ export default function About() {
                   {...(isAward
                     ? { type: "button" as const, onClick: () => setAwardOpen(0) }
                     : {})}
-                  className={`group flex flex-col items-start p-6 text-left transition-colors sm:p-8 ${
+                  className={`group flex flex-col items-start p-4 text-left transition-colors sm:p-8 ${
                     i % 2 === 1 ? "border-l border-foreground/10" : ""
                   } ${i >= 2 ? "border-t border-foreground/10 lg:border-t-0" : ""} ${
                     i > 0 ? "lg:border-l lg:border-foreground/10" : ""
                   } ${isAward ? "cursor-pointer hover:bg-amber-500/10" : ""}`}
                 >
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/45">
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/45 sm:text-[11px]">
                     {card.title}
                   </dt>
-                  <dd className="mt-3">
+                  <dd className="mt-2 sm:mt-3">
                     <span
-                      className={`block font-display text-5xl leading-none sm:text-6xl ${
+                      className={`block font-display text-3xl leading-none sm:text-6xl ${
                         isAward ? "text-amber-500" : "text-brand"
                       }`}
                     >
                       {factFigure[card.title] ?? card.subtitle}
                     </span>
-                    <span className="mt-4 block text-sm font-semibold leading-snug text-foreground">
+                    <span className="mt-2 block text-xs font-semibold leading-snug text-foreground sm:mt-4 sm:text-sm">
                       {card.subtitle}
                     </span>
-                    <span className="mt-1 block text-[13px] leading-relaxed text-foreground/55">
+                    <span className="mt-1 block text-[11px] leading-relaxed text-foreground/55 sm:text-[13px]">
                       {stripHtml(card.details)}
                     </span>
                     {isAward && (

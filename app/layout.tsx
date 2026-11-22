@@ -1,5 +1,6 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import PwaRegister from "@/components/pwa-register";
 import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.scss";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -88,9 +89,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/assets/mylepersona.png",
-    apple: "/assets/mylepersona.png",
+    apple: "/assets/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Myle",
+    statusBarStyle: "default",
   },
   category: "design",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#8B5CF6",
 };
 
 export default function RootLayout({
@@ -113,6 +123,7 @@ export default function RootLayout({
           <LoadingScreen>{children}</LoadingScreen>
         </ThemeProvider>
         <Analytics />
+        <PwaRegister />
       </body>
     </html>
   );

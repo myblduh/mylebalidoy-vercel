@@ -17,11 +17,11 @@ export default function Designs() {
           <Reveal>
             <Eyebrow n="01" label="Selected work" />
           </Reveal>
-          <h2 className="text-3xl md:text-6xl font-bold tracking-tighter text-foreground mb-5 leading-[1.05]">
+          <h2 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tighter text-foreground mb-5 leading-[1.05]">
             <WordReveal text="Case studies in user-centric design" highlight={["user-centric"]} />
           </h2>
           <Reveal delay={0.1}>
-            <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl">
+            <p className="text-gray-500 dark:text-gray-400 text-[13px] sm:text-sm md:text-base leading-relaxed max-w-2xl">
               Each project opens into a full write-up: the problem, the
               overview, the thinking behind the screens, and a prototype you
               can try.
@@ -71,8 +71,8 @@ function DesignCard({
           <h3 className="min-w-0 flex-1 truncate text-base font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-brand md:overflow-visible md:whitespace-normal md:text-xl lg:text-2xl">
           {design.title}
         </h3>
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full md:h-11 md:w-11 border border-foreground/15 transition-all duration-300 group-hover:bg-brand group-hover:text-white group-hover:border-brand">
-            <ArrowUpRight className="h-4 w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:rotate-12" />
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full md:h-11 md:w-11 border border-foreground/15 transition-all duration-300 group-hover:bg-brand group-hover:text-white group-hover:border-brand">
+            <ArrowUpRight className="h-3 w-3 md:h-5 md:w-5 transition-transform duration-300 group-hover:rotate-12" />
           </span>
         </div>
         <p className="mt-1.5 text-xs font-semibold text-brand/90 md:mt-2">{design.date}</p>

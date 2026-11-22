@@ -53,11 +53,11 @@ export default function DesignFlow() {
               <Eyebrow n="00" label="How I work" />
             </div>
           </Reveal>
-          <h2 className="text-3xl font-bold leading-[1.05] tracking-tighter md:text-5xl">
+          <h2 className="text-2xl font-bold leading-[1.1] sm:text-3xl tracking-tighter md:text-5xl">
             <WordReveal text="My design flow" highlight={["flow"]} />
           </h2>
           <Reveal delay={0.1}>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/60 md:text-base lg:whitespace-nowrap">
+            <p className="mt-4 text-[13px] leading-relaxed sm:text-sm text-foreground/60 md:text-base lg:whitespace-nowrap">
               Five steps I come back to on every project, from understanding
               people to refining what I build.
             </p>

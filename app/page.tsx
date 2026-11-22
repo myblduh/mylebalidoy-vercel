@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import ScrollToTop from "@/components/scroll-to-top";
 import Profile from "@/components/profile";
 import About from "@/components/about";
 import Skills from "@/components/skills";
@@ -166,6 +167,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
+      <ScrollToTop />
       <div>
         <Profile />
         <DesignFlow />

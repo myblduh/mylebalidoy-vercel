@@ -86,7 +86,7 @@ export default function Certifications() {
             <Reveal>
               <Eyebrow n="06" label="Credentials" />
             </Reveal>
-            <h2 className="mb-4 text-3xl font-bold tracking-tighter text-foreground md:text-5xl">
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl tracking-tighter text-foreground md:text-5xl">
               <WordReveal text="Certificates I've earned" highlight={["earned"]} />
             </h2>
             <p className="max-w-2xl text-xs leading-relaxed text-gray-500 dark:text-gray-400 md:text-sm">
@@ -149,16 +149,16 @@ export default function Certifications() {
                   draggable={false}
                 />
               </div>
-              <div className="mt-4 flex items-start justify-between gap-3 px-1">
+              <div className="mt-3 flex items-start justify-between gap-2 px-1 sm:mt-4 sm:gap-3">
                 <div className="min-w-0">
                   <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/45">
                     {cert.issuer}
                   </p>
-                  <h3 className="mt-1 line-clamp-2 min-h-[2.75rem] text-base font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-brand">
+                  <h3 className="mt-1 line-clamp-2 text-[15px] sm:min-h-[2.75rem] sm:text-base font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-brand">
                     {cert.title}
                   </h3>
                 </div>
-                <span className="shrink-0 whitespace-nowrap pt-0.5 text-right font-display text-base italic text-brand">
+                <span className="shrink-0 whitespace-nowrap pt-0.5 text-right font-display text-sm italic sm:text-base text-brand">
                   {cert.date}
                 </span>
               </div>

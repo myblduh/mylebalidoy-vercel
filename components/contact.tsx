@@ -106,7 +106,7 @@ export function Contact() {
           <span className="text-[10px] md:text-sm uppercase tracking-[0.4em] text-brand mb-6 block font-bold">
             Open to opportunities
           </span>
-          <h2 className="text-5xl md:text-6xl lg:text-[6vw] font-bold leading-[0.95] tracking-tighter text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6vw] font-bold leading-[0.95] tracking-tighter text-white">
             Turning <br className="hidden lg:block" />
             <span className="hl !text-purple-400">ideas</span> into{" "}
             <br className="hidden lg:block" />

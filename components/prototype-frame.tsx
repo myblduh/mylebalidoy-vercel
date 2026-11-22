@@ -54,8 +54,8 @@ export default function PrototypeFrame({
               className="group absolute inset-0 flex items-center justify-center bg-black/30 transition-colors hover:bg-black/40"
               aria-label={`Load interactive prototype for ${title}`}
             >
-              <span className="flex items-center gap-3 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-xl transition-transform group-hover:scale-105">
-                <Play size={16} fill="currentColor" />
+              <span className="flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white shadow-xl transition-transform group-hover:scale-105 sm:gap-3 sm:px-6 sm:py-3 sm:text-sm">
+                <Play size={14} fill="currentColor" />
                 Try the prototype
               </span>
             </button>

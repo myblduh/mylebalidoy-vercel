@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Persona from "@/components/persona";
 import { ArrowDown } from "lucide-react";
 import {
   motion,
@@ -280,13 +281,13 @@ export default function Profile() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-auto text-[2.7rem] font-bold leading-[1.04] tracking-tighter sm:text-6xl lg:text-[4.1rem] xl:text-[4.7rem]"
+            className="pointer-events-auto text-[1.9rem] font-bold leading-[1.1] tracking-tighter min-[400px]:text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.1rem] xl:text-[4.7rem]"
           >
-            Creating intuitive designs by putting{" "}
+            <HoverWords text="Creating intuitive designs by putting" />
             {/* "Users First." styled as a selected layer in Figma */}
-            <span className="relative inline-block whitespace-nowrap px-2 align-baseline text-brand">
+            <span className="group/uf relative inline-block cursor-default whitespace-nowrap px-2 align-baseline text-brand transition-all duration-300 hover:[text-shadow:0_0_18px_rgba(139,92,246,0.85),0_0_36px_rgba(139,92,246,0.5)]">
               <span className="hl" style={{ fontSize: "1.08em" }}>Users First.</span>
-              <span className="pointer-events-none absolute inset-0 border-[1.5px] border-brand" aria-hidden />
+              <span className="pointer-events-none absolute inset-0 border-[1.5px] border-brand transition-shadow duration-300 group-hover/uf:shadow-[0_0_22px_rgba(139,92,246,0.55),inset_0_0_14px_rgba(139,92,246,0.18)]" aria-hidden />
               {["-left-1 -top-1", "-right-1 -top-1", "-bottom-1 -left-1", "-bottom-1 -right-1"].map((p) => (
                 <span key={p} className={`pointer-events-none absolute ${p} h-2 w-2 border-[1.5px] border-brand bg-white`} aria-hidden />
               ))}
@@ -311,11 +312,9 @@ export default function Profile() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-7 max-w-lg text-sm leading-relaxed text-foreground/60 md:text-base"
+            className="pointer-events-auto mt-5 max-w-lg text-[13px] leading-relaxed text-foreground/60 sm:mt-7 sm:text-sm md:text-base"
           >
-            UI/UX designer crafting web and mobile experiences, from research and
-            wireframes to design systems and prototypes, with a frontend
-            background that keeps my designs easy to build.
+            <HoverWords text="An all-around designer who turns ideas into polished visuals, from web and mobile interfaces to scroll-stopping social media graphics and app store previews, and everything in between." />
           </motion.p>
 
           <motion.div
@@ -325,14 +324,14 @@ export default function Profile() {
             className="pointer-events-auto mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:justify-start"
           >
             <button
-              className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-hover"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-[13px] font-semibold sm:px-7 sm:py-3.5 sm:text-sm text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-hover"
               onClick={() => document.getElementById("designs")?.scrollIntoView({ behavior: "smooth" })}
             >
               See my work
               <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />
             </button>
             <Link href="/resume" prefetch={false}>
-              <button className="rounded-full border border-foreground/15 bg-white/60 px-7 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand dark:bg-white/5">
+              <button className="rounded-full border border-foreground/15 bg-white/60 px-5 py-2.5 text-[13px] font-semibold sm:px-7 sm:py-3.5 sm:text-sm text-foreground backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand dark:bg-white/5">
                 View Resume
               </button>
             </Link>
@@ -342,12 +341,12 @@ export default function Profile() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 lg:justify-start"
+            className="pointer-events-auto mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 lg:justify-start"
           >
             {stats.map((s) => (
               <div key={s.l} className="flex items-baseline gap-2">
                 <dt className="font-display text-3xl italic leading-none text-brand">{s.n}</dt>
-                <dd className="text-xs font-medium text-foreground/55">{s.l}</dd>
+                <dd className="cursor-default text-xs font-medium text-foreground/55 transition-colors duration-200 hover:text-brand">{s.l}</dd>
               </div>
             ))}
           </motion.dl>
@@ -368,19 +367,11 @@ export default function Profile() {
           {/* The persona, shown in full */}
           <Depth sx={sx} sy={sy} d={60} className="absolute bottom-[1%] left-[-2%] z-40" rotate={-6}>
             <div
-              className="group relative h-16 w-16 cursor-pointer sm:h-40 sm:w-40"
+              className="group relative h-24 w-24 cursor-pointer sm:h-56 sm:w-56"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Image
-                src="/assets/mylepersona.png"
-                alt="Myle"
-                fill
-                sizes="160px"
-                priority
-                className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
-                draggable={false}
-              />
+              <Persona className="absolute inset-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3" />
               <AnimatePresence>
                 {isHovered && (
                   <motion.span
@@ -517,5 +508,18 @@ function Cursor({
         </span>
       </div>
     </motion.div>
+  );
+}
+
+/** Splits text into words that each turn brand-purple on hover. */
+function HoverWords({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\s+/).filter(Boolean).map((w, i) => (
+        <span key={i}>
+          <span className="cursor-default transition-colors duration-200 hover:text-brand">{w}</span>{" "}
+        </span>
+      ))}
+    </>
   );
 }

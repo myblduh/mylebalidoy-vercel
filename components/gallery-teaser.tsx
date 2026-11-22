@@ -138,19 +138,19 @@ export default function GalleryTeaser() {
             <Reveal>
               <Eyebrow n="02" label="Digital & social" />
             </Reveal>
-            <h2 className="mb-5 text-3xl font-bold leading-[1.05] tracking-tighter md:text-6xl">
+            <h2 className="mb-5 text-2xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl">
               <WordReveal text="My own gallery of graphic work" highlight={["own"]} />
             </h2>
             <Reveal delay={0.1}>
-              <p className="text-sm leading-relaxed text-foreground/60 md:text-base">
+              <p className="text-[13px] leading-relaxed text-foreground/60 sm:text-sm md:text-base">
                 Redesign concepts, social media graphics and banners, all in one
                 place. Here are a few of my favorites; the rest are in the gallery.
               </p>
             </Reveal>
           </div>
           <Reveal delay={0.2}>
-            <Link href="/gallery" className="pill-button gap-1.5 px-5 py-2.5 text-xs sm:gap-2 sm:px-8 sm:py-4 sm:text-[13px]">
-              <Lock size={15} /> Enter the gallery <ArrowUpRight size={16} />
+            <Link href="/gallery" className="pill-button !gap-1.5 !px-4 !py-2 !text-[11px] sm:!gap-2 sm:!px-8 sm:!py-4 sm:!text-[13px]">
+              <Lock size={13} /> Enter the gallery <ArrowUpRight size={14} />
             </Link>
           </Reveal>
         </div>

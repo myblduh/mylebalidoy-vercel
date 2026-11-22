@@ -35,7 +35,7 @@ export default function Skills() {
           <Reveal>
             <Eyebrow n="05" label="Toolkit" />
           </Reveal>
-          <h2 className="mb-4 text-3xl font-bold tracking-tighter text-foreground md:text-5xl">
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl tracking-tighter text-foreground md:text-5xl">
             <WordReveal text="Skills & Tools" highlight={["Tools"]} />
           </h2>
         </div>

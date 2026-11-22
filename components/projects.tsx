@@ -50,11 +50,11 @@ export default function Projects() {
           <Reveal>
             <Eyebrow n="03" label="Also build" />
           </Reveal>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-5 leading-[1.05]">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-5 leading-[1.05]">
             <WordReveal text="Software development, in brief" highlight={["brief"]} />
           </h2>
           <Reveal delay={0.1}>
-            <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl">
+            <p className="text-gray-500 dark:text-gray-400 text-[13px] sm:text-sm md:text-base leading-relaxed max-w-2xl">
               Design is my focus, but I build too. It helps me design things
               that are realistic to ship. Here is a quick overview of the
               systems and apps I have developed.

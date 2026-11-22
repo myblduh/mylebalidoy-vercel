@@ -13,6 +13,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import Navbar from "@/components/navbar";
+import ScrollToTop from "@/components/scroll-to-top";
 import { Reveal, Eyebrow, WordReveal } from "@/components/reveal";
 import MediaViewer, { type ViewerItem } from "@/components/media-viewer";
 
@@ -273,6 +274,7 @@ export default function DigitalResumePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
       <Navbar />
+      <ScrollToTop />
       <SectionNav />
 
       {/* soft glow + dot grid, like the landing page canvas */}
