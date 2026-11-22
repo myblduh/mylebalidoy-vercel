@@ -60,6 +60,13 @@ export default function Navbar() {
     { name: "Contact", href: "/#contact" },
   ];
 
+  // The gallery link only exists in the mobile menu, not in the desktop navbar
+  const mobileNavItems = [
+    navItems[0],
+    { name: "Gallery", href: "/gallery" },
+    ...navItems.slice(1),
+  ];
+
   return (
     <>
       <header
@@ -188,9 +195,9 @@ export default function Navbar() {
 
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl">
-          <div className="flex flex-col h-full pt-28 pb-8 px-8 overflow-y-auto">
-            <ul className="flex flex-col gap-8">
-              {navItems.map((item) => (
+          <div className="flex flex-col h-full pt-24 pb-8 px-8 overflow-y-auto">
+            <ul className="flex flex-col gap-4">
+              {mobileNavItems.map((item) => (
                 <li key={item.name}>
                   <Link
                     aria-label={item.name}

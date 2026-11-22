@@ -248,7 +248,9 @@ section {
 }
 
 .mobile-nav-link {
-  font-size: 24px;
+  display: block;
+  padding-block: 6px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
   transition: all 0.3s ease;

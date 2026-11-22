@@ -131,12 +131,12 @@ export default function Projects() {
           <div className="flex justify-center mt-12">
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="pill-button px-10 py-4 flex items-center gap-3"
+              className="pill-button flex items-center !gap-2 !px-5 !py-2.5 sm:!gap-3 sm:!px-10 sm:!py-4"
             >
-              <span className="text-xs sm:text-sm font-semibold tracking-normal">
+              <span className="text-[11px] sm:text-sm font-semibold tracking-normal">
                 {showAll ? "Show less" : `Show all ${projects.length} projects`}
               </span>
-              {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              {showAll ? <ChevronUp className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> : <ChevronDown className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
             </button>
           </div>
         )}

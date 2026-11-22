@@ -40,7 +40,7 @@
     "date": "Mar. 2024",
     "description": "Central repository web application for storing, organizing, and sharing recipes. Built with Next.js and JSON for efficient searching and categorization. Features interactive cooking modes and dynamic portion scaling.",
     "skills": ["Next.js", "JSON", "Frontend", "React"],
-    "links": [
+    "_links_disabled": [
       { "text": "Visit Site", "url": "https://recipe-app-group3.vercel.app/" }
     ]
   },
