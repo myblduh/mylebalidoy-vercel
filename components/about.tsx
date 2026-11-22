@@ -38,6 +38,7 @@ const companies: { name: string; role: string; period: string; logo?: string }[]
 const badges = [
   { name: "Google Agile Essentials", image: "/assets/certs/badge1.png" },
   { name: "Google Prompting Essentials", image: "/assets/certs/badge2.png" },
+  { name: "Canva Graphic Design Essentials", image: "/assets/certs/badge6.png" },
   { name: "Microsoft UX Design", image: "/assets/certs/badge3.png" },
   { name: "IBM UX Design Fundamentals", image: "/assets/certs/badge5.png" },
 ];

@@ -8,6 +8,14 @@
     "skills": ["UX Design", "UX Research", "Wireframing", "Prototyping"]
   },
   {
+    "title": "AI Career Readiness Training",
+    "image": "/assets/certs/14.png",
+    "description": "Completed the AI Career Readiness Training, building practical knowledge of AI tools and skills to prepare for an AI-enabled workplace.",
+    "issuer": "ASEAN Foundation",
+    "date": "August 2026",
+    "skills": ["AI Literacy", "Career Readiness"]
+  },
+  {
     "title": "Graphic Design Essentials",
     "image": "/assets/certs/12.png",
     "description": "Completed the Graphic Design Essentials certification, demonstrating foundational knowledge in visual communication, layout hierarchy, color theory, and digital design using Canva.",
