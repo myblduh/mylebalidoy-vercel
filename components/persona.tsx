@@ -75,7 +75,7 @@ export default function Persona({ className }: { className?: string }) {
         style={{ rotateY: rotY, rotateX: rotX, rotate: rotZ, transformOrigin: "50% 92%" }}
       >
         {/* original drawing without its flat eyes */}
-        <Image src="/assets/persona-face-v3.png" alt="" fill sizes="224px" priority className={layer} draggable={false} />
+        <Image src="/assets/persona-face-v4.png" alt="" fill sizes="224px" priority className={layer} draggable={false} />
 
         {/* plain black round eyes */}
         {EYES.map((eye, i) => (
@@ -94,7 +94,7 @@ export default function Persona({ className }: { className?: string }) {
         ))}
 
         {/* glasses frame on top, so the eyes always stay inside the lenses */}
-        <Image src="/assets/persona-glasses-v3.png" alt="" fill sizes="224px" className={layer} draggable={false} />
+        <Image src="/assets/persona-glasses-v4.png" alt="" fill sizes="224px" className={layer} draggable={false} />
       </motion.div>
     </div>
   );
