@@ -395,8 +395,8 @@ export default function Profile() {
               <p className="mt-1 text-[10px] font-semibold text-foreground/55">Inter · Instrument Serif</p>
             </div>
           </Depth>
-          <Depth sx={sx} sy={sy} d={46} className="absolute right-[-1%] top-[44%] z-30 hidden sm:block" rotate={5}>
-            <div className="flex gap-1.5 rounded-2xl border border-foreground/10 bg-white/90 p-2.5 shadow-xl backdrop-blur dark:bg-[#16161a]/90">
+          <Depth sx={sx} sy={sy} d={46} className="absolute right-[-1%] top-[44%] z-30" rotate={5}>
+            <div className="flex origin-right scale-[0.7] gap-1.5 rounded-2xl border border-foreground/10 bg-white/90 p-2.5 shadow-xl backdrop-blur dark:bg-[#16161a]/90 sm:scale-100">
               {[
                 "bg-[#8B5CF6]",
                 "bg-[#A78BFA]",
