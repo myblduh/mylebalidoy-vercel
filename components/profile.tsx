@@ -82,6 +82,9 @@ export default function Profile() {
 
   const handlePop = (id: string) => {
     playPopSound();
+    // free the popped bubble's physics + element so nothing stale lingers
+    delete physicsRef.current[id];
+    bubbleElementsRef.current.delete(id);
     setRandomBubbles((prev) => prev.filter((b) => b.id !== id));
 
     setTimeout(() => {
@@ -244,17 +247,25 @@ export default function Profile() {
       <div ref={containerRef} className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
         <AnimatePresence>
           {randomBubbles.map((bubble) => (
-            <div key={bubble.id} id={`bubble-el-${bubble.id}`} className="absolute left-0 top-0">
+            <motion.div
+              key={bubble.id}
+              id={`bubble-el-${bubble.id}`}
+              className="absolute left-0 top-0"
+              // opacity only: the physics loop owns this wrapper's transform
+              exit={{ opacity: 0, transition: { duration: 0.18 } }}
+            >
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ scale: 1.2, transition: { duration: 0.05 } }}
+                exit={{ scale: 1.35, transition: { duration: 0.18 } }}
+                whileHover={{ scale: 1.1, transition: { type: "spring", stiffness: 400, damping: 20 } }}
+                whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
                 transition={{
                   opacity: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
                   scale: { duration: 1.5, ease: "easeOut", delay: bubble.delay },
                 }}
                 onClick={() => handlePop(bubble.id)}
-                className="pointer-events-auto flex h-[calc(var(--bubble-size)*0.5)] w-[calc(var(--bubble-size)*0.5)] cursor-pointer items-center justify-center transition-transform hover:scale-110 active:scale-90 md:h-[var(--bubble-size)] md:w-[var(--bubble-size)]"
+                className="pointer-events-auto flex h-[calc(var(--bubble-size)*0.5)] w-[calc(var(--bubble-size)*0.5)] cursor-pointer items-center justify-center md:h-[var(--bubble-size)] md:w-[var(--bubble-size)]"
                 style={{ "--bubble-size": `${bubble.size}px` } as React.CSSProperties}
               >
                 <div className="relative h-full w-full">
@@ -269,7 +280,7 @@ export default function Profile() {
                   />
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           ))}
         </AnimatePresence>
       </div>
