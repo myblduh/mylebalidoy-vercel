@@ -6,6 +6,7 @@ import "./globals.scss";
 import { ThemeProvider } from "@/components/theme-provider";
 import LoadingScreen from "@/components/loading-screen";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -110,6 +111,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-T5KDH6Z3"
+          strategy="afterInteractive"
+        />
+        <Script id="gtm-datalayer" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
+      </head>
       <body
         className={`${displaySerif.variable} ${inter.variable} font-sans`}
         suppressHydrationWarning
