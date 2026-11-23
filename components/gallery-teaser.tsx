@@ -153,7 +153,7 @@ export default function GalleryTeaser() {
         </div>
 
         {/* Six across on desktop: the two web previews stacked in a double-width column, then four phone screens */}
-        <div className="mx-auto grid max-w-5xl grid-cols-2 items-start gap-2.5 sm:grid-cols-4 sm:gap-3 lg:grid-cols-6 lg:gap-4">
+        <div className="mx-auto grid max-w-5xl lg:max-w-none grid-cols-2 items-start gap-2.5 sm:grid-cols-4 sm:gap-3 lg:grid-cols-6 lg:gap-4">
           <div className="col-span-2 grid grid-cols-1 gap-2.5 sm:col-span-4 sm:grid-cols-2 sm:gap-3 lg:col-span-2 lg:grid-cols-1 lg:gap-4">
             {[0, 1].map((i) => (
               <Depth key={i} sx={sx} sy={sy} d={depths[i]} rotate={tilts[i]} className="relative hover:z-30">

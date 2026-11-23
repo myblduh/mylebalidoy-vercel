@@ -72,7 +72,7 @@ const faqSchema = {
       "@type": "WebSite",
       "@id": "https://mylebalidoy.vercel.app/#website",
       "url": "https://mylebalidoy.vercel.app",
-      "name": "Myle Balidoy | UI/UX Designer Portfolio",
+      "name": "Myle Balidoy | UI/UX Designer",
       "description":
         "Portfolio of Myle Balidoy, a UI/UX Designer and Digital Designer from Laguna, Philippines.",
       "inLanguage": "en",
@@ -82,7 +82,7 @@ const faqSchema = {
       "@type": "ProfilePage",
       "@id": "https://mylebalidoy.vercel.app/#profilepage",
       "url": "https://mylebalidoy.vercel.app",
-      "name": "Myle Balidoy | UI/UX Designer Portfolio",
+      "name": "Myle Balidoy | UI/UX Designer",
       "isPartOf": { "@id": "https://mylebalidoy.vercel.app/#website" },
       "mainEntity": { "@id": "https://mylebalidoy.vercel.app/#person" }
     },

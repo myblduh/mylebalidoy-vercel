@@ -71,8 +71,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Myle Balidoy | UI/UX Designer Portfolio",
-    title: "Myle Balidoy | UI/UX Designer Portfolio",
+    siteName: "Myle Balidoy | UI/UX Designer",
+    title: "Myle Balidoy | UI/UX Designer",
     description: SITE_DESCRIPTION,
     locale: "en_US",
     images: [
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Myle Balidoy | UI/UX Designer Portfolio",
+    title: "Myle Balidoy | UI/UX Designer",
     description: SITE_DESCRIPTION,
     images: ["/assets/mylepersona.png"],
   },
