@@ -16,8 +16,8 @@ import { privateRobots } from "@/lib/gallery-meta";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "My Gallery",
-  description: "A gallery of my own design work.",
+  title: "Repository of My Works",
+  description: "A repository of my own works.",
   robots: privateRobots,
 };
 

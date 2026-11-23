@@ -1,4 +1,4 @@
-import { FEATURED, featuredItem, signedUrl } from "@/lib/gallery";
+import { FEATURED, signedUrl } from "@/lib/gallery";
 
 export const dynamic = "force-dynamic";
 
@@ -29,16 +29,14 @@ export async function GET(req: Request) {
     }
   }
 
-  const body = FEATURED.map((f) => ({ hit: featuredItem(f), zoom: f.zoom ?? 1 }))
-    .filter((x): x is { hit: NonNullable<ReturnType<typeof featuredItem>>; zoom: number } => !!x.hit)
-    .map(({ hit: { grp, item }, zoom }) => ({
-      zoom,
-      src: signedUrl(`${item.id}-t`),
-      label: grp.label,
-      type: grp.type,
-      category: ({ digital: "Designs", social: "Social Media Posts", banners: "Banners", appstore: "App Store" } as Record<string, string>)[grp.category] ?? "",
-      w: item.w,
-      h: item.h,
-    }));
+  const body = FEATURED.map((f) => ({
+    src: signedUrl(f.file),
+    label: f.label,
+    type: f.type,
+    category: f.category,
+    w: f.w,
+    h: f.h,
+    web: !!f.web,
+  }));
   return new Response(JSON.stringify(body), { headers: HEADERS });
 }

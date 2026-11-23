@@ -11,7 +11,6 @@ interface Preview {
   label: string;
   type: string;
   category: string;
-  zoom?: number;
   w: number;
   h: number;
 }
@@ -19,7 +18,7 @@ interface Preview {
 /**
  * One featured piece: a fixed, equal-size tile; the picture fills it edge to edge. No caption.
  */
-function Tile({ item }: { item?: Preview }) {
+function Tile({ item, web }: { item?: Preview; web?: boolean }) {
   return (
     <div
       role="img"
@@ -28,9 +27,10 @@ function Tile({ item }: { item?: Preview }) {
       onContextMenu={(e) => e.preventDefault()}
     >
       <div
-        className="relative overflow-hidden rounded-2xl border border-foreground/10 shadow-xl transition-shadow duration-300 group-hover:shadow-[0_30px_60px_-20px_rgba(139,92,246,0.5)] md:rounded-3xl"
+        className={`relative overflow-hidden rounded-2xl border border-foreground/10 shadow-xl transition-shadow duration-300 group-hover:shadow-[0_30px_60px_-20px_rgba(139,92,246,0.5)] md:rounded-3xl ${web ? "aspect-[1.6] lg:aspect-[1.9]" : ""}`}
         style={{
-          aspectRatio: "0.54",
+          // phone screens keep their own tall ratio; web previews are landscape (see class above)
+          aspectRatio: web ? undefined : item ? String(item.w / item.h) : "0.46",
           background: "linear-gradient(135deg, rgba(139,92,246,0.22), rgba(120,120,140,0.08))",
         }}
       >
@@ -112,11 +112,8 @@ export default function GalleryTeaser() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 70, damping: 18 });
   const sy = useSpring(my, { stiffness: 70, damping: 18 });
-  const depths = [14, 30, 22, 38, 18, 32];
-  const tilts = [-2, 1.5, -1, 2, -1.5, 1];
-
-  // a gentle stagger so the row reads as a collage, not a table
-  const lift = ["", "lg:mt-10", "", "lg:mt-10", "", "lg:mt-10"];
+  const depths = [10, 16, 22, 30, 18, 26];
+  const tilts = [-0.6, 0.6, -1.2, 1.2, -1, 1];
   return (
     <section
       id="gallery"
@@ -139,12 +136,12 @@ export default function GalleryTeaser() {
               <Eyebrow n="02" label="Digital & social" />
             </Reveal>
             <h2 className="mb-5 text-2xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl">
-              <WordReveal text="My own gallery of graphic work" highlight={["own"]} />
+              <WordReveal text="The repository of my own works" highlight={["own"]} />
             </h2>
             <Reveal delay={0.1}>
               <p className="text-[13px] leading-relaxed text-foreground/60 sm:text-sm md:text-base">
-                Redesign concepts, social media graphics and banners, all in one
-                place. Here are a few of my favorites; the rest are in the gallery.
+                A repository of my own works: app and web designs, redesign concepts,
+                social media graphics, banners and app store previews. Here are a few of my favorites; the rest are in the gallery.
               </p>
             </Reveal>
           </div>
@@ -155,10 +152,19 @@ export default function GalleryTeaser() {
           </Reveal>
         </div>
 
-        {/* My six favorites */}
-        <div className="grid grid-cols-2 items-start gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-6">
-          {Array.from({ length: 6 }, (_, i) => (
-            <Depth key={i} sx={sx} sy={sy} d={depths[i]} rotate={tilts[i]} className={`relative hover:z-30 ${lift[i]}`}>
+        {/* Six across on desktop: the two web previews stacked in a double-width column, then four phone screens */}
+        <div className="mx-auto grid max-w-5xl grid-cols-2 items-start gap-2.5 sm:grid-cols-4 sm:gap-3 lg:grid-cols-6 lg:gap-4">
+          <div className="col-span-2 grid grid-cols-1 gap-2.5 sm:col-span-4 sm:grid-cols-2 sm:gap-3 lg:col-span-2 lg:grid-cols-1 lg:gap-4">
+            {[0, 1].map((i) => (
+              <Depth key={i} sx={sx} sy={sy} d={depths[i]} rotate={tilts[i]} className="relative hover:z-30">
+                <Reveal scale={0.94} delay={i * 0.07}>
+                  <Tile item={items[i]} web />
+                </Reveal>
+              </Depth>
+            ))}
+          </div>
+          {[2, 3, 4, 5].map((i) => (
+            <Depth key={i} sx={sx} sy={sy} d={depths[i]} rotate={tilts[i]} className="relative hover:z-30">
               <Reveal scale={0.94} delay={i * 0.07}>
                 <Tile item={items[i]} />
               </Reveal>

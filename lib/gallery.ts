@@ -113,25 +113,16 @@ export function hasAccessFromHeader(cookieHeader: string | null) {
 }
 
 /**
- * The six pieces shown on the public landing page (group id + which variant). Only THESE
- * thumbnails can be loaded without the code; every other image requires an unlocked browser.
+ * The six pieces shown on the public landing page, in order. Only THESE thumbnails
+ * (private/gallery/preview-N-t.webp) can be loaded without the code; every other image
+ * requires an unlocked browser.
  */
-// zoom: this screenshot has a soft shadow margin around the mockup; scaling trims it so the design fills the card
-export const FEATURED: { id: string; variant: string; zoom?: number }[] = [
-  { id: "digital-pumpkin-spice", variant: "1" },
-  { id: "digital-hygiene", variant: "1" },
-  { id: "social-romandnd-makeup-favorites", variant: "2" },
-  { id: "social-first-batch-is-open", variant: "2" },
-  { id: "social-cosrx-skincare-favorites", variant: "1" },
-  { id: "social-katseye-lightstick", variant: "1" },
+export const FEATURED: { file: string; label: string; type: string; category: string; w: number; h: number; web?: boolean }[] = [
+  { file: "preview-1-t", label: "Blueshift Residential Solar", type: "Web Design", category: "Designs", w: 1200, h: 1597, web: true },
+  { file: "preview-2-t", label: "Trackify", type: "Web Design", category: "Designs", w: 1200, h: 776, web: true },
+  { file: "preview-3-t", label: "Payonnect", type: "App Design", category: "Designs", w: 1200, h: 2602 },
+  { file: "preview-4-t", label: "CosMarket", type: "App Design", category: "Designs", w: 1200, h: 2597 },
+  { file: "preview-5-t", label: "Budget Organizer", type: "App Store", category: "App Store", w: 1200, h: 2597 },
+  { file: "preview-6-t", label: "Poke Scanner", type: "App Store", category: "App Store", w: 1200, h: 2597 },
 ];
-export const featuredItem = (f: (typeof FEATURED)[number]) => {
-  const grp = galleryGroups.find((x) => x.id === f.id);
-  const item = grp?.items.find((i) => i.variant === f.variant) ?? grp?.items[0];
-  return grp && item ? { grp, item } : null;
-};
-export const isFeaturedThumb = (file: string) =>
-  FEATURED.some((f) => {
-    const hit = featuredItem(f);
-    return !!hit && file === `${hit.item.id}-t`;
-  });
+export const isFeaturedThumb = (file: string) => FEATURED.some((f) => f.file === file);
