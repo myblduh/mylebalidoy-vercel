@@ -93,10 +93,10 @@ const LINKS = [
 /** Section heading: numbered eyebrow + serif-highlight title, same as the landing page. */
 function Heading({ n, label, text, highlight }: { n: string; label: string; text: string; highlight: string[] }) {
   return (
-    <div className="mb-5 md:mb-6">
+    <div className="mb-5 text-center md:mb-6 md:text-left">
       <Reveal>
         {/* just the number, in black: the title below already says what the section is */}
-        <span className="mb-4 block font-display text-lg italic text-foreground md:text-xl">{n}</span>
+        <span className="mb-1 block font-display text-lg italic text-foreground md:text-xl">{n}</span>
       </Reveal>
       <h2 className="text-3xl font-bold leading-[1.05] tracking-tighter text-foreground md:text-5xl">
         <WordReveal text={text} highlight={highlight} />
@@ -143,10 +143,11 @@ type Shape = {
 // Soft purple glows, small solid dots and thin rings, scattered down the whole page.
 const SHAPES: Shape[] = [
   { kind: "glow", size: 760, top: "1%", right: "-18%", dx: -40, dy: 50, dur: 14, opacity: 0.2 },
-  { kind: "glow", size: 520, top: "16%", left: "-22%", dx: 50, dy: -40, dur: 17, opacity: 0.2 },
-  { kind: "glow", size: 640, top: "40%", right: "-26%", dx: -50, dy: 40, dur: 16, opacity: 0.2 },
-  { kind: "glow", size: 560, top: "62%", left: "-24%", dx: 40, dy: 50, dur: 18, opacity: 0.2 },
-  { kind: "glow", size: 600, top: "84%", right: "-20%", dx: -40, dy: -50, dur: 15, opacity: 0.22 },
+  { kind: "glow", size: 520, top: "15%", left: "-8%", dx: 50, dy: -40, dur: 17, opacity: 0.2 },
+  { kind: "glow", size: 600, top: "33%", right: "-2%", dx: -50, dy: 40, dur: 16, opacity: 0.2 },
+  { kind: "glow", size: 560, top: "51%", left: "-24%", dx: 40, dy: 50, dur: 18, opacity: 0.2 },
+  { kind: "glow", size: 600, top: "69%", right: "-12%", dx: -40, dy: -50, dur: 15, opacity: 0.2 },
+  { kind: "glow", size: 560, top: "87%", left: "-4%", dx: 40, dy: -40, dur: 17, opacity: 0.22 },
 ];
 
 /** Decorative drifting purple shapes behind the content. */
@@ -159,8 +160,8 @@ function FloatingShapes() {
           top: s.top,
           left: s.left,
           right: s.right,
-          width: s.size,
-          height: s.size,
+          width: `min(${s.size}px, 65vw)`,
+          height: `min(${s.size}px, 65vw)`,
           opacity: s.opacity,
           ...(s.kind === "glow"
             ? { background: "radial-gradient(closest-side, rgba(139,92,246,0.9), transparent)" }
