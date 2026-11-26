@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
-  ArrowUp,
   Briefcase,
   Download,
   ExternalLink,
-  GraduationCap,
   Github,
   Linkedin,
 } from "lucide-react";
@@ -98,7 +96,7 @@ function Heading({ n, label, text, highlight }: { n: string; label: string; text
     <div className="mb-5 md:mb-6">
       <Reveal>
         {/* just the number, in black: the title below already says what the section is */}
-        <span className="mb-4 block font-display text-lg italic text-foreground">{n}</span>
+        <span className="mb-4 block font-display text-lg italic text-foreground md:text-xl">{n}</span>
       </Reveal>
       <h2 className="text-3xl font-bold leading-[1.05] tracking-tighter text-foreground md:text-5xl">
         <WordReveal text={text} highlight={highlight} />
@@ -107,47 +105,12 @@ function Heading({ n, label, text, highlight }: { n: string; label: string; text
   );
 }
 
-/** One ledger row: period on the left, details in the middle, a thumbnail on the right. */
-function Row({
-  i,
-  period,
-  title,
-  meta,
-  children,
-  thumb,
-}: {
-  i: number;
-  period: string;
-  title: string;
-  meta?: React.ReactNode;
-  children: React.ReactNode;
-  thumb?: React.ReactNode;
-}) {
-  return (
-    <Reveal as="li" delay={Math.min(i, 4) * 0.06} y={30}>
-      <div className="group grid grid-cols-[1fr_auto] gap-x-5 gap-y-3 border-b border-foreground/15 py-6 transition-colors duration-300 hover:bg-foreground/[0.03] md:grid-cols-[minmax(170px,0.7fr)_1.8fr_auto] md:gap-x-10 md:px-3 md:py-8">
-        <p className="order-2 col-span-2 font-display text-xl italic text-brand md:order-none md:col-span-1 md:text-2xl">
-          {period}
-        </p>
-        <div className="order-1 min-w-0 md:order-none">
-          <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-brand md:text-2xl">
-            {title}
-          </h3>
-          {meta && <div className="mt-1 text-sm text-foreground/60">{meta}</div>}
-          <div className="mt-4">{children}</div>
-        </div>
-        <div className="order-1 md:order-none">{thumb}</div>
-      </div>
-    </Reveal>
-  );
-}
-
 function Bullets({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-2 text-sm leading-relaxed text-foreground/65 md:text-[15px]">
+    <ul className="space-y-1.5 text-[13px] leading-relaxed text-foreground/60 md:space-y-2 md:text-[15px] md:text-foreground/65">
       {items.map((b) => (
-        <li key={b} className="flex gap-3">
-          <span className="mt-[0.65em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+        <li key={b} className="flex gap-2.5 md:gap-3">
+          <span className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-brand md:h-1.5 md:w-1.5" />
           <span>{b}</span>
         </li>
       ))}
@@ -155,18 +118,67 @@ function Bullets({ items }: { items: string[] }) {
   );
 }
 
-function Thumb({ src, alt, onClick }: { src: string; alt: string; onClick?: () => void }) {
-  const inner = (
-    <Image src={src} alt={alt} fill sizes="64px" className="object-cover" draggable={false} />
+/** Small rounded preview image; the parent button/link handles the click. */
+function Thumb({ src, alt, size = "md" }: { src: string; alt: string; size?: "sm" | "md" | "lg" }) {
+  const dim = size === "lg" ? "h-20 w-20 md:h-24 md:w-24" : size === "sm" ? "h-12 w-12 md:h-14 md:w-14" : "h-16 w-16 md:h-20 md:w-20";
+  return (
+    <span className={`relative block shrink-0 overflow-hidden rounded-xl border border-foreground/10 ${dim}`}>
+      <Image src={src} alt={alt} fill sizes="80px" className="object-cover transition-transform duration-500 group-hover:scale-110" draggable={false} />
+    </span>
   );
-  const cls =
-    "relative block h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-foreground/10 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-110 md:h-16 md:w-16";
-  return onClick ? (
-    <button type="button" onClick={onClick} aria-label={`View ${alt}`} className={`${cls} cursor-pointer`}>
-      {inner}
-    </button>
-  ) : (
-    <span className={cls}>{inner}</span>
+}
+
+type Shape = {
+  kind: "glow" | "dot" | "ring";
+  size: number;
+  top: string;
+  left?: string;
+  right?: string;
+  dx: number;
+  dy: number;
+  dur: number;
+  opacity: number;
+};
+
+// Soft purple glows, small solid dots and thin rings, scattered down the whole page.
+const SHAPES: Shape[] = [
+  { kind: "glow", size: 760, top: "1%", right: "-18%", dx: -40, dy: 50, dur: 14, opacity: 0.2 },
+  { kind: "glow", size: 520, top: "16%", left: "-22%", dx: 50, dy: -40, dur: 17, opacity: 0.2 },
+  { kind: "glow", size: 640, top: "40%", right: "-26%", dx: -50, dy: 40, dur: 16, opacity: 0.2 },
+  { kind: "glow", size: 560, top: "62%", left: "-24%", dx: 40, dy: 50, dur: 18, opacity: 0.2 },
+  { kind: "glow", size: 600, top: "84%", right: "-20%", dx: -40, dy: -50, dur: 15, opacity: 0.22 },
+];
+
+/** Decorative drifting purple shapes behind the content. */
+function FloatingShapes() {
+  const reduce = useReducedMotion();
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      {SHAPES.map((s, i) => {
+        const style: React.CSSProperties = {
+          top: s.top,
+          left: s.left,
+          right: s.right,
+          width: s.size,
+          height: s.size,
+          opacity: s.opacity,
+          ...(s.kind === "glow"
+            ? { background: "radial-gradient(closest-side, rgba(139,92,246,0.9), transparent)" }
+            : s.kind === "ring"
+              ? { border: "1.5px solid rgba(139,92,246,0.9)" }
+              : { background: "#8B5CF6" }),
+        };
+        return (
+          <motion.span
+            key={i}
+            className="absolute rounded-full"
+            style={style}
+            animate={reduce ? undefined : { x: [0, s.dx, 0], y: [0, s.dy, 0] }}
+            transition={{ duration: s.dur, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+          />
+        );
+      })}
+    </div>
   );
 }
 
@@ -183,19 +195,30 @@ const SECTIONS = [
 function SectionNav() {
   const [active, setActive] = useState<string>("");
   const { scrollYProgress } = useScroll();
-  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
+  const progress = useTransform(scrollYProgress, (v) => (typeof window !== "undefined" && window.scrollY <= 0 ? 0 : v));
+  const fill = useSpring(progress, { stiffness: 120, damping: 28, restDelta: 0.001 });
 
   useEffect(() => {
-    const els = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        // the section crossing the upper third of the screen is the current one
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
-      { rootMargin: "-30% 0px -60% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // The current section is the last one whose top has passed 40% of the screen;
+    // at the very bottom of the page it is always the last section.
+    const onScroll = () => {
+      // scrollY > 200 guards the first paint, when the page hasn't grown to full height yet
+      const atBottom =
+        window.scrollY > 200 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+      let current = "";
+      for (const s of SECTIONS) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = s.id;
+      }
+      setActive(atBottom ? SECTIONS[SECTIONS.length - 1].id : current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -220,7 +243,7 @@ function SectionNav() {
               aria-current={on ? "true" : undefined}
             >
               <span
-                className={`text-xs font-semibold transition-all duration-300 ${
+                className={`text-[13px] font-semibold transition-all duration-300 ${
                   "translate-x-1 rounded-full bg-background/90 px-2.5 py-1 text-foreground/70 opacity-0 shadow-sm backdrop-blur-sm group-hover:translate-x-0 group-hover:opacity-100"
                 }`}
               >
@@ -240,7 +263,6 @@ function SectionNav() {
 }
 
 export default function DigitalResumePage() {
-  const [showTopBtn, setShowTopBtn] = useState(false);
   const [open, setOpen] = useState<number | null>(null);
 
   const featuredProjects = [
@@ -251,7 +273,12 @@ export default function DigitalResumePage() {
     projectsData.find((p) => p.title.includes("RFID-Based")),
     designsData.find((p) => p.title.includes("HealthMate")),
   ].filter(Boolean) as any[];
-  const certs = certificationsData.slice(0, 5);
+  // Resume shows the first few certificates, with Google Agile Essentials in place of AI Career Readiness.
+  const certs = [
+    ...certificationsData.filter((c) => !["AI Career Readiness Training", "Google Prompting Essentials", "Google Agile Essentials"].includes(c.title)).slice(0, 4),
+    certificationsData.find((c) => c.title === "Google Prompting Essentials"),
+    certificationsData.find((c) => c.title === "Google Agile Essentials"),
+  ].filter(Boolean) as typeof certificationsData;
 
   // One shared viewer: the award first, then the projects, then the certificates.
   const viewerItems: ViewerItem[] = [
@@ -265,10 +292,14 @@ export default function DigitalResumePage() {
   ];
   const idxOf = (id: string) => viewerItems.findIndex((v) => v.id === id);
 
+  // Always start at the top on refresh instead of restoring the old scroll position.
   useEffect(() => {
-    const onScroll = () => setShowTopBtn(window.scrollY > 300);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const prev = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+    return () => {
+      window.history.scrollRestoration = prev;
+    };
   }, []);
 
   return (
@@ -278,15 +309,12 @@ export default function DigitalResumePage() {
       <SectionNav />
 
       {/* soft glow + dot grid, like the landing page canvas */}
-      <div
-        className="pointer-events-none absolute right-[-10%] top-[2%] -z-0 h-[760px] w-[760px] rounded-full"
-        style={{ background: "radial-gradient(closest-side, rgba(139,92,246,0.16), transparent)" }}
-      />
+      <FloatingShapes />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 md:px-12 md:pt-32 lg:px-20">
         {/* Header */}
-        <header className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-14">
-          <div className="text-center md:text-left">
+        <header className="grid items-center gap-6 md:grid-cols-[1fr_auto] md:gap-14">
+          <div className="order-2 text-center md:order-none md:text-left">
             <Reveal>
               <div className="flex justify-center md:justify-start">
                 <Eyebrow n="00" label="Digital resume" />
@@ -296,23 +324,23 @@ export default function DigitalResumePage() {
               <WordReveal text="Myle Balidoy" highlight={["Balidoy"]} />
             </h1>
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-foreground/65 md:mx-0 md:text-lg">
+              <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-foreground/60 md:mx-0 md:mt-5 md:text-lg md:text-foreground/65">
                 {aboutData.journey[0]}
               </p>
             </Reveal>
-            <Reveal delay={0.2} className="mt-8 flex justify-center md:justify-start">
+            <Reveal delay={0.2} className="mt-6 flex justify-center md:mt-8 md:justify-start">
               <a
                 href={aboutData.resumePath || "/assets/Myle_UXDesigner_Resume.pdf"}
                 download
-                className="pill-button gap-2 px-8 py-4"
+                className="pill-button !gap-2 !px-5 !py-2.5 !text-[13px] md:!px-7 md:!py-3 md:!text-sm"
               >
-                Download Resume <Download size={16} />
+                Download Resume <Download size={14} />
               </a>
             </Reveal>
           </div>
 
-          <Reveal scale={0.94} delay={0.15} className="mx-auto">
-            <div className="relative h-44 w-44 overflow-hidden rounded-[2rem] border border-foreground/10 shadow-2xl md:h-60 md:w-60">
+          <Reveal scale={0.94} delay={0.15} className="order-1 mx-auto md:order-none">
+            <div className="relative h-36 w-36 overflow-hidden rounded-[2rem] border border-foreground/10 shadow-xl md:h-60 md:w-60 md:shadow-2xl">
               <div className="absolute inset-0">
                 <Image
                   src="/assets/images/image4.jpg"
@@ -329,177 +357,49 @@ export default function DigitalResumePage() {
           </Reveal>
         </header>
 
-        {/* 01 Education */}
-        <section id="education" className="py-0 mt-8 scroll-mt-24 md:mt-12">
+        {/* 01 Education: a single quiet block */}
+        <section id="education" className="py-0 mt-16 scroll-mt-24 md:mt-24">
           <Heading n="01" label="Education" text="Education" highlight={["Education"]} />
-          <Reveal y={30}>
-            <div className="group grid overflow-hidden rounded-3xl border border-foreground/10 md:grid-cols-[minmax(200px,0.55fr)_1.7fr]">
-              {/* Left: the years, big, on a purple panel */}
-              <div className="relative flex flex-col justify-between gap-5 overflow-hidden bg-gradient-to-br from-[#8B5CF6] via-[#6d3fe0] to-[#3b1a8f] p-5 text-white md:p-6">
-                <div
-                  className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-40"
-                  style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.55), transparent)" }}
-                />
-                <div className="relative h-12 w-12 transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 md:h-14 md:w-14">
-                  <Image
-                    src="/assets/icons/education_icon.png"
-                    alt="Education"
-                    fill
-                    sizes="80px"
-                    className="object-contain drop-shadow-xl"
-                    draggable={false}
-                  />
-                </div>
-                <p className="relative font-display text-4xl italic leading-none md:text-5xl">
-                  2022 – 2026
-                </p>
-              </div>
-
-              {/* Right: degree, school and track */}
-              <div className="flex flex-col justify-between gap-5 bg-foreground/[0.03] p-5 md:p-6">
-                <div>
-                  <h3 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">
-                    Bachelor of Science in Information Technology
-                  </h3>
-                  <p className="mt-1.5 text-sm font-medium text-foreground/65 md:text-base">
-                    National University - Laguna
-                  </p>
-                </div>
-                <div className="tag-purple flex items-center gap-3 rounded-2xl p-3 md:p-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
-                    <GraduationCap className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-70">
-                      Specialization Track
-                    </p>
-                    <p className="mt-0.5 text-sm font-bold tracking-tight md:text-base">
-                      Web and Mobile Development
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <Reveal y={20}>
+            <h3 className="text-lg font-semibold leading-snug tracking-tight md:text-2xl">
+              Bachelor of Science in Information Technology
+            </h3>
+            <p className="mt-1 text-[13px] text-foreground/55 md:text-base">National University - Laguna</p>
+            <p className="mt-3 text-[13px] text-foreground/55 md:text-sm">
+              <span className="font-display italic text-brand">2022 – 2026</span>
+              <span className="mx-2 text-foreground/30">/</span>
+              Web and Mobile Development
+            </p>
           </Reveal>
         </section>
 
-        {/* 02 Experience */}
-        <section id="resume-experience" className="py-0 mt-8 scroll-mt-24 md:mt-12">
+        {/* 02 Experience: stacked entries, period beside the role on desktop */}
+        <section id="resume-experience" className="py-0 mt-16 scroll-mt-24 md:mt-24">
           <Heading n="02" label="Experience" text="Experience" highlight={["Experience"]} />
-          <ul className="border-t border-foreground/15">
+          <div className="space-y-9 md:space-y-12">
             {JOBS.map((j, i) => (
-              <Row
-                key={j.org}
-                i={i}
-                period={j.period}
-                title={j.role}
-                meta={
-                  <>
-                    {j.org} <span className="text-foreground/40">·</span> {j.type}
-                  </>
-                }
-                thumb={
-                  j.logo ? (
-                    <Thumb src={j.logo} alt={`${j.role} at ${j.org}`} />
-                  ) : (
-                    <span className="tag-purple flex h-12 w-12 items-center justify-center rounded-2xl md:h-16 md:w-16">
-                      <Briefcase className="h-5 w-5 md:h-7 md:w-7" />
-                    </span>
-                  )
-                }
-              >
-                <Bullets items={j.bullets} />
-              </Row>
-            ))}
-          </ul>
-        </section>
-
-        {/* 03 Awards */}
-        <section id="resume-awards" className="py-0 mt-8 scroll-mt-24 md:mt-12">
-          <Heading n="03" label="Awards" text="Awards" highlight={["Awards"]} />
-          <ul className="border-t border-foreground/15">
-            <Row
-              i={0}
-              period={AWARD.date}
-              title={AWARD.title}
-              meta={AWARD.org}
-              thumb={<Thumb src={AWARD.image} alt={AWARD.title} onClick={() => setOpen(idxOf("award"))} />}
-            >
-              <Bullets items={[AWARD.text]} />
-            </Row>
-          </ul>
-        </section>
-
-        {/* 04 Featured Projects */}
-        <section id="resume-projects" className="py-0 mt-8 scroll-mt-24 md:mt-12">
-          <Heading n="04" label="Projects" text="Featured Projects" highlight={["Projects"]} />
-          <ul className="border-t border-foreground/15">
-            {featuredProjects.map((p, i) => (
-              <Row
-                key={p.title}
-                i={i}
-                period={p.date ?? ""}
-                title={p.title}
-                meta={
-                  p.skills?.length ? (
-                    <span className="mt-2 flex flex-wrap gap-1.5">
-                      {p.skills.slice(0, 3).map((s: string) => (
-                        <span key={s} className="tag-purple rounded-full px-2.5 py-0.5 text-[11px] font-medium">
-                          {s}
+              <Reveal key={j.org} delay={Math.min(i, 4) * 0.05} y={20}>
+                <div className="md:grid md:grid-cols-[170px_1fr] md:gap-6">
+                  <p className="font-display text-base italic text-brand md:pt-1 md:text-lg">{j.period}</p>
+                  <div className="mt-1 md:mt-0">
+                    <div className="group flex items-center gap-3">
+                      {j.logo ? (
+                        <Thumb src={j.logo} alt={j.org} size="sm" />
+                      ) : (
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/[0.04] md:h-14 md:w-14">
+                          <Briefcase className="h-5 w-5 text-brand md:h-6 md:w-6" />
                         </span>
-                      ))}
-                    </span>
-                  ) : null
-                }
-                thumb={
-                  p.image ? (
-                    <Thumb src={p.image} alt={p.title} onClick={() => setOpen(idxOf(`p-${p.title}`))} />
-                  ) : null
-                }
-              >
-                <Bullets items={[p.description]} />
-              </Row>
-            ))}
-          </ul>
-        </section>
-
-        {/* 05 Certifications */}
-        <section id="resume-certifications" className="py-0 mt-8 scroll-mt-24 md:mt-12">
-          <Heading n="05" label="Certifications" text="Certifications" highlight={["Certifications"]} />
-          <ul className="border-t border-foreground/15">
-            {certs.map((c, i) => (
-              <Row
-                key={c.title}
-                i={i}
-                period={c.date}
-                title={c.title}
-                meta={c.issuer}
-                thumb={
-                  c.image ? (
-                    <Thumb src={c.image} alt={c.title} onClick={() => setOpen(idxOf(`c-${c.title}`))} />
-                  ) : null
-                }
-              >
-                <Bullets items={[c.description]} />
-              </Row>
-            ))}
-          </ul>
-        </section>
-
-        {/* 06 Technical Toolbox */}
-        <section id="resume-toolbox" className="py-0 mt-8 scroll-mt-24 md:mt-12">
-          <Heading n="06" label="Toolkit" text="Technical Toolbox" highlight={["Toolbox"]} />
-          <div className="grid gap-4 md:grid-cols-3 md:gap-5">
-            {skillsData.map((category, i) => (
-              <Reveal key={category.title} delay={i * 0.08} y={30}>
-                <div className="h-full rounded-3xl border border-foreground/10 bg-foreground/[0.03] p-6">
-                  <h3 className="font-display text-2xl italic text-brand">{category.title}</h3>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span key={skill} className="tag-purple rounded-full px-3.5 py-1.5 text-xs font-semibold sm:text-[13px]">
-                        {skill}
-                      </span>
-                    ))}
+                      )}
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-semibold leading-snug tracking-tight md:text-xl">{j.role}</h3>
+                        <p className="mt-0.5 text-[13px] text-foreground/55 md:text-sm">
+                          {j.org} <span className="text-foreground/30">·</span> {j.type}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <Bullets items={j.bullets} />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -507,34 +407,116 @@ export default function DigitalResumePage() {
           </div>
         </section>
 
+        {/* 03 Awards: one pulled-out statement */}
+        <section id="resume-awards" className="py-0 mt-16 scroll-mt-24 md:mt-24">
+          <Heading n="03" label="Awards" text="Awards" highlight={["Awards"]} />
+          <Reveal y={20}>
+            <button
+              type="button"
+              onClick={() => setOpen(idxOf("award"))}
+              className="group flex items-center gap-4 text-left"
+              aria-label={`View ${AWARD.title}`}
+            >
+              <Thumb src={AWARD.image} alt={AWARD.title} size="lg" />
+              <span className="min-w-0">
+                <span className="block font-display text-2xl italic leading-tight text-foreground transition-colors group-hover:text-brand md:text-4xl">
+                  {AWARD.title}
+                </span>
+                <span className="mt-1.5 block text-[13px] text-foreground/55 md:text-sm">
+                  {AWARD.org} <span className="text-foreground/30">·</span> {AWARD.date}
+                </span>
+              </span>
+            </button>
+            <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-foreground/60 md:text-[15px]">{AWARD.text}</p>
+          </Reveal>
+        </section>
+
+        {/* 04 Featured Projects: plain text, two columns on desktop */}
+        <section id="resume-projects" className="py-0 mt-16 scroll-mt-24 md:mt-24">
+          <Heading n="04" label="Projects" text="Featured Projects" highlight={["Projects"]} />
+          <div className="grid gap-x-12 gap-y-8 md:grid-cols-2 md:gap-y-10">
+            {featuredProjects.map((p, i) => (
+              <Reveal key={p.title} delay={Math.min(i, 4) * 0.05} y={20}>
+                <button
+                  type="button"
+                  onClick={() => p.image && setOpen(idxOf(`p-${p.title}`))}
+                  className="group flex w-full items-start gap-4 text-left"
+                >
+                  {p.image && <Thumb src={p.image} alt={p.title} />}
+                  <span className="min-w-0">
+                    <span className="block text-base font-semibold leading-snug tracking-tight transition-colors group-hover:text-brand md:text-lg">
+                      {p.title}
+                    </span>
+                    <span className="mt-0.5 block text-[13px] text-foreground/50 md:text-sm">
+                      <span className="font-display italic text-brand">{p.date}</span>
+                      {p.skills?.length ? <> <span className="text-foreground/30">/</span> {p.skills.slice(0, 3).join(" · ")}</> : null}
+                    </span>
+                    <span className="mt-2 line-clamp-3 block text-[13px] leading-relaxed text-foreground/60 md:text-sm">{p.description}</span>
+                  </span>
+                </button>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* 05 Certifications: one line each, title and date */}
+        <section id="resume-certifications" className="py-0 mt-16 scroll-mt-24 md:mt-24">
+          <Heading n="05" label="Certifications" text="Certifications" highlight={["Certifications"]} />
+          <ul className="grid gap-x-12 gap-y-6 md:grid-cols-2">
+            {certs.map((c, i) => (
+              <Reveal as="li" key={c.title} delay={Math.min(i, 4) * 0.05} y={16}>
+                <button
+                  type="button"
+                  onClick={() => c.image && setOpen(idxOf(`c-${c.title}`))}
+                  className="group flex w-full items-center gap-4 text-left"
+                >
+                  {c.image && <Thumb src={c.image} alt={c.title} size="sm" />}
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-base font-semibold leading-snug tracking-tight transition-colors group-hover:text-brand md:text-base">
+                      {c.title}
+                    </span>
+                    <span className="mt-0.5 block text-[13px] text-foreground/50 md:text-sm">{c.issuer}</span>
+                  </span>
+                  <span className="shrink-0 self-start font-display text-sm italic text-brand md:self-center md:text-sm">{c.date}</span>
+                </button>
+              </Reveal>
+            ))}
+          </ul>
+        </section>
+
+        {/* 06 Technical Toolbox: label, then skills as plain text */}
+        <section id="resume-toolbox" className="py-0 mt-16 scroll-mt-24 md:mt-24">
+          <Heading n="06" label="Toolkit" text="Technical Toolbox" highlight={["Toolbox"]} />
+          <dl className="space-y-6">
+            {skillsData.map((category, i) => (
+              <Reveal key={category.title} delay={i * 0.05} y={16}>
+                <div className="md:grid md:grid-cols-[170px_1fr] md:gap-6">
+                  <dt className="font-display text-xl italic text-brand md:text-2xl">{category.title}</dt>
+                  <dd className="mt-1 text-[13px] leading-relaxed text-foreground/60 md:mt-0 md:text-[15px]">
+                    {category.skills.join(" · ")}
+                  </dd>
+                </div>
+              </Reveal>
+            ))}
+          </dl>
+        </section>
+
         {/* Links */}
-        <Reveal className="mt-8 flex flex-col items-stretch justify-center gap-3 border-t border-foreground/10 pt-8 md:mt-10 md:flex-row md:items-center">
+        <Reveal className="mt-8 flex flex-col items-stretch justify-center gap-3 border-t border-foreground/10 pt-8 md:flex-row md:items-center">
           {LINKS.map(({ href, label, Icon }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-3 rounded-full border border-foreground/15 px-8 py-4 text-sm font-semibold transition-colors hover:border-brand hover:text-brand"
+              className="group flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-[13px] font-semibold transition-colors hover:border-brand hover:text-brand"
             >
-              <Icon className="h-5 w-5 text-brand transition-transform group-hover:scale-110" />
+              <Icon className="h-4 w-4 text-brand transition-transform group-hover:scale-110" />
               {label}
             </a>
           ))}
         </Reveal>
       </div>
-
-      {showTopBtn && (
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-foreground/15 bg-background/80 shadow-lg backdrop-blur-md transition-colors hover:border-brand hover:text-brand"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp size={20} />
-        </motion.button>
-      )}
 
       <MediaViewer
         items={viewerItems}
